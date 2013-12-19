@@ -116,9 +116,9 @@
     <Compile Include="BackupForm1.Designer.vb">
       <DependentUpon>BackupForm1.vb</DependentUpon>
     </Compile>
-    <Compile Include="BackupForm1.vb">
+    <None Include="BackupForm1.vb">
       <SubType>Form</SubType>
-    </Compile>
+    </None>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
