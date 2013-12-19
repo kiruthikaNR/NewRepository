@@ -122,4 +122,14 @@ Public Class Form6
             ListBox2.SelectedItem = str2
         End If
     End Sub
+
+    Private Sub dor_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dor.CheckedChanged
+        Dim cb As CheckBox = CType(sender, CheckBox)
+
+        If cb.Checked = True Then
+            dorv.Visible = True
+        Else
+            dorv.Visible = False
+        End If
+    End Sub
 End Class
