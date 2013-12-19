@@ -25,7 +25,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button3_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        'Athithyaa's Update
+
         'VALIDATIONS
         Dim a, START_INDEX1, END_INDEX1, LEN1 As Integer
         Dim start3 As String
@@ -39,7 +39,6 @@ Public Class Form1
             Exit Sub
         End If
 
-<<<<<<< HEAD
         Dim STrA As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text & "\A_JE_PREP.LOG")
         Dim STrB As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text & "\B_TB_PREP.LOG")
         Dim STrC As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text & "\C_WORKLOG.LOG")
@@ -4535,32 +4534,6 @@ Public Class Form1
             oWord.ActiveDocument.SaveAs(str2 & myclientname & " EY GTH JE Analysis Procedure Memo " & myPOA & ".docx")
             MessageBox.Show("Memo is prepared in " & Chr(10) & str2 & Chr(10) & " Please have a look and update the manual sections", "Complete!!")
         End If
-=======
-        If (Form6.TextBox1.Text = "") Then
-            MessageBox.Show("Please fill up the User Information form", "Incomplete entry")
-            Form6.TextBox1.Focus()
-            Exit Sub
-        ElseIf (Form5.TextBox1.Text = "") Then
-            MessageBox.Show("Please fill up the Entry of logs", "Incomplete entry")
-            Form5.TextBox1.Focus()
-            Exit Sub
-        End If
-
-        Dim STrA10 As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text & "\A10_JE_PREP.LOG")
-        Dim STrA20 As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text & "\A20_TB_PREP.LOG")
-        Dim STrA30 As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text & "\A30_MAIN.LOG")
-        Dim STrC As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text & "\C10_ROLL.LOG")
-        'Dim STrc10 As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text & "\B10_VALIDATION.LOG")
-        'Dim STrB10 As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text & "\B10_VALIDATION.LOG")
-
-
-        Dim TRA1 As String = STrA10.ReadToEnd
-        Dim TRA2 As String = STrA20.ReadToEnd
-        Dim TRA3 As String = STrA30.ReadToEnd
-        Dim TRC1 As String = STrC.ReadToEnd
-        'Dim TRC As String = S
-
->>>>>>> RecentSync
     End Sub
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
         Form5.Show()

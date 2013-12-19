@@ -23,6 +23,8 @@ Partial Class Form6
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form6))
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
@@ -36,6 +38,8 @@ Partial Class Form6
         Me.ListBox2 = New System.Windows.Forms.ListBox
         Me.Label6 = New System.Windows.Forms.Label
         Me.TextBox6 = New System.Windows.Forms.TextBox
+        Me.Label9 = New System.Windows.Forms.Label
+        Me.spoc = New System.Windows.Forms.TextBox
         Me.Label10 = New System.Windows.Forms.Label
         Me.ucr = New System.Windows.Forms.TextBox
         Me.eFrom = New System.Windows.Forms.DateTimePicker
@@ -52,20 +56,35 @@ Partial Class Form6
         Me.CheckBox5 = New System.Windows.Forms.CheckBox
         Me.Label5 = New System.Windows.Forms.Label
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
-        Me.spoc = New System.Windows.Forms.TextBox
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(3, 3)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(797, 654)
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackColor = System.Drawing.Color.White
+        Me.PictureBox2.Image = Global.WindowsApplication1.My.Resources.Resources.EYL
+        Me.PictureBox2.Location = New System.Drawing.Point(508, 5)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(114, 103)
+        Me.PictureBox2.TabIndex = 1
+        Me.PictureBox2.TabStop = False
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label1.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(0, 23)
+        Me.Label1.Location = New System.Drawing.Point(15, 24)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(218, 18)
         Me.Label1.TabIndex = 2
@@ -88,18 +107,18 @@ Partial Class Form6
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label3.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(79, 78)
+        Me.Label3.Location = New System.Drawing.Point(15, 78)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(135, 18)
+        Me.Label3.Size = New System.Drawing.Size(174, 18)
         Me.Label3.TabIndex = 4
-        Me.Label3.Text = "CAAT Preparer:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label3.Text = "GTH CAAT Preparer:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label4.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(27, 121)
+        Me.Label4.Location = New System.Drawing.Point(15, 121)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(177, 18)
         Me.Label4.TabIndex = 5
@@ -169,7 +188,7 @@ Partial Class Form6
         Me.Label6.AutoSize = True
         Me.Label6.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label6.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(32, 188)
+        Me.Label6.Location = New System.Drawing.Point(15, 186)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(172, 18)
         Me.Label6.TabIndex = 57
@@ -182,16 +201,34 @@ Partial Class Form6
         Me.TextBox6.Size = New System.Drawing.Size(224, 20)
         Me.TextBox6.TabIndex = 6
         '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label9.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(15, 52)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(222, 18)
+        Me.Label9.TabIndex = 61
+        Me.Label9.Text = "DA Single Point of Contact:"
+        '
+        'spoc
+        '
+        Me.spoc.Location = New System.Drawing.Point(256, 52)
+        Me.spoc.Name = "spoc"
+        Me.spoc.Size = New System.Drawing.Size(224, 20)
+        Me.spoc.TabIndex = 2
+        '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label10.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(62, 159)
+        Me.Label10.Location = New System.Drawing.Point(15, 160)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(142, 18)
+        Me.Label10.Size = New System.Drawing.Size(169, 18)
         Me.Label10.TabIndex = 63
-        Me.Label10.Text = "CAAT Reviewer :"
+        Me.Label10.Text = "US CAAT Reviewer :"
         '
         'ucr
         '
@@ -222,11 +259,11 @@ Partial Class Form6
         Me.Label11.AutoSize = True
         Me.Label11.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label11.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(42, 218)
+        Me.Label11.Location = New System.Drawing.Point(15, 216)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(162, 18)
+        Me.Label11.Size = New System.Drawing.Size(143, 18)
         Me.Label11.TabIndex = 67
-        Me.Label11.Text = "Period Of Analysis :"
+        Me.Label11.Text = "Effective Period :"
         '
         'Label12
         '
@@ -310,7 +347,7 @@ Partial Class Form6
         '
         Me.CheckBox1.AutoSize = True
         Me.CheckBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.CheckBox1.Location = New System.Drawing.Point(82, 99)
+        Me.CheckBox1.Location = New System.Drawing.Point(20, 100)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(93, 17)
         Me.CheckBox1.TabIndex = 77
@@ -321,7 +358,7 @@ Partial Class Form6
         '
         Me.CheckBox5.AutoSize = True
         Me.CheckBox5.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.CheckBox5.Location = New System.Drawing.Point(82, 140)
+        Me.CheckBox5.Location = New System.Drawing.Point(18, 142)
         Me.CheckBox5.Name = "CheckBox5"
         Me.CheckBox5.Size = New System.Drawing.Size(93, 17)
         Me.CheckBox5.TabIndex = 78
@@ -333,7 +370,7 @@ Partial Class Form6
         Me.Label5.AutoSize = True
         Me.Label5.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label5.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(42, 250)
+        Me.Label5.Location = New System.Drawing.Point(15, 250)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(161, 18)
         Me.Label5.TabIndex = 80
@@ -348,48 +385,11 @@ Partial Class Form6
         Me.DateTimePicker1.Size = New System.Drawing.Size(97, 20)
         Me.DateTimePicker1.TabIndex = 79
         '
-        'spoc
-        '
-        Me.spoc.Location = New System.Drawing.Point(256, 52)
-        Me.spoc.Name = "spoc"
-        Me.spoc.Size = New System.Drawing.Size(224, 20)
-        Me.spoc.TabIndex = 2
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label9.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(17, 51)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(199, 18)
-        Me.Label9.TabIndex = 61
-        Me.Label9.Text = "Financial Audit Contact:"
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.BackColor = System.Drawing.Color.White
-        Me.PictureBox2.Image = Global.WindowsApplication1.My.Resources.Resources.EYL
-        Me.PictureBox2.Location = New System.Drawing.Point(508, 5)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(114, 103)
-        Me.PictureBox2.TabIndex = 1
-        Me.PictureBox2.TabStop = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(3, -3)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(685, 431)
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
-        '
         'Form6
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(693, 427)
+        Me.ClientSize = New System.Drawing.Size(685, 429)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.CheckBox5)
@@ -425,8 +425,8 @@ Partial Class Form6
         Me.Controls.Add(Me.PictureBox1)
         Me.Name = "Form6"
         Me.Text = "USER INFORMATION"
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -446,6 +446,8 @@ Partial Class Form6
     Friend WithEvents ListBox2 As System.Windows.Forms.ListBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents spoc As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents ucr As System.Windows.Forms.TextBox
     Friend WithEvents eFrom As System.Windows.Forms.DateTimePicker
@@ -462,6 +464,4 @@ Partial Class Form6
     Friend WithEvents CheckBox5 As System.Windows.Forms.CheckBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
-    Friend WithEvents spoc As System.Windows.Forms.TextBox
-    Friend WithEvents Label9 As System.Windows.Forms.Label
 End Class

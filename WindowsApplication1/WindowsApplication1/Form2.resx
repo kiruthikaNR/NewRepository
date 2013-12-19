@@ -117,39 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ACLScriptBox.Items" xml:space="preserve">
-    <value>Line items with Source equal “XXXX were excluded from the analysis since these entries were closing entries related to prior period and hence not required for analysis. There were XXXX exclusions for the period month dd, yyyy through month dd, yyyy, XXXX exclusions for the period month dd, yyyy through month dd, yyyy and XXXX exclusions for the period month dd, yyyy through month dd, yyyy. Refer A_JE_PREP log for details</value>
-  </data>
-  <data name="ACLScriptBox.Items1" xml:space="preserve">
-    <value>EY noted that the line items having the field “XXXX” as “XXXX” were excluded from analysis as these were Year-end entries and hence not required for analysis. The final record count after exclusion was XXXX.</value>
-  </data>
-  <data name="ACLScriptBox.Items2" xml:space="preserve">
-    <value>EY noted that account class was present in the PY memo. Hence EY utilized the account class information from the previous year roll forward sheet and prepared a COA to map account class in the analysis. Refer to A_JE_Prep and B_TB_Prep log for details.</value>
-  </data>
-  <data name="ACLScriptBox.Items3" xml:space="preserve">
-    <value>Within A_JE_PREP, EY also performed a compression technique to consolidate journal entries. All line items with an entry for an amount equal to $0.00 were excluded. Additionally EY compressed the data by summarizing on all fields and summarizing the amount field. This was done to increase the processing speed of the Global Analytics tool without sacrificing the quality of the data used for analysis. The final EY_JE count was XXXX</value>
-  </data>
-  <data name="ACLScriptBox.Items4" xml:space="preserve">
-    <value>EY noted XXXX unique Account Classes in the Trial Balance, which was difficult to map individually in GAT. Therefore, EY prefixed the Account Classes with the corresponding account type i.e. “A”, ”L”, ”Q”, ”E”,”R” to facilitate account class to account type mapping in GAT.</value>
-  </data>
-  <data name="ACLScriptBox.Items5" xml:space="preserve">
-    <value>Usernames and Business unit names were not included in the raw JE file. Therefore, EY obtained a Preparer ID and Business unit COA file and joined this with the JE transaction file based on User ID and Business Unit ID respectively, so that the required information could be included in the analysis. Refer to A_JE_Prep log for details.</value>
-  </data>
-  <data name="JournalEntryBox.Items" xml:space="preserve">
-    <value>Apart from the journal entry description field ‘XXXX’ the client provided data also contained three other fields ‘XXXX’, ‘XXXX’ and ‘XXXX’ which were similar to the description field. These fields have been mapped as User Defined fields. The Assurance team should consider this field as well during their description word tests.</value>
-  </data>
-  <data name="JournalEntryBox.Items1" xml:space="preserve">
-    <value>The user defined fields in GAT accepts only 50 characters. Since, the fields XXXX, XXXX and XXXX had length greater 50 characters, the rest of the characters were truncated in GAT. Only the first 50 characters were captured.</value>
-  </data>
-  <data name="JournalEntryBox.Items2" xml:space="preserve">
-    <value>There were XXXX line items for which the XXXX was exceeding the GAT length limit of 200.These line items are attached below for reference. These line items were mapped in ACL as “XXXX”. This field was not mapped in GAT as all the user defined fields in GAT were utilized.</value>
-  </data>
-  <data name="JournalEntryBox.Items3" xml:space="preserve">
-    <value>The Inter-Company accounts and Prof-Fees accounts were identified as separate fields in the ACL for analysis. However due to restrict number of user defined fields available in GAT, these fields were not mapped as separate fields in the tool. The Inter-Company accounts and Prof-Fees accounts were identified in the report parameters in GAT directly from the General Ledger Account Numbers. Refer to Appendix A for the screenshot of parameters added in GAT</value>
-  </data>
-  <data name="JournalEntryBox.Items4" xml:space="preserve">
-    <value>EY noted that there were few other client provided fields “GL_BRANCH_NO”, “PAYMENT_NO”, “ARCADJ_NO” and “PAYABLE_NO” present in the data. However, all the fields could not be mapped as all the user defined fields were utilized.</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="PictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -935,5 +902,38 @@
         ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFF
         ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB//9k=
 </value>
+  </data>
+  <data name="ACLScriptBox.Items" xml:space="preserve">
+    <value>Line items with Source equal “XXXX were excluded from the analysis since these entries were closing entries related to prior period and hence not required for analysis. There were XXXX exclusions for the period month dd, yyyy through month dd, yyyy, XXXX exclusions for the period month dd, yyyy through month dd, yyyy and XXXX exclusions for the period month dd, yyyy through month dd, yyyy. Refer A_JE_PREP log for details</value>
+  </data>
+  <data name="ACLScriptBox.Items1" xml:space="preserve">
+    <value>EY noted that the line items having the field “XXXX” as “XXXX” were excluded from analysis as these were Year-end entries and hence not required for analysis. The final record count after exclusion was XXXX.</value>
+  </data>
+  <data name="ACLScriptBox.Items2" xml:space="preserve">
+    <value>EY noted that account class was present in the PY memo. Hence EY utilized the account class information from the previous year roll forward sheet and prepared a COA to map account class in the analysis. Refer to A_JE_Prep and B_TB_Prep log for details.</value>
+  </data>
+  <data name="ACLScriptBox.Items3" xml:space="preserve">
+    <value>Within A_JE_PREP, EY also performed a compression technique to consolidate journal entries. All line items with an entry for an amount equal to $0.00 were excluded. Additionally EY compressed the data by summarizing on all fields and summarizing the amount field. This was done to increase the processing speed of the Global Analytics tool without sacrificing the quality of the data used for analysis. The final EY_JE count was XXXX</value>
+  </data>
+  <data name="ACLScriptBox.Items4" xml:space="preserve">
+    <value>EY noted XXXX unique Account Classes in the Trial Balance, which was difficult to map individually in GAT. Therefore, EY prefixed the Account Classes with the corresponding account type i.e. “A”, ”L”, ”Q”, ”E”,”R” to facilitate account class to account type mapping in GAT.</value>
+  </data>
+  <data name="ACLScriptBox.Items5" xml:space="preserve">
+    <value>Usernames and Business unit names were not included in the raw JE file. Therefore, EY obtained a Preparer ID and Business unit COA file and joined this with the JE transaction file based on User ID and Business Unit ID respectively, so that the required information could be included in the analysis. Refer to A_JE_Prep log for details.</value>
+  </data>
+  <data name="JournalEntryBox.Items" xml:space="preserve">
+    <value>Apart from the journal entry description field ‘XXXX’ the client provided data also contained three other fields ‘XXXX’, ‘XXXX’ and ‘XXXX’ which were similar to the description field. These fields have been mapped as User Defined fields. The Assurance team should consider this field as well during their description word tests.</value>
+  </data>
+  <data name="JournalEntryBox.Items1" xml:space="preserve">
+    <value>The user defined fields in GAT accepts only 50 characters. Since, the fields XXXX, XXXX and XXXX had length greater 50 characters, the rest of the characters were truncated in GAT. Only the first 50 characters were captured.</value>
+  </data>
+  <data name="JournalEntryBox.Items2" xml:space="preserve">
+    <value>There were XXXX line items for which the XXXX was exceeding the GAT length limit of 200.These line items are attached below for reference. These line items were mapped in ACL as “XXXX”. This field was not mapped in GAT as all the user defined fields in GAT were utilized.</value>
+  </data>
+  <data name="JournalEntryBox.Items3" xml:space="preserve">
+    <value>The Inter-Company accounts and Prof-Fees accounts were identified as separate fields in the ACL for analysis. However due to restrict number of user defined fields available in GAT, these fields were not mapped as separate fields in the tool. The Inter-Company accounts and Prof-Fees accounts were identified in the report parameters in GAT directly from the General Ledger Account Numbers. Refer to Appendix A for the screenshot of parameters added in GAT</value>
+  </data>
+  <data name="JournalEntryBox.Items4" xml:space="preserve">
+    <value>EY noted that there were few other client provided fields “GL_BRANCH_NO”, “PAYMENT_NO”, “ARCADJ_NO” and “PAYABLE_NO” present in the data. However, all the fields could not be mapped as all the user defined fields were utilized.</value>
   </data>
 </root>

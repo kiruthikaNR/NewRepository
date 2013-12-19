@@ -23,11 +23,13 @@ Partial Class Form2
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.COACheck = New System.Windows.Forms.Label
         Me.CheckBox1 = New System.Windows.Forms.CheckBox
         Me.SourceDatafileBox = New System.Windows.Forms.CheckedListBox
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox
         Me.Label3 = New System.Windows.Forms.Label
         Me.ACLScriptBox = New System.Windows.Forms.CheckedListBox
         Me.Label4 = New System.Windows.Forms.Label
@@ -48,13 +50,19 @@ Partial Class Form2
         Me.Label9 = New System.Windows.Forms.Label
         Me.CheckBox2 = New System.Windows.Forms.CheckBox
         Me.BRule = New System.Windows.Forms.ComboBox
-        Me.NewLogo = New System.Windows.Forms.PictureBox
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox
-        CType(Me.NewLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(-4, -3)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(1076, 462)
+        Me.PictureBox1.TabIndex = 1
+        Me.PictureBox1.TabStop = False
         '
         'COACheck
         '
@@ -116,6 +124,15 @@ Partial Class Form2
         Me.Label2.Size = New System.Drawing.Size(160, 20)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "Other Configurations:"
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.WindowsApplication1.My.Resources.Resources.EYL
+        Me.PictureBox2.Location = New System.Drawing.Point(-4, -5)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(100, 100)
+        Me.PictureBox2.TabIndex = 8
+        Me.PictureBox2.TabStop = False
         '
         'Label3
         '
@@ -313,7 +330,7 @@ Partial Class Form2
         'CheckBox2
         '
         Me.CheckBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.CheckBox2.Location = New System.Drawing.Point(168, 99)
+        Me.CheckBox2.Location = New System.Drawing.Point(168, 87)
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.Size = New System.Drawing.Size(438, 52)
         Me.CheckBox2.TabIndex = 28
@@ -331,41 +348,11 @@ Partial Class Form2
         Me.BRule.Size = New System.Drawing.Size(121, 21)
         Me.BRule.TabIndex = 14
         '
-        'NewLogo
-        '
-        Me.NewLogo.Image = Global.WindowsApplication1.My.Resources.Resources.logo
-        Me.NewLogo.Location = New System.Drawing.Point(-4, -3)
-        Me.NewLogo.Name = "NewLogo"
-        Me.NewLogo.Size = New System.Drawing.Size(10, 10)
-        Me.NewLogo.TabIndex = 29
-        Me.NewLogo.TabStop = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.White
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(-4, -3)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(1076, 462)
-        Me.PictureBox1.TabIndex = 1
-        Me.PictureBox1.TabStop = False
-        '
-        'PictureBox3
-        '
-        Me.PictureBox3.Image = Global.WindowsApplication1.My.Resources.Resources.EYL
-        Me.PictureBox3.Location = New System.Drawing.Point(-4, -3)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(111, 94)
-        Me.PictureBox3.TabIndex = 30
-        Me.PictureBox3.TabStop = False
-        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1065, 441)
-        Me.Controls.Add(Me.PictureBox3)
-        Me.Controls.Add(Me.NewLogo)
         Me.Controls.Add(Me.CheckBox2)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Button4)
@@ -386,6 +373,7 @@ Partial Class Form2
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.ACLScriptBox)
         Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.SourceDatafileBox)
@@ -394,9 +382,8 @@ Partial Class Form2
         Me.Controls.Add(Me.PictureBox1)
         Me.Name = "Form2"
         Me.Text = "Form2"
-        CType(Me.NewLogo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -407,6 +394,7 @@ Partial Class Form2
     Friend WithEvents SourceDatafileBox As System.Windows.Forms.CheckedListBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents ACLScriptBox As System.Windows.Forms.CheckedListBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
@@ -427,6 +415,4 @@ Partial Class Form2
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents CheckBox2 As System.Windows.Forms.CheckBox
     Friend WithEvents BRule As System.Windows.Forms.ComboBox
-    Friend WithEvents NewLogo As System.Windows.Forms.PictureBox
-    Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
 End Class
