@@ -29,11 +29,47 @@ Public Class Form1
         Dim oDoc As Word.Document
         'Dim oTable As Word.Table
         
+        'VALIDATIONS
+        Dim a, START_INDEX1, END_INDEX1, LEN1 As Integer
+        Dim start3 As String
+        If (Form6.TextBox1.Text = "") Then
+            MessageBox.Show("Please fill up the User Information form", "Incomplete entry")
+            Form6.TextBox1.Focus()
+            Exit Sub
+        ElseIf (Form5.TextBox1.Text = "") Then
+            MessageBox.Show("Please fill up the Entry of logs", "Incomplete entry")
+            Form5.TextBox1.Focus()
+            Exit Sub
+        End If
+
+        Dim STrA10 As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text & "\A10_JE_PREP.LOG")
+        Dim STrA20 As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text & "\A20_TB_PREP.LOG")
+        Dim STrA30 As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text & "\C_WORKLOG.LOG")
+        Dim STrD As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text & "\D_JE_ROLL.LOG")
+        'Dim STrA As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text.Substring(0, Len(Form5.TextBox1.Text) - 4) & ".LOG")
+        'Dim STrB As IO.TextReader = System.IO.File.OpenText(Form5.TextBox2.Text.Substring(0, Len(Form5.TextBox2.Text) - 4) & ".LOG")
+        'Dim STrC As IO.TextReader = System.IO.File.OpenText(Form5.TextBox3.Text.Substring(0, Len(Form5.TextBox3.Text) - 4) & ".LOG")
+        'Dim STrD As IO.TextReader = System.IO.File.OpenText(Form5.TextBox4.Text.Substring(0, Len(Form5.TextBox4.Text) - 4) & ".LOG")
+        Dim TRA As String = STrA.ReadToEnd
+        Dim TRB As String = STrB.ReadToEnd
+        Dim TRC As String = STrC.ReadToEnd
+        Dim TRD As String = STrD.ReadToEnd
+        'Dim MyFileLine1 As String = Split(TRD, vbCrLf)(12)
+
+
+
+
+
+
+
         'Start Word and open the document template.
         oWord = CreateObject("Word.Application")
         oWord.Visible = True
         oDoc = oWord.Documents.Add
         Dim effecPeriod As String = " from " & Form6.eFrom.Value.Date.ToString("MM/dd/yyyy") & " Through " & Form6.eTo.Value.Date.ToString("MM/dd/yyyy")
+
+
+
 
 
         'Insert a HEADER at the beginning of the document.
