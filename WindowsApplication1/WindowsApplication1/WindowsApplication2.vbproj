@@ -113,12 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="BackupForm1.Designer.vb">
-      <DependentUpon>BackupForm1.vb</DependentUpon>
-    </Compile>
-    <Compile Include="BackupForm1.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -249,9 +243,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BackupForm1.resx">
-      <DependentUpon>BackupForm1.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Resources\EYL.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
