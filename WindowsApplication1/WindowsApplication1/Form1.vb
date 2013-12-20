@@ -647,7 +647,7 @@ Public Class Form1
         otable4.Cell(1, 1).Range.Paragraphs(2).Range.Italic = False
 
         otable4.Cell(1, 1).Range.InsertParagraphAfter()
-        otable4.Cell(1, 1).Range.Paragraphs(3).Range.
+        otable4.Cell(1, 1).Range.Paragraphs(3).Range.Text = " "
         otable4.Cell(1, 1).Range.Paragraphs(3).Range.Text = " The Financial Audit Team contact, ABC, investigated the rollforward results and instructed us to proceed further despite the above rollforward differences."
         otable4.Cell(1, 1).Range.Paragraphs(3).Format.SpaceAfter = 0
         otable4.Cell(1, 1).Range.Paragraphs(3).Range.Font.Name = "Times New Roman"
@@ -1033,19 +1033,20 @@ Public Class Form1
 
         'Journal Entry Table
 
-        Dim udcount As Integer =        'to extract the number of user defined feilds
+        Dim udcount As Integer = 3   'to extract the number of user defined feilds
         Dim oParaAthi1 As Word.Paragraph
 
 
         oParaAthi1 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
         oParaAthi1.Range.InsertParagraphAfter()
-        oParaAthi1.Range.Text = "Global Tool Field Mapping:"
+        oParaAthi1.Range.Text = "Global Tool Field Mapping: "
         oParaAthi1.Range.Font.Name = "Times New Roman"
         oParaAthi1.Range.Font.Size = 10
         oParaAthi1.Format.SpaceAfter = 0
         oParaAthi1.Range.Font.Bold = True
         oParaAthi1.Range.Font.Underline = True
         oParaAthi1.Range.Font.Italic = False
+
 
         Dim otableAthi1 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 15 + udCount, 3)
         otableAthi1.Borders.Enable = True
@@ -1059,6 +1060,8 @@ Public Class Form1
         otableAthi1.Cell(1, 1).Shading.BackgroundPatternColor = RGB(0, 0, 0)
         otableAthi1.Cell(1, 1).Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter
         otableAthi1.Cell(1, 1).Range.ParagraphFormat.SpaceAfter = 0
+
+        otableAthi1.Cell(1, 1).Merge(otableAthi1.Cell(1, 3))
 
         otableAthi1.Cell(2, 1).Range.Text = "EY/Global Analytics Field Name"
         otableAthi1.Cell(2, 1).Range.Font.Name = "Times New Roman"
@@ -1229,14 +1232,147 @@ Public Class Form1
 
 
         'Trial Balance Table
+        Dim otableAthi2 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 15 + udCount, 3)
+        otableAthi2.Borders.Enable = True
+
+        otableAthi2.Borders.Enable = True
+        otableAthi2.AllowAutoFit = True
+        otableAthi2.Columns.Item(1).Width = oWord.CentimetersToPoints(6.6)
+        otableAthi2.Columns.Item(2).Width = oWord.CentimetersToPoints(3.81)
+        otableAthi2.Columns.Item(3).Width = oWord.CentimetersToPoints(7.41)
+        otableAthi2.Rows.HeightRule = Word.WdRowHeightRule.wdRowHeightExactly
+        otableAthi2.Rows.Height = oWord.CentimetersToPoints(0.6)
+
+        otableAthi2.Cell(1, 1).Merge(otableAthi2.Cell(1, 3))
+
+        otableAthi2.Cell(1, 1).Range.Text = "Trial Balance Files"
+        otableAthi2.Cell(1, 1).Range.Font.Name = "Times New Roman"
+        otableAthi2.Cell(1, 1).Range.Font.Size = 10
+        otableAthi2.Cell(1, 1).Range.Bold = True
+        otableAthi2.Cell(1, 1).Range.Underline = False
+        otableAthi2.Cell(1, 1).Range.Italic = True
+        otableAthi2.Cell(1, 1).Shading.BackgroundPatternColor = RGB(0, 0, 0)
+        otableAthi2.Cell(1, 1).Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter
+        otableAthi2.Cell(1, 1).Range.ParagraphFormat.SpaceAfter = 0
+
+        otableAthi2.Cell(2, 1).Range.Text = "EY/Global Analytics Field Name"
+        otableAthi2.Cell(2, 1).Range.Font.Name = "Times New Roman"
+        otableAthi2.Cell(2, 1).Range.Font.Size = 10
+        otableAthi2.Cell(2, 1).Range.Bold = True
+        otableAthi2.Cell(2, 1).Range.Underline = False
+        otableAthi2.Cell(2, 1).Range.Italic = True
+        otableAthi2.Cell(2, 1).Shading.BackgroundPatternColor = RGB(224, 224, 224)
+        otableAthi2.Cell(2, 1).Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter
+
+        otableAthi2.Cell(2, 2).Range.Text = "ACL Field Name"
+        otableAthi2.Cell(2, 2).Range.Font.Name = "Times New Roman"
+        otableAthi2.Cell(2, 2).Range.Font.Size = 10
+        otableAthi2.Cell(2, 2).Range.Bold = True
+        otableAthi2.Cell(2, 2).Range.Underline = False
+        otableAthi2.Cell(2, 2).Range.Italic = True
+        otableAthi2.Cell(2, 2).Shading.BackgroundPatternColor = RGB(224, 224, 224)
+        otableAthi2.Cell(2, 2).Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter
+
+        otableAthi2.Cell(2, 3).Range.Text = "Client Data Field Name"
+        otableAthi2.Cell(2, 3).Range.Font.Name = "Times New Roman"
+        otableAthi2.Cell(2, 3).Range.Font.Size = 10
+        otableAthi2.Cell(2, 3).Range.Bold = True
+        otableAthi2.Cell(2, 3).Range.Underline = False
+        otableAthi2.Cell(2, 3).Range.Italic = True
+        otableAthi2.Cell(2, 3).Shading.BackgroundPatternColor = RGB(224, 224, 224)
+        otableAthi2.Cell(2, 3).Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter
+
+        otableAthi2.Cell(3, 1).Range.Text = "General Ledger Account Number"
+        otableAthi2.Cell(3, 1).Range.Font.Name = "Times New Roman"
+        otableAthi2.Cell(3, 1).Range.Font.Size = 10
+        otableAthi2.Cell(3, 1).Range.Bold = True
+        otableAthi2.Cell(3, 1).Range.Underline = False
+        otableAthi2.Cell(3, 1).Range.Italic = False
+
+        otableAthi2.Cell(3, 2).Range.Text = "EY_Acct"
+        otableAthi2.Cell(3, 2).Range.Font.Name = "Times New Roman"
+        otableAthi2.Cell(3, 2).Range.Font.Size = 10
+        otableAthi2.Cell(3, 2).Range.Bold = False
+        otableAthi2.Cell(3, 2).Range.Underline = False
+        otableAthi2.Cell(3, 2).Range.Italic = False
+
+        otableAthi2.Cell(4, 1).Range.Text = "General Ledger Account Name"
+        otableAthi2.Cell(4, 1).Range.Font.Name = "Times New Roman"
+        otableAthi2.Cell(4, 1).Range.Font.Size = 10
+        otableAthi2.Cell(4, 1).Range.Bold = True
+        otableAthi2.Cell(4, 1).Range.Underline = False
+        otableAthi2.Cell(4, 1).Range.Italic = False
+
+        otableAthi2.Cell(4, 2).Range.Text = "EY_AcctName"
+        otableAthi2.Cell(4, 2).Range.Font.Name = "Times New Roman"
+        otableAthi2.Cell(4, 2).Range.Font.Size = 10
+        otableAthi2.Cell(4, 2).Range.Bold = False
+        otableAthi2.Cell(4, 2).Range.Underline = False
+        otableAthi2.Cell(4, 2).Range.Italic = False
+
+        otableAthi2.Cell(5, 1).Range.Text = "Account Type"
+        otableAthi2.Cell(5, 1).Range.Font.Name = "Times New Roman"
+        otableAthi2.Cell(5, 1).Range.Font.Size = 10
+        otableAthi2.Cell(5, 1).Range.Bold = True
+        otableAthi2.Cell(5, 1).Range.Underline = False
+        otableAthi2.Cell(5, 1).Range.Italic = False
+
+        otableAthi2.Cell(5, 2).Range.Text = "EY_Accttype"
+        otableAthi2.Cell(5, 2).Range.Font.Name = "Times New Roman"
+        otableAthi2.Cell(5, 2).Range.Font.Size = 10
+        otableAthi2.Cell(5, 2).Range.Bold = False
+        otableAthi2.Cell(5, 2).Range.Underline = False
+        otableAthi2.Cell(5, 2).Range.Italic = False
+
+        otableAthi2.Cell(6, 1).Range.Text = "Account Class"
+        otableAthi2.Cell(6, 1).Range.Font.Name = "Times New Roman"
+        otableAthi2.Cell(6, 1).Range.Font.Size = 10
+        otableAthi2.Cell(6, 1).Range.Bold = True
+        otableAthi2.Cell(6, 1).Range.Underline = False
+        otableAthi2.Cell(6, 1).Range.Italic = False
+
+        otableAthi2.Cell(6, 2).Range.Text = "EY_AcctClass"
+        otableAthi2.Cell(6, 2).Range.Font.Name = "Times New Roman"
+        otableAthi2.Cell(6, 2).Range.Font.Size = 10
+        otableAthi2.Cell(6, 2).Range.Bold = False
+        otableAthi2.Cell(6, 2).Range.Underline = False
+        otableAthi2.Cell(6, 2).Range.Italic = False
+
+        otableAthi2.Cell(7, 1).Range.Text = "Beginning Balance"
+        otableAthi2.Cell(7, 1).Range.Font.Name = "Times New Roman"
+        otableAthi2.Cell(7, 1).Range.Font.Size = 10
+        otableAthi2.Cell(7, 1).Range.Bold = True
+        otableAthi2.Cell(7, 1).Range.Underline = False
+        otableAthi2.Cell(7, 1).Range.Italic = False
+
+        otableAthi2.Cell(7, 2).Range.Text = "EY_BegBal"
+        otableAthi2.Cell(7, 2).Range.Font.Name = "Times New Roman"
+        otableAthi2.Cell(7, 2).Range.Font.Size = 10
+        otableAthi2.Cell(7, 2).Range.Bold = False
+        otableAthi2.Cell(7, 2).Range.Underline = False
+        otableAthi2.Cell(7, 2).Range.Italic = False
+
+        otableAthi2.Cell(8, 1).Range.Text = "Ending Balance"
+        otableAthi2.Cell(8, 1).Range.Font.Name = "Times New Roman"
+        otableAthi2.Cell(8, 1).Range.Font.Size = 10
+        otableAthi2.Cell(8, 1).Range.Bold = True
+        otableAthi2.Cell(8, 1).Range.Underline = False
+        otableAthi2.Cell(8, 1).Range.Italic = False
+
+        otableAthi2.Cell(8, 2).Range.Text = "EY_EndBal"
+        otableAthi2.Cell(8, 2).Range.Font.Name = "Times New Roman"
+        otableAthi2.Cell(8, 2).Range.Font.Size = 10
+        otableAthi2.Cell(8, 2).Range.Bold = False
+        otableAthi2.Cell(8, 2).Range.Underline = False
+        otableAthi2.Cell(8, 2).Range.Italic = False
 
 
+        'Buisness Rules
         Dim oParaAthi2 As Word.Paragraph
-
 
         oParaAthi2 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
         oParaAthi2.Range.InsertParagraphAfter()
-        oParaAthi2.Range.Text = "Global Tool Field Mapping:"
+        oParaAthi2.Range.Text = "Buisness Rules: "
         oParaAthi2.Range.Font.Name = "Times New Roman"
         oParaAthi2.Range.Font.Size = 10
         oParaAthi2.Format.SpaceAfter = 0
@@ -1244,8 +1380,15 @@ Public Class Form1
         oParaAthi2.Range.Font.Underline = True
         oParaAthi2.Range.Font.Italic = False
 
-        Dim otableAthi2 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 15 + udCount, 3)
-        otableAthi1.Borders.Enable = True
+        'Box Table
+        Dim otableAthi3 As Word.Table
+        rng = oDoc.Bookmarks.Item("\endofdoc").Range
+        otableAthi3 = oDoc.Tables.Add(Range:=rng, NumRows:=9, NumColumns:=1)
+        otableAthi3.Borders.Enable = True
+        otableAthi3.AllowAutoFit = True
+        otableAthi3.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleNone
+        otableAthi3.Columns.Width = oWord.CentimetersToPoints(17.8)
+
 
 
 
