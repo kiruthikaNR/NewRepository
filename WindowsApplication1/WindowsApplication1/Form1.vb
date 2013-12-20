@@ -130,9 +130,8 @@ Public Class Form1
             section.Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.Paragraphs(1).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight
         Next
 
-<<<<<<< HEAD
         'Athithyaa's Edit
-=======
+
         'Insert a paragraph at the beginning of the document.
         oPara2 = oDoc.Content.Paragraphs.Add
         oPara2.Range.Text = "Objective"
@@ -525,10 +524,6 @@ Public Class Form1
         otable2.Cell(1, 1).Range.Paragraphs(1).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
 
 
-
-
-
->>>>>>> 3836a160250ff32514d13f6f26469df0509ec5fe
 
     End Sub
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
