@@ -525,6 +525,595 @@ Public Class Form1
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        'Journal Entry Table
+
+        Dim udcount As Integer =        'to extract the number of user defined feilds
+        Dim oParaAthi1 As Word.Paragraph
+
+
+        oParaAthi1 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
+        oParaAthi1.Range.InsertParagraphAfter()
+        oParaAthi1.Range.Text = "Global Tool Field Mapping:"
+        oParaAthi1.Range.Font.Name = "Times New Roman"
+        oParaAthi1.Range.Font.Size = 10
+        oParaAthi1.Format.SpaceAfter = 0
+        oParaAthi1.Range.Font.Bold = True
+        oParaAthi1.Range.Font.Underline = True
+        oParaAthi1.Range.Font.Italic = False
+
+        Dim otableAthi1 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 15 + udCount, 3)
+        otableAthi1.Borders.Enable = True
+
+        otableAthi1.Cell(1, 1).Range.Text = "JE Transaction Files"
+        otableAthi1.Cell(1, 1).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(1, 1).Range.Font.Size = 10
+        otableAthi1.Cell(1, 1).Range.Bold = True
+        otableAthi1.Cell(1, 1).Range.Underline = False
+        otableAthi1.Cell(1, 1).Range.Italic = True
+        otableAthi1.Cell(1, 1).Shading.BackgroundPatternColor = RGB(0, 0, 0)
+        otableAthi1.Cell(1, 1).Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter
+        otableAthi1.Cell(1, 1).Range.ParagraphFormat.SpaceAfter = 0
+
+        otableAthi1.Cell(2, 1).Range.Text = "EY/Global Analytics Field Name"
+        otableAthi1.Cell(2, 1).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(2, 1).Range.Font.Size = 10
+        otableAthi1.Cell(2, 1).Range.Bold = True
+        otableAthi1.Cell(2, 1).Range.Underline = False
+        otableAthi1.Cell(2, 1).Range.Italic = True
+        otableAthi1.Cell(2, 1).Shading.BackgroundPatternColor = RGB(224, 224, 224)
+        otableAthi1.Cell(2, 1).Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter
+
+        otableAthi1.Cell(2, 2).Range.Text = "ACL Field Name"
+        otableAthi1.Cell(2, 2).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(2, 2).Range.Font.Size = 10
+        otableAthi1.Cell(2, 2).Range.Bold = True
+        otableAthi1.Cell(2, 2).Range.Underline = False
+        otableAthi1.Cell(2, 2).Range.Italic = True
+        otableAthi1.Cell(2, 2).Shading.BackgroundPatternColor = RGB(224, 224, 224)
+        otableAthi1.Cell(2, 2).Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter
+
+        otableAthi1.Cell(2, 3).Range.Text = "Client Data Field Name"
+        otableAthi1.Cell(2, 3).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(2, 3).Range.Font.Size = 10
+        otableAthi1.Cell(2, 3).Range.Bold = True
+        otableAthi1.Cell(2, 3).Range.Underline = False
+        otableAthi1.Cell(2, 3).Range.Italic = True
+        otableAthi1.Cell(2, 3).Shading.BackgroundPatternColor = RGB(224, 224, 224)
+        otableAthi1.Cell(2, 3).Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter
+
+        otableAthi1.Cell(3, 1).Range.Text = "Journal Entry Number"
+        otableAthi1.Cell(3, 1).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(3, 1).Range.Font.Size = 10
+        otableAthi1.Cell(3, 1).Range.Bold = True
+        otableAthi1.Cell(3, 1).Range.Underline = False
+        otableAthi1.Cell(3, 1).Range.Italic = False
+
+        otableAthi1.Cell(3, 2).Range.Text = "EY_JENum"
+        otableAthi1.Cell(3, 2).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(3, 2).Range.Font.Size = 10
+        otableAthi1.Cell(3, 2).Range.Bold = False
+        otableAthi1.Cell(3, 2).Range.Underline = False
+        otableAthi1.Cell(3, 2).Range.Italic = False
+
+        otableAthi1.Cell(4, 1).Range.Text = "General Ledger Account Number"
+        otableAthi1.Cell(4, 1).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(4, 1).Range.Font.Size = 10
+        otableAthi1.Cell(4, 1).Range.Bold = True
+        otableAthi1.Cell(4, 1).Range.Underline = False
+        otableAthi1.Cell(4, 1).Range.Italic = False
+
+        otableAthi1.Cell(4, 2).Range.Text = "EY_Acct"
+        otableAthi1.Cell(4, 2).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(4, 2).Range.Font.Size = 10
+        otableAthi1.Cell(4, 2).Range.Bold = False
+        otableAthi1.Cell(4, 2).Range.Underline = False
+        otableAthi1.Cell(4, 2).Range.Italic = False
+
+        otableAthi1.Cell(5, 1).Range.Text = "Amount"
+        otableAthi1.Cell(5, 1).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(5, 1).Range.Font.Size = 10
+        otableAthi1.Cell(5, 1).Range.Bold = True
+        otableAthi1.Cell(5, 1).Range.Underline = False
+        otableAthi1.Cell(5, 1).Range.Italic = False
+
+        otableAthi1.Cell(5, 2).Range.Text = "EY_Amount"
+        otableAthi1.Cell(5, 2).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(5, 2).Range.Font.Size = 10
+        otableAthi1.Cell(5, 2).Range.Bold = False
+        otableAthi1.Cell(5, 2).Range.Underline = False
+        otableAthi1.Cell(5, 2).Range.Italic = False
+
+        otableAthi1.Cell(6, 1).Range.Text = "Business Unit"
+        otableAthi1.Cell(6, 1).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(6, 1).Range.Font.Size = 10
+        otableAthi1.Cell(6, 1).Range.Bold = True
+        otableAthi1.Cell(6, 1).Range.Underline = False
+        otableAthi1.Cell(6, 1).Range.Italic = False
+
+        otableAthi1.Cell(6, 2).Range.Text = "EY_BusUnit"
+        otableAthi1.Cell(6, 2).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(6, 2).Range.Font.Size = 10
+        otableAthi1.Cell(6, 2).Range.Bold = False
+        otableAthi1.Cell(6, 2).Range.Underline = False
+        otableAthi1.Cell(6, 2).Range.Italic = False
+
+        otableAthi1.Cell(7, 1).Range.Text = "Effective Date"
+        otableAthi1.Cell(7, 1).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(7, 1).Range.Font.Size = 10
+        otableAthi1.Cell(7, 1).Range.Bold = True
+        otableAthi1.Cell(7, 1).Range.Underline = False
+        otableAthi1.Cell(7, 1).Range.Italic = False
+
+        otableAthi1.Cell(7, 2).Range.Text = "EY_EffectiveDt"
+        otableAthi1.Cell(7, 2).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(7, 2).Range.Font.Size = 10
+        otableAthi1.Cell(7, 2).Range.Bold = False
+        otableAthi1.Cell(7, 2).Range.Underline = False
+        otableAthi1.Cell(7, 2).Range.Italic = False
+
+        otableAthi1.Cell(8, 1).Range.Text = "Entry Date"
+        otableAthi1.Cell(8, 1).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(8, 1).Range.Font.Size = 10
+        otableAthi1.Cell(8, 1).Range.Bold = True
+        otableAthi1.Cell(8, 1).Range.Underline = False
+        otableAthi1.Cell(8, 1).Range.Italic = False
+
+        otableAthi1.Cell(8, 2).Range.Text = "EY_EntryDt"
+        otableAthi1.Cell(8, 2).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(8, 2).Range.Font.Size = 10
+        otableAthi1.Cell(8, 2).Range.Bold = False
+        otableAthi1.Cell(8, 2).Range.Underline = False
+        otableAthi1.Cell(8, 2).Range.Italic = False
+
+        otableAthi1.Cell(9, 1).Range.Text = "Period"
+        otableAthi1.Cell(9, 1).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(9, 1).Range.Font.Size = 10
+        otableAthi1.Cell(9, 1).Range.Bold = True
+        otableAthi1.Cell(9, 1).Range.Underline = False
+        otableAthi1.Cell(9, 1).Range.Italic = False
+
+        otableAthi1.Cell(9, 2).Range.Text = "EY_Period"
+        otableAthi1.Cell(9, 2).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(9, 2).Range.Font.Size = 10
+        otableAthi1.Cell(9, 2).Range.Bold = False
+        otableAthi1.Cell(9, 2).Range.Underline = False
+        otableAthi1.Cell(9, 2).Range.Italic = False
+
+        otableAthi1.Cell(10, 1).Range.Text = "Preparer ID"
+        otableAthi1.Cell(10, 1).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(10, 1).Range.Font.Size = 10
+        otableAthi1.Cell(10, 1).Range.Bold = True
+        otableAthi1.Cell(10, 1).Range.Underline = False
+        otableAthi1.Cell(10, 1).Range.Italic = False
+
+        otableAthi1.Cell(10, 2).Range.Text = "EY_PreparerID"
+        otableAthi1.Cell(10, 2).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(10, 2).Range.Font.Size = 10
+        otableAthi1.Cell(10, 2).Range.Bold = False
+        otableAthi1.Cell(10, 2).Range.Underline = False
+        otableAthi1.Cell(10, 2).Range.Italic = False
+
+        otableAthi1.Cell(11, 1).Range.Text = "Source"
+        otableAthi1.Cell(11, 1).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(11, 1).Range.Font.Size = 10
+        otableAthi1.Cell(11, 1).Range.Bold = True
+        otableAthi1.Cell(11, 1).Range.Underline = False
+        otableAthi1.Cell(11, 1).Range.Italic = False
+
+        otableAthi1.Cell(11, 2).Range.Text = "EY_Source"
+        otableAthi1.Cell(11, 2).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(11, 2).Range.Font.Size = 10
+        otableAthi1.Cell(11, 2).Range.Bold = False
+        otableAthi1.Cell(11, 2).Range.Underline = False
+        otableAthi1.Cell(11, 2).Range.Italic = False
+
+        otableAthi1.Cell(12, 1).Range.Text = "Journal Entry /Transaction Description"
+        otableAthi1.Cell(12, 1).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(12, 1).Range.Font.Size = 10
+        otableAthi1.Cell(12, 1).Range.Bold = True
+        otableAthi1.Cell(12, 1).Range.Underline = False
+        otableAthi1.Cell(12, 1).Range.Italic = False
+
+        otableAthi1.Cell(12, 2).Range.Text = "EY_JE_Desc"
+        otableAthi1.Cell(12, 2).Range.Font.Name = "Times New Roman"
+        otableAthi1.Cell(12, 2).Range.Font.Size = 10
+        otableAthi1.Cell(12, 2).Range.Bold = False
+        otableAthi1.Cell(12, 2).Range.Underline = False
+        otableAthi1.Cell(12, 2).Range.Italic = False
+
+
+        'Trial Balance Table
+
+
+        Dim oParaAthi2 As Word.Paragraph
+
+
+        oParaAthi2 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
+        oParaAthi2.Range.InsertParagraphAfter()
+        oParaAthi2.Range.Text = "Global Tool Field Mapping:"
+        oParaAthi2.Range.Font.Name = "Times New Roman"
+        oParaAthi2.Range.Font.Size = 10
+        oParaAthi2.Format.SpaceAfter = 0
+        oParaAthi2.Range.Font.Bold = True
+        oParaAthi2.Range.Font.Underline = True
+        oParaAthi2.Range.Font.Italic = False
+
+        Dim otableAthi2 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 15 + udCount, 3)
+        otableAthi1.Borders.Enable = True
+
+
+
     End Sub
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
         Form5.Show()
