@@ -306,7 +306,7 @@ Public Class Form1
         '** \endofdoc is a predefined bookmark.
 
         oPara2 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
-        oPara2.Range.Text = "To perform journal entry analysis for " & myclientname & " for the current period effective " & START_POA & "through" & end_poa
+        oPara2.Range.Text = "To perform journal entry analysis for " & myclientname & " for the current period effective " & START_POA & " through" & end_poa
         oPara2.Format.SpaceAfter = 6
         oPara2.Range.Font.Name = "Times New Roman"
         oPara2.Range.Font.Size = 10
@@ -424,7 +424,7 @@ Public Class Form1
         otable1.Cell(7, 1).Shading.BackgroundPatternColor = RGB(192, 192, 192)
 
         If (Form6.dor.Checked) Then
-            otable1.Cell(7, 2).Range.Text = Form6.drd.Value.ToString() & " " & Form6.dorv.Value.ToString() & " (Date of Re-validations)  ," & Form6.dop.Value.ToString()
+            otable1.Cell(7, 2).Range.Text = Form6.drd.Value.ToString() & " " & Form6.dorv.Value.ToString() & " (Date of Re-validations),  " & Form6.dop.Value.ToString() & "(Date of Proceed)"
             otable1.Cell(7, 2).Range.Font.Name = "Times New Roman"
             otable1.Cell(7, 2).Range.Font.Size = 10
             otable1.Cell(7, 2).Range.Bold = False
@@ -497,7 +497,7 @@ Public Class Form1
         oPara3.Format.SpaceAfter = 0
         oPara3.Range.Font.Name = "Times New Roman"
         oPara3.Range.Font.Bold = True
-        oPara3.Range.Font.Underline = True
+        oPara3.Range.Font.Underline = False
         oPara3.Range.Font.Italic = False
         oPara3.Range.Font.Size = 11
         oPara3.Range.InsertParagraphAfter()
@@ -514,7 +514,7 @@ Public Class Form1
         'otable11.AutoFitBehavior(Word.WdAutoFitBehavior.wdAutoFitContent)
 
         otable2.Cell(1, 1).Range.InsertParagraphAfter()
-        otable2.Cell(1, 1).Range.Paragraphs(1).Range.Text = "This memorandum and supporting JE CAAT file were prepared by the EY GTH Team for use by the audit team. The memorandum documents the objectives of the work, planned procedures, procedures executed, and our assessment of the client data. This memorandum is intended to guide and assist the audit team in performing the journal entry analysis procedures and should not be considered a standalone work paper. We have provided this memorandum in softcopy so that the audit teams may copy those portions that are deemed relevant to their audit for inclusion in the final work papers. "
+        otable2.Cell(1, 1).Range.Paragraphs(1).Range.Text = Chr(10) & "This memorandum and supporting JE CAAT file were prepared by the EY GTH Team for use by the audit team. The memorandum documents the objectives of the work, planned procedures, procedures executed, and our assessment of the client data. This memorandum is intended to guide and assist the audit team in performing the journal entry analysis procedures and should not be considered a standalone work paper. We have provided this memorandum in softcopy so that the audit teams may copy those portions that are deemed relevant to their audit for inclusion in the final work papers. "
         otable2.Cell(1, 1).Range.Paragraphs(1).Format.SpaceAfter = 0
         otable2.Cell(1, 1).Range.Paragraphs(1).Range.Font.Name = "Times New Roman"
         otable2.Cell(1, 1).Range.Paragraphs(1).Range.Font.Size = 11
@@ -522,6 +522,141 @@ Public Class Form1
         otable2.Cell(1, 1).Range.Paragraphs(1).Range.Underline = False
         otable2.Cell(1, 1).Range.Paragraphs(1).Range.Italic = False
         otable2.Cell(1, 1).Range.Paragraphs(1).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
+
+
+        'Objective
+        oPara4 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
+        oPara4.Range.Text = "Objective"
+        oPara4.Range.Font.Bold = False
+        oPara4.Format.SpaceAfter = 0
+        oPara4.Range.Font.Name = "Times New Roman"
+        oPara4.Range.Font.Bold = True
+        oPara4.Range.Font.Underline = False
+        oPara4.Range.Font.Italic = False
+        oPara4.Range.Font.Size = 11
+        oPara4.Range.InsertParagraphAfter()
+
+        Dim otable3 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 1, 1)
+        otable3.Borders.Enable = True
+
+        rng = oDoc.Bookmarks.Item("\endofdoc").Range
+        otable3 = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 1, 1)
+        otable3.Borders.Enable = True
+        otable3.Borders.OutsideLineWidth = Word.WdLineWidth.wdLineWidth150pt
+        otable3.Borders.InsideColor = RGB(255, 255, 255)
+        otable3.Columns.Width = oWord.CentimetersToPoints(17.8)
+        
+        otable3.Cell(1, 1).Range.InsertParagraphAfter()
+        otable3.Cell(1, 1).Range.Paragraphs(1).Range.Text = Chr(10) & "To evaluate the completeness of the Journal Entry data for " & myclientname & " for the period " & START_POA & "and " & end_poa & " . This memo will accompany the ‘eyje’ file that must be imported into the Global Analytics Tool and reviewed by the Financial Audit team"
+        otable3.Cell(1, 1).Range.Paragraphs(1).Format.SpaceAfter = 0
+        otable3.Cell(1, 1).Range.Paragraphs(1).Range.Font.Name = "Times New Roman"
+        otable3.Cell(1, 1).Range.Paragraphs(1).Range.Font.Size = 11
+        otable3.Cell(1, 1).Range.Paragraphs(1).Range.Bold = False
+        otable3.Cell(1, 1).Range.Paragraphs(1).Range.Underline = False
+        otable3.Cell(1, 1).Range.Paragraphs(1).Range.Italic = False
+        otable3.Cell(1, 1).Range.Paragraphs(1).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
+
+
+        'Data Completeness, Validation and Observations
+        oPara4 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
+        oPara4.Range.Text = "Objective"
+        oPara4.Range.Font.Bold = False
+        oPara4.Format.SpaceAfter = 0
+        oPara4.Range.Font.Name = "Times New Roman"
+        oPara4.Range.Font.Bold = True
+        oPara4.Range.Font.Underline = True
+        oPara4.Range.Font.Italic = False
+        oPara4.Range.Font.Size = 11
+        oPara4.Range.InsertParagraphAfter()
+
+        Dim otable4 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 1, 1)
+        otable4.Borders.Enable = True
+
+        rng = oDoc.Bookmarks.Item("\endofdoc").Range
+        otable4 = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 1, 1)
+        otable4.Borders.Enable = True
+        otable4.Borders.OutsideLineWidth = Word.WdLineWidth.wdLineWidth150pt
+        otable4.Borders.InsideColor = RGB(255, 255, 255)
+        otable4.Columns.Width = oWord.CentimetersToPoints(17.8)
+
+        otable4.Cell(1, 1).Range.InsertParagraphAfter()
+        otable4.Cell(1, 1).Range.Paragraphs(1).Range.Text = "    Any exclusion especially done for the validation."
+        otable4.Cell(1, 1).Range.Paragraphs(1).Format.SpaceAfter = 0
+        otable4.Cell(1, 1).Range.Paragraphs(1).Range.Font.Name = "Times New Roman"
+        otable4.Cell(1, 1).Range.Paragraphs(1).Range.Font.Size = 11
+        otable4.Cell(1, 1).Range.Paragraphs(1).Range.Bold = False
+        otable4.Cell(1, 1).Range.Paragraphs(1).Range.Underline = False
+        otable4.Cell(1, 1).Range.Paragraphs(1).Range.Italic = False
+        otable4.Cell(1, 1).Range.Paragraphs(1).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
+
+
+        'Roll forward difference calculation
+        temp1 = TRC.Substring(TRC.IndexOf("met the test: DIFFERENCE <> 0"))
+        END_INDEX1 = TRC.IndexOf("met the test: DIFFERENCE <> 0")
+        START_INDEX1 = 0
+        For a = END_INDEX1 To 1 Step -1
+            start3 = TRC.Substring(a, 2)
+            If start3 = "of" Then
+                START_INDEX1 = a
+                Exit For
+            End If
+        Next a
+        LEN1 = END_INDEX1 - START_INDEX1
+        temp1 = TRC.Substring(START_INDEX1 + 3, LEN1 - 3)
+        END_INDEX1 = START_INDEX1 - 1
+        START_INDEX1 = 0
+        For a = END_INDEX1 - 1 To 1 Step -1
+            start3 = TRC.Substring(a, 1)
+            If start3 = " " Then
+                START_INDEX1 = a
+                Exit For
+            End If
+        Next a
+        LEN1 = END_INDEX1 - START_INDEX1
+
+        temp2 = TRC.Substring(START_INDEX1, LEN1)
+
+        temp3 = Val(temp1) - Val(temp2)
+
+        'CALCULATING SUM OF DIFFERENCES
+
+        'temp = TRC.Substring(TRC.IndexOf("@ CLASSIFY ON EY_AcctType ACCUMULATE EY_BegBal EY_Amount EY_EndBal ROLLFORWARD_BALANCE DIFFERENCE") + 98, TRC.IndexOf("@ EXTRACT FIELDS ALL TO " & Chr(34) & "Trial Balance Rollforward") - TRC.IndexOf("@ CLASSIFY ON EY_AcctType ACCUMULATE EY_BegBal EY_Amount EY_EndBal ROLLFORWARD_BALANCE DIFFERENCE") - 98)
+        'temp = temp.SUBSTRING(0, Len(temp) - 4)
+        'END_INDEX = Len(temp)
+        'START_INDEX = 0
+        'start3 = ""
+        'For a = END_INDEX - 1 To 1 Step -1
+        '    start3 = temp.Substring(a, 1)
+        '    If start3 = " " Then
+        '        START_INDEX = a
+        '        Exit For
+        '    End If
+        'Next a
+        'LEN1 = END_INDEX - START_INDEX
+        'TEMP4 = temp.SUBSTRING(START_INDEX, LEN1)
+
+        'If temp2 <> 0 Then temp = "     •  " & String.Format("{0:0,0}", FormatNumber(CDbl(temp3), 0)) & " of " & String.Format("{0:0,0}", FormatNumber(CDbl(temp1), 0)) & " account balances rolled to the trial balance and " & String.Format("{0:0,0}", FormatNumber(CDbl(temp2), 0)) & " do not roll forward. However, these accounts had offsetting differences. Refer to ""Roll Forward Variance Section"" for details."
+
+        otable4.Cell(1, 1).Range.InsertParagraphAfter()
+        otable4.Cell(1, 1).Range.Paragraphs(2).Range.Text = "    •  XXXX of XXXX account balances rolled to the Trial Balance and XXXX account balances did not roll. XXX of XXXX account balances that did not roll to the Trial Balance have significant rollforward differences and set off each other. There are XXXX accounts that have activity per the Journal Entry transaction and are not present in the Trial Balance file. Net Activity in XXX of these XXXX unmatched accounts summed to $0.00. Refer to the spreadsheet""" & myclientname & " " & START_POA & " thru " & end_poa & " TB Rollforward.xlsx"" for details of the Trial Balance Rollforward results."
+        otable4.Cell(1, 1).Range.Paragraphs(2).Format.SpaceAfter = 0
+        otable4.Cell(1, 1).Range.Paragraphs(2).Range.Font.Name = "Times New Roman"
+        otable4.Cell(1, 1).Range.Paragraphs(2).Range.Font.Size = 10
+        otable4.Cell(1, 1).Range.Paragraphs(2).Range.Bold = False
+        otable4.Cell(1, 1).Range.Paragraphs(2).Range.Underline = False
+        otable4.Cell(1, 1).Range.Paragraphs(2).Range.Italic = False
+
+        otable4.Cell(1, 1).Range.InsertParagraphAfter()
+        otable4.Cell(1, 1).Range.Paragraphs(3).Range.
+        otable4.Cell(1, 1).Range.Paragraphs(3).Range.Text = " The Financial Audit Team contact, ABC, investigated the rollforward results and instructed us to proceed further despite the above rollforward differences."
+        otable4.Cell(1, 1).Range.Paragraphs(3).Format.SpaceAfter = 0
+        otable4.Cell(1, 1).Range.Paragraphs(3).Range.Font.Name = "Times New Roman"
+        otable4.Cell(1, 1).Range.Paragraphs(3).Range.Font.Size = 11
+        otable4.Cell(1, 1).Range.Paragraphs(3).Range.Bold = False
+        otable4.Cell(1, 1).Range.Paragraphs(3).Range.Underline = False
+        otable4.Cell(1, 1).Range.Paragraphs(3).Range.Italic = False
+        otable4.Cell(1, 1).Range.Paragraphs(3).Alignment = Word.WdParagraphAlignment.wdAlignParagraphJustifyMed
+
 
 
 
