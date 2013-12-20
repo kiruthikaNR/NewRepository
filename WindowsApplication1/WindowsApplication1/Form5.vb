@@ -55,60 +55,64 @@ Public Class Form5
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
         If (TextBox1.Text <> "") Then
-            If File.Exists(TextBox1.Text & "\A_JE_PREP.LOG") = False Then
+            If File.Exists(TextBox1.Text & "\A10_JE_PREP.LOG") = False Then
                 MessageBox.Show(StrConv("FOLDER DOES NOT CONTAIN THE A LOG", vbProperCase), "Incorrect Entry!!")
                 TextBox1.Focus()
                 Exit Sub
             End If
-            If File.Exists(TextBox1.Text & "\A_JE_PREP.zip") = False Then
+            If File.Exists(TextBox1.Text & "\A10_JE_PREP.zip") = False Then
                 MessageBox.Show(StrConv("FOLDER DOES NOT CONTAIN Zipped A LOG", vbProperCase), "Incorrect Entry!!")
                 TextBox1.Focus()
                 Exit Sub
             End If
-            If File.Exists(TextBox1.Text & "\B_TB_PREP.LOG") = False Then
+            If File.Exists(TextBox1.Text & "\A20_TB_PREP.LOG") = False Then
                 MessageBox.Show(StrConv("FOLDER DOES NOT CONTAIN THE B LOG", vbProperCase), "Incorrect Entry!!")
                 TextBox1.Focus()
                 Exit Sub
             End If
-            If File.Exists(TextBox1.Text & "\B_TB_PREP.zip") = False Then
+            If File.Exists(TextBox1.Text & "\A20_TB_PREP.zip") = False Then
                 MessageBox.Show(StrConv("FOLDER DOES NOT CONTAIN Zipped B LOG", vbProperCase), "Incorrect Entry!!")
                 TextBox1.Focus()
                 Exit Sub
             End If
-            If File.Exists(TextBox1.Text & "\C_WORKLOG.LOG") = False Then
-                MessageBox.Show(StrConv("FOLDER DOES NOT CONTAIN THE C LOG", vbProperCase), "Incorrect Entry!!")
-                TextBox1.Focus()
-                Exit Sub
-            End If
-            If File.Exists(TextBox1.Text & "\C_WORKLOG.zip") = False Then
-                MessageBox.Show(StrConv("FOLDER DOES NOT CONTAIN Zipped C LOG", vbProperCase), "Incorrect Entry!!")
-                TextBox1.Focus()
-                Exit Sub
-            End If
-            If File.Exists(TextBox1.Text & "\D_JE_ROLL.LOG") = False Then
-                MessageBox.Show(StrConv("FOLDER DOES NOT CONTAIN THE D LOG", vbProperCase), "Incorrect Entry!!")
-                TextBox1.Focus()
-                Exit Sub
-            End If
-            If File.Exists(TextBox1.Text & "\D_JE_ROLL.zip") = False Then
-                MessageBox.Show(StrConv("FOLDER DOES NOT CONTAIN Zipped D LOG", vbProperCase), "Incorrect Entry!!")
-                TextBox1.Focus()
-                Exit Sub
-            End If
-            If File.Exists(TextBox1.Text & "\E_EXPORTS.LOG") = False Then
-                MessageBox.Show(StrConv("FOLDER DOES NOT CONTAIN THE E LOG", vbProperCase), "Incorrect Entry!!")
-                TextBox1.Focus()
-                Exit Sub
-            End If
-            If File.Exists(TextBox1.Text & "\E_EXPORTS.zip") = False Then
-                MessageBox.Show(StrConv("FOLDER DOES NOT CONTAIN Zipped E LOG", vbProperCase), "Incorrect Entry!!")
-                TextBox1.Focus()
-                Exit Sub
-            End If
-        ElseIf (TextBox1.Text = "") Then
-            MessageBox.Show(StrConv("PLEASE select the work folder", vbProperCase), "Incomplete Entry!!")
-            Exit Sub
         End If
+        'start comment
+        '    If File.Exists(TextBox1.Text & "\C_WORKLOG.LOG") = False Then
+        '        MessageBox.Show(StrConv("FOLDER DOES NOT CONTAIN THE C LOG", vbProperCase), "Incorrect Entry!!")
+        '        TextBox1.Focus()
+        '        Exit Sub
+        '    End If
+        '    If File.Exists(TextBox1.Text & "\C_WORKLOG.zip") = False Then
+        '        MessageBox.Show(StrConv("FOLDER DOES NOT CONTAIN Zipped C LOG", vbProperCase), "Incorrect Entry!!")
+        '        TextBox1.Focus()
+        '        Exit Sub
+        '    End If
+        '    If File.Exists(TextBox1.Text & "\D_JE_ROLL.LOG") = False Then
+        '        MessageBox.Show(StrConv("FOLDER DOES NOT CONTAIN THE D LOG", vbProperCase), "Incorrect Entry!!")
+        '        TextBox1.Focus()
+        '        Exit Sub
+        '    End If
+        '    If File.Exists(TextBox1.Text & "\D_JE_ROLL.zip") = False Then
+        '        MessageBox.Show(StrConv("FOLDER DOES NOT CONTAIN Zipped D LOG", vbProperCase), "Incorrect Entry!!")
+        '        TextBox1.Focus()
+        '        Exit Sub
+        '    End If
+        '    If File.Exists(TextBox1.Text & "\E_EXPORTS.LOG") = False Then
+        '        MessageBox.Show(StrConv("FOLDER DOES NOT CONTAIN THE E LOG", vbProperCase), "Incorrect Entry!!")
+        '        TextBox1.Focus()
+        '        Exit Sub
+        '    End If
+        '    If File.Exists(TextBox1.Text & "\E_EXPORTS.zip") = False Then
+        '        MessageBox.Show(StrConv("FOLDER DOES NOT CONTAIN Zipped E LOG", vbProperCase), "Incorrect Entry!!")
+        '        TextBox1.Focus()
+        '        Exit Sub
+        '    End If
+        'ElseIf (TextBox1.Text = "") Then
+        '    MessageBox.Show(StrConv("PLEASE select the work folder", vbProperCase), "Incomplete Entry!!")
+        '    Exit Sub
+        'End If
+        '''end comment
+
 
         'If (TextBox2.Text <> "") Then
         '    If (TextBox2.Text.Substring(TextBox2.Text.Length - 13, 9) <> "B_TB_PREP") Then
