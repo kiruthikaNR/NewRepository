@@ -53,7 +53,7 @@ Partial Class Form6
         Me.CheckBox1 = New System.Windows.Forms.CheckBox
         Me.CheckBox5 = New System.Windows.Forms.CheckBox
         Me.Label5 = New System.Windows.Forms.Label
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
+        Me.drd = New System.Windows.Forms.DateTimePicker
         Me.Label8 = New System.Windows.Forms.Label
         Me.jmdd = New System.Windows.Forms.DateTimePicker
         Me.dor = New System.Windows.Forms.CheckBox
@@ -363,14 +363,14 @@ Partial Class Form6
         Me.Label5.TabIndex = 80
         Me.Label5.Text = "Data Receipt date :"
         '
-        'DateTimePicker1
+        'drd
         '
-        Me.DateTimePicker1.CustomFormat = "mm/dd/yyyy"
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(256, 248)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(97, 20)
-        Me.DateTimePicker1.TabIndex = 79
+        Me.drd.CustomFormat = "mm/dd/yyyy"
+        Me.drd.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.drd.Location = New System.Drawing.Point(256, 248)
+        Me.drd.Name = "drd"
+        Me.drd.Size = New System.Drawing.Size(97, 20)
+        Me.drd.TabIndex = 79
         '
         'Label8
         '
@@ -458,7 +458,7 @@ Partial Class Form6
         Me.Controls.Add(Me.jmdd)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.DateTimePicker1)
+        Me.Controls.Add(Me.drd)
         Me.Controls.Add(Me.CheckBox5)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.other)
@@ -530,7 +530,7 @@ Partial Class Form6
     Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBox5 As System.Windows.Forms.CheckBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents drd As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents jmdd As System.Windows.Forms.DateTimePicker
     Friend WithEvents dor As System.Windows.Forms.CheckBox
