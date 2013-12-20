@@ -547,7 +547,7 @@ Public Class Form1
         otable3.Columns.Width = oWord.CentimetersToPoints(17.8)
         
         otable3.Cell(1, 1).Range.InsertParagraphAfter()
-        otable3.Cell(1, 1).Range.Paragraphs(1).Range.Text = Chr(10) & "To evaluate the completeness of the Journal Entry data for " & myclientname & " for the period " & START_POA & "and " & end_poa & " . This memo will accompany the ‘eyje’ file that must be imported into the Global Analytics Tool and reviewed by the Financial Audit team"
+        otable3.Cell(1, 1).Range.Paragraphs(1).Range.Text = vbNewLine & "To evaluate the completeness of the Journal Entry data for " & myclientname & " for the period " & START_POA & "and " & end_poa & " . This memo will accompany the ‘eyje’ file that must be imported into the Global Analytics Tool and reviewed by the Financial Audit team"
         otable3.Cell(1, 1).Range.Paragraphs(1).Format.SpaceAfter = 0
         otable3.Cell(1, 1).Range.Paragraphs(1).Range.Font.Name = "Times New Roman"
         otable3.Cell(1, 1).Range.Paragraphs(1).Range.Font.Size = 11
@@ -638,7 +638,7 @@ Public Class Form1
         'If temp2 <> 0 Then temp = "     •  " & String.Format("{0:0,0}", FormatNumber(CDbl(temp3), 0)) & " of " & String.Format("{0:0,0}", FormatNumber(CDbl(temp1), 0)) & " account balances rolled to the trial balance and " & String.Format("{0:0,0}", FormatNumber(CDbl(temp2), 0)) & " do not roll forward. However, these accounts had offsetting differences. Refer to ""Roll Forward Variance Section"" for details."
 
         otable4.Cell(1, 1).Range.InsertParagraphAfter()
-        otable4.Cell(1, 1).Range.Paragraphs(2).Range.Text = "    •  XXXX of XXXX account balances rolled to the Trial Balance and XXXX account balances did not roll. XXX of XXXX account balances that did not roll to the Trial Balance have significant rollforward differences and set off each other. There are XXXX accounts that have activity per the Journal Entry transaction and are not present in the Trial Balance file. Net Activity in XXX of these XXXX unmatched accounts summed to $0.00. Refer to the spreadsheet""" & myclientname & " " & START_POA & " thru " & end_poa & " TB Rollforward.xlsx"" for details of the Trial Balance Rollforward results."
+        otable4.Cell(1, 1).Range.Paragraphs(2).Range.Text = "    •   XXXX of XXXX account balances rolled to the Trial Balance and XXXX account balances did not roll. XXX of XXXX account balances that did not roll to the Trial Balance have significant rollforward differences and set off each other. There are XXXX accounts that have activity per the Journal Entry transaction and are not present in the Trial Balance file. Net Activity in XXX of these XXXX unmatched accounts summed to $0.00. Refer to the spreadsheet""" & myclientname & " " & START_POA & " thru " & end_poa & " TB Rollforward.xlsx"" for details of the Trial Balance Rollforward results."
         otable4.Cell(1, 1).Range.Paragraphs(2).Format.SpaceAfter = 0
         otable4.Cell(1, 1).Range.Paragraphs(2).Range.Font.Name = "Times New Roman"
         otable4.Cell(1, 1).Range.Paragraphs(2).Range.Font.Size = 10
@@ -647,7 +647,11 @@ Public Class Form1
         otable4.Cell(1, 1).Range.Paragraphs(2).Range.Italic = False
 
         otable4.Cell(1, 1).Range.InsertParagraphAfter()
+<<<<<<< HEAD
         otable4.Cell(1, 1).Range.Paragraphs(3).Range.Text = " "
+=======
+        'otable4.Cell(1, 1).Range.Paragraphs(3).Range.
+>>>>>>> 4e37c43f1f8a67f4cd14e474c29623f395cdc608
         otable4.Cell(1, 1).Range.Paragraphs(3).Range.Text = " The Financial Audit Team contact, ABC, investigated the rollforward results and instructed us to proceed further despite the above rollforward differences."
         otable4.Cell(1, 1).Range.Paragraphs(3).Format.SpaceAfter = 0
         otable4.Cell(1, 1).Range.Paragraphs(3).Range.Font.Name = "Times New Roman"
@@ -656,6 +660,46 @@ Public Class Form1
         otable4.Cell(1, 1).Range.Paragraphs(3).Range.Underline = False
         otable4.Cell(1, 1).Range.Paragraphs(3).Range.Italic = False
         otable4.Cell(1, 1).Range.Paragraphs(3).Alignment = Word.WdParagraphAlignment.wdAlignParagraphJustifyMed
+
+        otable4.Cell(1, 1).Range.InsertParagraphAfter()
+        'otable4.Cell(1, 1).Range.Paragraphs(3).Range.
+        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Text = vbNewLine & vbNewLine & " INSERT ROLLFORWARD SPREADSHEET"
+        otable4.Cell(1, 1).Range.Paragraphs(4).Format.SpaceAfter = 0
+        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Font.Name = "Times New Roman"
+        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Font.Size = 11
+        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Bold = True
+        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Underline = False
+        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Italic = False
+        otable4.Cell(1, 1).Range.Paragraphs(4).Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter
+
+
+        temp1 = TRC.Substring(TRA10.IndexOf("The total of EY_Amount is:"))
+        START_INDEX1 = TRA10.IndexOf("The total of EY_Amount is:")
+        END_INDEX1 = 0
+        b = START_INDEX1 + 1
+        Do While start3 <> Chr(10)
+            start3 = TRC.Substring(b, 1)
+            If start3 = Chr(10) Then
+                END_INDEX1 = b
+                start3 = ""
+                Exit Do
+            End If
+            b = b + 1
+        Loop
+        LEN1 = END_INDEX1 - START_INDEX1
+        temp = TRA10.Substring(START_INDEX1 + 27, LEN1 - 27)
+
+
+        otable4.Cell(1, 1).Range.InsertParagraphAfter()
+        'otable4.Cell(1, 1).Range.Paragraphs(3).Range.
+        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Text = "     •	  The Journal Entry detail file amounts summed to " & temp
+        otable4.Cell(1, 1).Range.Paragraphs(4).Format.SpaceAfter = 0
+        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Font.Name = "Times New Roman"
+        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Font.Size = 11
+        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Bold = True
+        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Underline = False
+        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Italic = False
+        otable4.Cell(1, 1).Range.Paragraphs(4).Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter
 
 
 
@@ -1033,7 +1077,11 @@ Public Class Form1
 
         'Journal Entry Table
 
+<<<<<<< HEAD
         Dim udcount As Integer = 3   'to extract the number of user defined feilds
+=======
+        'Dim udcount As Integer =        'to extract the number of user defined feilds
+>>>>>>> 4e37c43f1f8a67f4cd14e474c29623f395cdc608
         Dim oParaAthi1 As Word.Paragraph
 
 
