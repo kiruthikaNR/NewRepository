@@ -647,11 +647,10 @@ Public Class Form1
         otable4.Cell(1, 1).Range.Paragraphs(2).Range.Italic = False
 
         otable4.Cell(1, 1).Range.InsertParagraphAfter()
-<<<<<<< HEAD
+
         otable4.Cell(1, 1).Range.Paragraphs(3).Range.Text = " "
-=======
         'otable4.Cell(1, 1).Range.Paragraphs(3).Range.
->>>>>>> 4e37c43f1f8a67f4cd14e474c29623f395cdc608
+
         otable4.Cell(1, 1).Range.Paragraphs(3).Range.Text = " The Financial Audit Team contact, ABC, investigated the rollforward results and instructed us to proceed further despite the above rollforward differences."
         otable4.Cell(1, 1).Range.Paragraphs(3).Format.SpaceAfter = 0
         otable4.Cell(1, 1).Range.Paragraphs(3).Range.Font.Name = "Times New Roman"
@@ -1077,11 +1076,8 @@ Public Class Form1
 
         'Journal Entry Table
 
-<<<<<<< HEAD
         Dim udcount As Integer = 3   'to extract the number of user defined feilds
-=======
-        'Dim udcount As Integer =        'to extract the number of user defined feilds
->>>>>>> 4e37c43f1f8a67f4cd14e474c29623f395cdc608
+
         Dim oParaAthi1 As Word.Paragraph
 
 
