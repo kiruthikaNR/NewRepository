@@ -744,7 +744,6 @@ Public Class Form1
 
         'CALCULATE UNBALANCED JE NUMBERS
 
-<<<<<<< HEAD
         'temp1 = TRC.Substring(TRC.IndexOf("met the test: EY_Amount<>0"))
         'END_INDEX1 = TRC.IndexOf("met the test: EY_Amount<>0")
         'START_INDEX1 = 0
@@ -774,10 +773,10 @@ Public Class Form1
         'non_bal = Val(temp1) - Val(temp2)
 
         'If bal_JE <> 0 Then unique_je_stmnt = "     •  " & String.Format("{0:0,0}", bal_JE) & " of " & String.Format("{0:0,0}", FormatNumber(CDbl(unique_jenum), 0)) & " unique JE's net to $0.00. However " & String.Format("{0:0,0}", FormatNumber(CDbl(non_bal), 0)) & " JE numbers that did not sum to zero have insignificant amount." Else Unique_je_stmnt = Chr(9) & "•   " & "All of " & String.Format("{0:0,0}", FormatNumber(CDbl(unique_jenum), 0)) & " unique journal entries summed to $0.00."
-=======
+
         'temp1 = TRA20.Substring(TRA20.IndexOf("The total of EY_BegBal is:") + 28, TRA20.IndexOf("The total of EY_EndBal is:") - TRA20.IndexOf("The total of EY_BegBal is:") - 28)
         'temp2 = TRA20.Substring(TRA20.IndexOf("The total of EY_EndBal is:") + 28, TRA20.IndexOf("@ TOTAL FIELDS COUNT") - TRA20.IndexOf("The total of EY_EndBal is:") - 28)
->>>>>>> 8105ea52a75e98fb3fcf70ba0b170eef732a040e
+
 
         otable4.Cell(1, 1).Range.InsertParagraphAfter()
         'otable4.Cell(1, 1).Range.Paragraphs(6).Range.Text = "     •  " & "The beginning and ending trial balances summed to $" & String.Format("{0:0,0}", FormatNumber(CDbl(temp1), 2)) & " and $" & String.Format("{0:0,0}", FormatNumber(CDbl(temp2), 2)) & " respectively. " & "Non-zero balances were due to rounding of transactions to two decimal places."
@@ -1640,49 +1639,6 @@ Public Class Form1
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         'Journal Entry Table
 
         Dim udcount As Integer = 3   'to extract the number of user defined feilds
@@ -2234,11 +2190,6 @@ Public Class Form1
 
         dynind = dynind + 1
 
-<<<<<<< HEAD
-        Dim rtosetbullet As Word.Range
-        rtosetbullet = oWord.ActiveDocument.Range(Start:=oWord.ActiveDocument.Tables(3).Cell(1, 1).Range.Paragraphs(1), End:=oWord.ActiveDocument.Tables(3).Cell(1, 1).Range.Paragraphs(3))
-        rtosetbullet.ListFormat.ApplyNumberDefault()
-=======
         otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
         otableAthi3.Cell(3, 1).Range.Paragraphs(7).Range.Text = dynind.ToString & ". Professional Fee Accounts"
         otableAthi3.Cell(3, 1).Range.Paragraphs(7).Range.Font.Bold = True
@@ -2246,7 +2197,7 @@ Public Class Form1
         otableAthi3.Cell(3, 1).Range.Paragraphs(7).Range.Font.Italic = False
 
         dynind = dynind + 1
->>>>>>> 8105ea52a75e98fb3fcf70ba0b170eef732a040e
+
 
         otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
         otableAthi3.Cell(3, 1).Range.Paragraphs(8).Range.Text = dynind.ToString & ". Report Thresholds and Other Parameters"
