@@ -691,16 +691,26 @@ Public Class Form1
 
         otable4.Cell(1, 1).Range.InsertParagraphAfter()
         'otable4.Cell(1, 1).Range.Paragraphs(3).Range.
-        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Text = "     •	  The Journal Entry detail file amounts summed to " & temp
-        otable4.Cell(1, 1).Range.Paragraphs(4).Format.SpaceAfter = 0
-        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Font.Name = "Times New Roman"
-        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Font.Size = 11
-        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Bold = True
-        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Underline = False
-        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Italic = False
-        otable4.Cell(1, 1).Range.Paragraphs(4).Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter
+        otable4.Cell(1, 1).Range.Paragraphs(5).Range.Text = "     •	  The Journal Entry detail file amounts summed to " & temp
+        otable4.Cell(1, 1).Range.Paragraphs(5).Format.SpaceAfter = 0
+        otable4.Cell(1, 1).Range.Paragraphs(5).Range.Font.Name = "Times New Roman"
+        otable4.Cell(1, 1).Range.Paragraphs(5).Range.Font.Size = 11
+        otable4.Cell(1, 1).Range.Paragraphs(5).Range.Bold = False
+        otable4.Cell(1, 1).Range.Paragraphs(5).Range.Underline = False
+        otable4.Cell(1, 1).Range.Paragraphs(5).Range.Italic = False
+        'otable4.Cell(1, 1).Range.Paragraphs(5).Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter
 
+        temp1 = TRA20.Substring(TRA20.IndexOf("The total of EY_BegBal is:") + 28, TRA20.IndexOf("The total of EY_EndBal is:") - TRA20.IndexOf("The total of EY_BegBal is:") - 28)
+        temp2 = TRA20.Substring(TRA20.IndexOf("The total of EY_EndBal is:") + 28, TRA20.IndexOf("@ TOTAL FIELDS COUNT") - TRA20.IndexOf("The total of EY_EndBal is:") - 28)
 
+        otable4.Cell(1, 1).Range.InsertParagraphAfter()
+        otable4.Cell(1, 1).Range.Paragraphs(6).Range.Text = "     •  " & "The beginning and ending trial balances summed to $" & String.Format("{0:0,0}", FormatNumber(CDbl(temp1), 2)) & " and $" & String.Format("{0:0,0}", FormatNumber(CDbl(temp2), 2)) & " respectively. " & "Non-zero balances were due to rounding of transactions to two decimal places."
+        otable4.Cell(1, 1).Range.Paragraphs(6).Format.SpaceAfter = 0
+        otable4.Cell(1, 1).Range.Paragraphs(6).Range.Font.Name = "Times New Roman"
+        otable4.Cell(1, 1).Range.Paragraphs(6).Range.Font.Size = 11
+        otable4.Cell(1, 1).Range.Paragraphs(6).Range.Bold = False
+        otable4.Cell(1, 1).Range.Paragraphs(6).Range.Underline = False
+        otable4.Cell(1, 1).Range.Paragraphs(6).Range.Italic = False
 
 
 
