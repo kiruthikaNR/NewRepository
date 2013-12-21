@@ -744,6 +744,7 @@ Public Class Form1
 
         'CALCULATE UNBALANCED JE NUMBERS
 
+<<<<<<< HEAD
         'temp1 = TRC.Substring(TRC.IndexOf("met the test: EY_Amount<>0"))
         'END_INDEX1 = TRC.IndexOf("met the test: EY_Amount<>0")
         'START_INDEX1 = 0
@@ -773,6 +774,10 @@ Public Class Form1
         'non_bal = Val(temp1) - Val(temp2)
 
         'If bal_JE <> 0 Then unique_je_stmnt = "     •  " & String.Format("{0:0,0}", bal_JE) & " of " & String.Format("{0:0,0}", FormatNumber(CDbl(unique_jenum), 0)) & " unique JE's net to $0.00. However " & String.Format("{0:0,0}", FormatNumber(CDbl(non_bal), 0)) & " JE numbers that did not sum to zero have insignificant amount." Else Unique_je_stmnt = Chr(9) & "•   " & "All of " & String.Format("{0:0,0}", FormatNumber(CDbl(unique_jenum), 0)) & " unique journal entries summed to $0.00."
+=======
+        'temp1 = TRA20.Substring(TRA20.IndexOf("The total of EY_BegBal is:") + 28, TRA20.IndexOf("The total of EY_EndBal is:") - TRA20.IndexOf("The total of EY_BegBal is:") - 28)
+        'temp2 = TRA20.Substring(TRA20.IndexOf("The total of EY_EndBal is:") + 28, TRA20.IndexOf("@ TOTAL FIELDS COUNT") - TRA20.IndexOf("The total of EY_EndBal is:") - 28)
+>>>>>>> 8105ea52a75e98fb3fcf70ba0b170eef732a040e
 
         otable4.Cell(1, 1).Range.InsertParagraphAfter()
         'otable4.Cell(1, 1).Range.Paragraphs(6).Range.Text = "     •  " & "The beginning and ending trial balances summed to $" & String.Format("{0:0,0}", FormatNumber(CDbl(temp1), 2)) & " and $" & String.Format("{0:0,0}", FormatNumber(CDbl(temp2), 2)) & " respectively. " & "Non-zero balances were due to rounding of transactions to two decimal places."
@@ -2046,19 +2051,213 @@ Public Class Form1
         otableAthi3.Columns.Width = oWord.CentimetersToPoints(17.8)
 
         otableAthi3.Cell(1, 1).Range.InsertParagraphAfter()
-        otableAthi3.Cell(1, 1).Range.Paragraphs(1).Range.Text = "Identify and order journal entry fields to arrive at a unique journal entry"
+        otableAthi3.Cell(1, 1).Range.Paragraphs(1).Range.Text = "1. Identify and order journal entry fields to arrive at a unique journal entry"
+        otableAthi3.Cell(1, 1).Range.Paragraphs(1).Range.Font.Bold = False
+        otableAthi3.Cell(1, 1).Range.Paragraphs(1).Range.Font.Underline = False
+        otableAthi3.Cell(1, 1).Range.Paragraphs(1).Range.Font.Italic = False
+
 
         otableAthi3.Cell(1, 1).Range.InsertParagraphAfter()
-        otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.Text = "Identify and order journal entry fields to arrive at a unique journal entry"
+        otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.Text = "   • Journal Entry Number - EY_JENum - Field_1 (Mostly)" & vbNewLine & "   • Field_Name - EY_Field_Name - Field_X (Rarely)"
+        otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.Font.Bold = False
+        otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.Font.ColorIndex = Word.WdColorIndex.wdRed
+        otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.Font.Underline = False
+        otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.Font.Italic = False
+        otableAthi3.Cell(1, 1).Range.Paragraphs(2).Format.SpaceAfter = 2
 
         otableAthi3.Cell(1, 1).Range.InsertParagraphAfter()
-        otableAthi3.Cell(1, 1).Range.Paragraphs(3).Range.Text = "Identify and order journal entry fields to arrive at a unique journal entry"
+        otableAthi3.Cell(1, 1).Range.Paragraphs(3).Range.Text = "2.	Account Type Definition"
+        otableAthi3.Cell(1, 1).Range.Paragraphs(3).Range.Font.Bold = True
+        otableAthi3.Cell(1, 1).Range.Paragraphs(3).Range.Font.Underline = False
+        otableAthi3.Cell(1, 1).Range.Paragraphs(3).Range.Font.Italic = False
 
+        Dim AccountNumberChoice As Integer = 1
+        Dim newdoc As New Word.Document
+        newdoc = oWord.Documents.Add
+        'oPara8 = newdoc.Content.Paragraphs.Add
+
+        otable11 = newdoc.Tables.Add(newdoc.Bookmarks.Item("\endofdoc").Range, 6, 2)
+        otable11.Borders.Enable = True
+        otable11.Columns.Item(1).Width = oWord.CentimetersToPoints(1.48)
+        otable11.Columns.Item(2).Width = oWord.CentimetersToPoints(14.23)
+        otable11.Rows.Height = oWord.CentimetersToPoints(0.11)
+        otable11.AutoFitBehavior(Word.WdAutoFitBehavior.wdAutoFitContent)
+        otable11.Rows.Alignment = Word.WdRowAlignment.wdAlignRowCenter
+
+
+        otable11.Cell(1, 1).Range.Text = "GL Account Number beginning with"
+        otable11.Cell(1, 1).Range.Font.Name = "Times New Roman"
+        otable11.Cell(1, 1).Range.Font.Size = 10
+        otable11.Cell(1, 1).Range.Bold = True
+        otable11.Cell(1, 1).Range.Underline = False
+        otable11.Cell(1, 1).Shading.BackgroundPatternColor = RGB(192, 192, 192)
+
+        otable11.Cell(1, 2).Range.Text = "Account Type"
+        otable11.Cell(1, 2).Range.Font.Name = "Times New Roman"
+        otable11.Cell(1, 2).Range.Font.Size = 10
+        otable11.Cell(1, 2).Range.Bold = True
+        otable11.Cell(1, 2).Range.Underline = False
+        otable11.Cell(1, 2).Shading.BackgroundPatternColor = RGB(192, 192, 192)
+
+
+        otable11.Cell(2, 1).Range.Text = If(AccountNumberChoice = 1, "1", "<20000")
+        otable11.Cell(2, 1).Range.Font.Name = "Times New Roman"
+        otable11.Cell(2, 1).Range.Font.Size = 10
+        otable11.Cell(2, 1).Range.Bold = False
+        otable11.Cell(2, 1).Range.Underline = False
+
+        otable11.Cell(2, 2).Range.Text = "Assets"
+        otable11.Cell(2, 2).Range.Font.Name = "Times New Roman"
+        otable11.Cell(2, 2).Range.Font.Size = 10
+        otable11.Cell(2, 2).Range.Bold = False
+        otable11.Cell(2, 2).Range.Underline = False
+
+        otable11.Cell(3, 1).Range.Text = If(AccountNumberChoice = 1, "2", ">20000 and <30000")
+        otable11.Cell(3, 1).Range.Font.Name = "Times New Roman"
+        otable11.Cell(3, 1).Range.Font.Size = 10
+        otable11.Cell(3, 1).Range.Bold = False
+        otable11.Cell(3, 1).Range.Underline = False
+
+        otable11.Cell(3, 2).Range.Text = "Liabilities"
+        otable11.Cell(3, 2).Range.Font.Name = "Times New Roman"
+        otable11.Cell(3, 2).Range.Font.Size = 10
+        otable11.Cell(3, 2).Range.Bold = False
+        otable11.Cell(3, 2).Range.Underline = False
+
+        otable11.Cell(4, 1).Range.Text = If(AccountNumberChoice = 1, "3", ">30000 and <40000")
+        otable11.Cell(4, 1).Range.Font.Name = "Times New Roman"
+        otable11.Cell(4, 1).Range.Font.Size = 10
+        otable11.Cell(4, 1).Range.Bold = False
+        otable11.Cell(4, 1).Range.Underline = False
+
+        otable11.Cell(4, 2).Range.Text = "Equity"
+        otable11.Cell(4, 2).Range.Font.Name = "Times New Roman"
+        otable11.Cell(4, 2).Range.Font.Size = 10
+        otable11.Cell(4, 2).Range.Bold = False
+        otable11.Cell(4, 2).Range.Underline = False
+
+        otable11.Cell(5, 1).Range.Text = If(AccountNumberChoice = 1, "4", ">40000 and <50000")
+        otable11.Cell(5, 1).Range.Font.Name = "Times New Roman"
+        otable11.Cell(5, 1).Range.Font.Size = 10
+        otable11.Cell(5, 1).Range.Bold = False
+        otable11.Cell(5, 1).Range.Underline = False
+
+        otable11.Cell(5, 2).Range.Text = "Revenue"
+        otable11.Cell(5, 2).Range.Font.Name = "Times New Roman"
+        otable11.Cell(5, 2).Range.Font.Size = 10
+        otable11.Cell(5, 2).Range.Bold = False
+        otable11.Cell(5, 2).Range.Underline = False
+
+        otable11.Cell(6, 1).Range.Text = If(AccountNumberChoice = 1, "5,6,7,8 or 9", ">50000")
+        otable11.Cell(6, 1).Range.Font.Name = "Times New Roman"
+        otable11.Cell(6, 1).Range.Font.Size = 10
+        otable11.Cell(6, 1).Range.Bold = False
+        otable11.Cell(6, 1).Range.Underline = False
+
+        otable11.Cell(6, 2).Range.Text = "Expenses"
+        otable11.Cell(6, 2).Range.Font.Name = "Times New Roman"
+        otable11.Cell(6, 2).Range.Font.Size = 10
+        otable11.Cell(6, 2).Range.Bold = False
+        otable11.Cell(6, 2).Range.Underline = False
+
+
+        newdoc.ActiveWindow.Selection.WholeStory()
+        newdoc.ActiveWindow.Selection.Copy()
+        otableAthi3.Cell(2, 1).Range.PasteAndFormat(Word.WdRecoveryType.wdFormatOriginalFormatting)
+        newdoc.SaveAs2("c:\temp\test.doc")
+        newdoc.Close()
+
+        Dim exclusionchoice_ui As Integer = 1
+
+        Dim dynind As Integer = 3 + exclusionchoice_ui
+
+        otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
+        otableAthi3.Cell(3, 1).Range.Paragraphs(1).Range.Text = If(exclusionchoice_ui = 1, "3. Exclusions", "")
+        otableAthi3.Cell(3, 1).Range.Paragraphs(1).Range.Font.Bold = True
+        otableAthi3.Cell(3, 1).Range.Paragraphs(1).Range.Font.Underline = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(1).Range.Font.Italic = False
+
+        otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
+        otableAthi3.Cell(3, 1).Range.Paragraphs(2).Range.Text = dynind.ToString & ". System/Manual Identification"
+        otableAthi3.Cell(3, 1).Range.Paragraphs(2).Range.Font.Bold = True
+        otableAthi3.Cell(3, 1).Range.Paragraphs(2).Range.Font.Underline = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(2).Range.Font.Italic = False
+
+        Dim sysman_ui As Integer = 1
+        Dim optstr As String = " "
+
+        If (sysman_ui = 1) Then
+            optstr = "   • Manual Entries: All entries where Source/Preparer ID/Field EQUALS ""Phrase""/""Condition""." & vbNewLine & "   • System Entries: All other entries."
+        Else
+            optstr = "   • All entries were marked as ""Manual""."
+        End If
+
+        otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
+        otableAthi3.Cell(3, 1).Range.Paragraphs(3).Range.Text = optstr
+        otableAthi3.Cell(3, 1).Range.Paragraphs(3).Range.Font.Bold = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(3).Range.Font.Underline = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(3).Range.Font.Italic = False
+
+        dynind = dynind + 1
+
+        Dim point5_choice_ui As Integer = 1
+
+        otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
+        otableAthi3.Cell(3, 1).Range.Paragraphs(4).Range.Text = dynind.ToString & ". Inter-Company Accounts"
+        otableAthi3.Cell(3, 1).Range.Paragraphs(4).Range.Font.Bold = True
+        otableAthi3.Cell(3, 1).Range.Paragraphs(4).Range.Font.Underline = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(4).Range.Font.Italic = False
+
+        Dim optstr1 As String = " "
+
+        If (point5_choice_ui = 1) Then
+            optstr1 = "N/A"
+        ElseIf (point5_choice_ui = 2) Then
+            optstr1 = "   • Journal Entry Description CONTAINS: " & vbNewLine & "      • Phrase 1 " & vbNewLine & "      • Phrase 2 "
+        ElseIf (point5_choice_ui = 3) Then
+            optstr1 = "   • GL Account Number EQUALS: "
+        End If
+
+        otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
+        otableAthi3.Cell(3, 1).Range.Paragraphs(5).Range.Text = optstr1
+        otableAthi3.Cell(3, 1).Range.Paragraphs(5).Range.Font.Bold = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(5).Range.Font.Underline = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(5).Range.Font.Italic = False
+
+        dynind = dynind + 1
+
+        otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
+        otableAthi3.Cell(3, 1).Range.Paragraphs(6).Range.Text = dynind.ToString & ". Related Party Accounts"
+        otableAthi3.Cell(3, 1).Range.Paragraphs(6).Range.Font.Bold = True
+        otableAthi3.Cell(3, 1).Range.Paragraphs(6).Range.Font.Underline = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(6).Range.Font.Italic = False
+
+        dynind = dynind + 1
+
+<<<<<<< HEAD
         Dim rtosetbullet As Word.Range
         rtosetbullet = oWord.ActiveDocument.Range(Start:=oWord.ActiveDocument.Tables(3).Cell(1, 1).Range.Paragraphs(1), End:=oWord.ActiveDocument.Tables(3).Cell(1, 1).Range.Paragraphs(3))
         rtosetbullet.ListFormat.ApplyNumberDefault()
+=======
+        otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
+        otableAthi3.Cell(3, 1).Range.Paragraphs(7).Range.Text = dynind.ToString & ". Professional Fee Accounts"
+        otableAthi3.Cell(3, 1).Range.Paragraphs(7).Range.Font.Bold = True
+        otableAthi3.Cell(3, 1).Range.Paragraphs(7).Range.Font.Underline = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(7).Range.Font.Italic = False
+
+        dynind = dynind + 1
+>>>>>>> 8105ea52a75e98fb3fcf70ba0b170eef732a040e
+
+        otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
+        otableAthi3.Cell(3, 1).Range.Paragraphs(8).Range.Text = dynind.ToString & ". Report Thresholds and Other Parameters"
+        otableAthi3.Cell(3, 1).Range.Paragraphs(8).Range.Font.Bold = True
+        otableAthi3.Cell(3, 1).Range.Paragraphs(8).Range.Font.Underline = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(8).Range.Font.Italic = False
 
 
+
+
+        
     End Sub
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
         Form5.Show()
