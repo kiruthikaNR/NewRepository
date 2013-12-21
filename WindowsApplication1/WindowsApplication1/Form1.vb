@@ -700,11 +700,22 @@ Public Class Form1
         otable4.Cell(1, 1).Range.Paragraphs(5).Range.Italic = False
         'otable4.Cell(1, 1).Range.Paragraphs(5).Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter
 
+        'temp1 = Regex.Match(TRA20, "The total of EY_BegBal is:")
+        Dim STemp(100) As Char
+        Dim ind1 As Integer = TRA20.IndexOf("The total of EY_BegBal is:")
+        Dim ind2 As Integer = 0
+        Do While (TRA20.Chars(ind1) <> Chr(10))
+            STemp(ind2) = TRA20.Chars(ind1)
+            ind1 = ind1 + 1
+            ind2 = ind2 + 1
+        Loop
+
+
         temp1 = TRA20.Substring(TRA20.IndexOf("The total of EY_BegBal is:") + 28, TRA20.IndexOf("The total of EY_EndBal is:") - TRA20.IndexOf("The total of EY_BegBal is:") - 28)
         temp2 = TRA20.Substring(TRA20.IndexOf("The total of EY_EndBal is:") + 28, TRA20.IndexOf("@ TOTAL FIELDS COUNT") - TRA20.IndexOf("The total of EY_EndBal is:") - 28)
 
         otable4.Cell(1, 1).Range.InsertParagraphAfter()
-        otable4.Cell(1, 1).Range.Paragraphs(6).Range.Text = "     •  " & "The beginning and ending trial balances summed to $" & String.Format("{0:0,0}", FormatNumber(CDbl(temp1), 2)) & " and $" & String.Format("{0:0,0}", FormatNumber(CDbl(temp2), 2)) & " respectively. " & "Non-zero balances were due to rounding of transactions to two decimal places."
+        'otable4.Cell(1, 1).Range.Paragraphs(6).Range.Text = "     •  " & "The beginning and ending trial balances summed to $" & String.Format("{0:0,0}", FormatNumber(CDbl(temp1), 2)) & " and $" & String.Format("{0:0,0}", FormatNumber(CDbl(temp2), 2)) & " respectively. " & "Non-zero balances were due to rounding of transactions to two decimal places."
         otable4.Cell(1, 1).Range.Paragraphs(6).Format.SpaceAfter = 0
         otable4.Cell(1, 1).Range.Paragraphs(6).Range.Font.Name = "Times New Roman"
         otable4.Cell(1, 1).Range.Paragraphs(6).Range.Font.Size = 11
@@ -1102,7 +1113,7 @@ Public Class Form1
         oParaAthi1.Range.Font.Italic = False
 
 
-        Dim otableAthi1 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 15 + udCount, 3)
+        Dim otableAthi1 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 15 + udcount, 3)
         otableAthi1.Borders.Enable = True
 
         otableAthi1.Cell(1, 1).Range.Text = "JE Transaction Files"
@@ -1291,7 +1302,7 @@ Public Class Form1
         oParaAthi1.Range.InsertParagraphAfter()
 
         'Trial Balance Table
-        Dim otableAthi2 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 15 + udCount, 3)
+        Dim otableAthi2 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 15 + udcount, 3)
         otableAthi2.Borders.Enable = True
 
         otableAthi2.Borders.Enable = True
@@ -1452,14 +1463,9 @@ Public Class Form1
         otableAthi3.Columns.Width = oWord.CentimetersToPoints(17.8)
 
         otableAthi3.Cell(1, 1).Range.InsertParagraphAfter()
-        otableAthi3.Cell(1, 1).Range.ListFormat.ApplyNumberDefault()
-        otableAthi3.Cell(1, 1).Range.Paragraphs(1).Range.Text = "Identify and order journal entry fields to arrive at a unique journal entry"
+        otableAthi3.Cell(1, 1).Range.Paragraphs(1).Range.ListFormat.ApplyNumberDefault()
+        otableAthi3.Cell(1, 1).Range.Paragraphs(1).Range.Text = "Identify and order journal entry fields to arrive at a unique journal entry" & vbCrLf & "wsrdftgh"
 
-        otableAthi3.Cell(1, 1).Range.InsertParagraphAfter()
-        otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.Text = "Identify and order journal entry fields to arrive at a unique journal entry"
-
-        otableAthi3.Cell(1, 1).Range.InsertParagraphAfter()
-        otableAthi3.Cell(1, 1).Range.Paragraphs(3).Range.Text = "Identify and order journal entry fields to arrive at a unique journal entry"
 
 
 
