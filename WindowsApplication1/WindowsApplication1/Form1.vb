@@ -1452,7 +1452,6 @@ Public Class Form1
         otableAthi3.Columns.Width = oWord.CentimetersToPoints(17.8)
 
         otableAthi3.Cell(1, 1).Range.InsertParagraphAfter()
-        otableAthi3.Cell(1, 1).Range.ListFormat.ApplyNumberDefault()
         otableAthi3.Cell(1, 1).Range.Paragraphs(1).Range.Text = "Identify and order journal entry fields to arrive at a unique journal entry"
 
         otableAthi3.Cell(1, 1).Range.InsertParagraphAfter()
@@ -1461,6 +1460,9 @@ Public Class Form1
         otableAthi3.Cell(1, 1).Range.InsertParagraphAfter()
         otableAthi3.Cell(1, 1).Range.Paragraphs(3).Range.Text = "Identify and order journal entry fields to arrive at a unique journal entry"
 
+        Dim rtosetbullet As Word.Range
+        rtosetbullet = oWord.ActiveDocument.Range(Start:=oWord.ActiveDocument.Tables(3).Cell(1, 1).Range.Paragraphs(1), End:=oWord.ActiveDocument.Tables(3).Cell(1, 1).Range.Paragraphs(1))
+        rtosetbullet.ListFormat.ApplyNumberDefault()
 
 
     End Sub
