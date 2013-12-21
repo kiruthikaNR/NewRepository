@@ -672,8 +672,8 @@ Public Class Form1
         otable4.Cell(1, 1).Range.Paragraphs(4).Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter
 
 
-        temp1 = TRC.Substring(TRA10.IndexOf("The total of EY_Amount is:"))
-        START_INDEX1 = TRA10.IndexOf("The total of EY_Amount is:")
+        temp1 = TRA10.Substring(TRA10.IndexOf("The total of EY_AMOUNT is:"))
+        START_INDEX1 = TRA10.IndexOf("The total of EY_AMOUNT is:")
         END_INDEX1 = 0
         b = START_INDEX1 + 1
         Do While start3 <> Chr(10)
@@ -1275,19 +1275,24 @@ Public Class Form1
         otableAthi1.Cell(12, 2).Range.Italic = False
 
 
+
+
+        oParaAthi1 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
+        oParaAthi1.Range.InsertParagraphAfter()
+
         'Trial Balance Table
         Dim otableAthi2 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 15 + udCount, 3)
         otableAthi2.Borders.Enable = True
 
         otableAthi2.Borders.Enable = True
         otableAthi2.AllowAutoFit = True
-        otableAthi2.Columns.Item(1).Width = oWord.CentimetersToPoints(6.6)
-        otableAthi2.Columns.Item(2).Width = oWord.CentimetersToPoints(3.81)
-        otableAthi2.Columns.Item(3).Width = oWord.CentimetersToPoints(7.41)
+        'otableAthi2.Columns.Item(1).Width = oWord.CentimetersToPoints(6.6)
+        'otableAthi2.Columns.Item(2).Width = oWord.CentimetersToPoints(3.81)
+        'otableAthi2.Columns.Item(3).Width = oWord.CentimetersToPoints(7.41)
         otableAthi2.Rows.HeightRule = Word.WdRowHeightRule.wdRowHeightExactly
         otableAthi2.Rows.Height = oWord.CentimetersToPoints(0.6)
 
-        otableAthi2.Cell(1, 1).Merge(otableAthi2.Cell(1, 3))
+
 
         otableAthi2.Cell(1, 1).Range.Text = "Trial Balance Files"
         otableAthi2.Cell(1, 1).Range.Font.Name = "Times New Roman"
@@ -1298,6 +1303,9 @@ Public Class Form1
         otableAthi2.Cell(1, 1).Shading.BackgroundPatternColor = RGB(0, 0, 0)
         otableAthi2.Cell(1, 1).Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter
         otableAthi2.Cell(1, 1).Range.ParagraphFormat.SpaceAfter = 0
+
+
+        otableAthi2.Cell(1, 1).Merge(otableAthi2.Cell(1, 3))
 
         otableAthi2.Cell(2, 1).Range.Text = "EY/Global Analytics Field Name"
         otableAthi2.Cell(2, 1).Range.Font.Name = "Times New Roman"
