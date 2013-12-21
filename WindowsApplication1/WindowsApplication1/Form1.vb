@@ -1296,9 +1296,9 @@ Public Class Form1
 
         otableAthi2.Borders.Enable = True
         otableAthi2.AllowAutoFit = True
-        'otableAthi2.Columns.Item(1).Width = oWord.CentimetersToPoints(6.6)
-        'otableAthi2.Columns.Item(2).Width = oWord.CentimetersToPoints(3.81)
-        'otableAthi2.Columns.Item(3).Width = oWord.CentimetersToPoints(7.41)
+        otableAthi2.Columns.Item(1).Width = oWord.CentimetersToPoints(6.6)
+        otableAthi2.Columns.Item(2).Width = oWord.CentimetersToPoints(3.81)
+        otableAthi2.Columns.Item(3).Width = oWord.CentimetersToPoints(7.41)
         otableAthi2.Rows.HeightRule = Word.WdRowHeightRule.wdRowHeightExactly
         otableAthi2.Rows.Height = oWord.CentimetersToPoints(0.6)
 
@@ -1451,6 +1451,15 @@ Public Class Form1
         otableAthi3.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleNone
         otableAthi3.Columns.Width = oWord.CentimetersToPoints(17.8)
 
+        otableAthi3.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi3.Cell(1, 1).Range.ListFormat.ApplyNumberDefault()
+        otableAthi3.Cell(1, 1).Range.Paragraphs(1).Range.Text = "Identify and order journal entry fields to arrive at a unique journal entry"
+
+        otableAthi3.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.Text = "Identify and order journal entry fields to arrive at a unique journal entry"
+
+        otableAthi3.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi3.Cell(1, 1).Range.Paragraphs(3).Range.Text = "Identify and order journal entry fields to arrive at a unique journal entry"
 
 
 
