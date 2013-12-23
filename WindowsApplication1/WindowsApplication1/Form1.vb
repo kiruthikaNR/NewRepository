@@ -70,7 +70,7 @@ Public Class Form1
             b = b + 1
         Loop
         LEN1 = END_INDEX1 - START_INDEX1
-        temp = TRC.Substring(START_INDEX1, LEN1)
+        temp = TRC.Substring(START_INDEX1 - 1, LEN1)
         Dim myclientname As String = temp
 
         temp1 = TRC.Substring(TRC.IndexOf("@ ASSIGN PERIOD_var="))
@@ -514,7 +514,7 @@ Public Class Form1
         'otable11.AutoFitBehavior(Word.WdAutoFitBehavior.wdAutoFitContent)
 
         otable2.Cell(1, 1).Range.InsertParagraphAfter()
-        otable2.Cell(1, 1).Range.Paragraphs(1).Range.Text = Chr(10) & "This memorandum and supporting JE CAAT file were prepared by the EY GTH Team for use by the audit team. The memorandum documents the objectives of the work, planned procedures, procedures executed, and our assessment of the client data. This memorandum is intended to guide and assist the audit team in performing the journal entry analysis procedures and should not be considered a standalone work paper. We have provided this memorandum in softcopy so that the audit teams may copy those portions that are deemed relevant to their audit for inclusion in the final work papers. "
+        otable2.Cell(1, 1).Range.Paragraphs(1).Range.Text = " "
         otable2.Cell(1, 1).Range.Paragraphs(1).Format.SpaceAfter = 0
         otable2.Cell(1, 1).Range.Paragraphs(1).Range.Font.Name = "Times New Roman"
         otable2.Cell(1, 1).Range.Paragraphs(1).Range.Font.Size = 11
@@ -522,6 +522,17 @@ Public Class Form1
         otable2.Cell(1, 1).Range.Paragraphs(1).Range.Underline = False
         otable2.Cell(1, 1).Range.Paragraphs(1).Range.Italic = False
         otable2.Cell(1, 1).Range.Paragraphs(1).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
+
+
+        otable2.Cell(1, 1).Range.InsertParagraphAfter()
+        otable2.Cell(1, 1).Range.Paragraphs(2).Range.Text = "This memorandum and supporting JE CAAT file were prepared by the EY GTH Team for use by the audit team. The memorandum documents the objectives of the work, planned procedures, procedures executed, and our assessment of the client data. This memorandum is intended to guide and assist the audit team in performing the journal entry analysis procedures and should not be considered a standalone work paper. We have provided this memorandum in softcopy so that the audit teams may copy those portions that are deemed relevant to their audit for inclusion in the final work papers. "
+        otable2.Cell(1, 1).Range.Paragraphs(2).Format.SpaceAfter = 0
+        otable2.Cell(1, 1).Range.Paragraphs(2).Range.Font.Name = "Times New Roman"
+        otable2.Cell(1, 1).Range.Paragraphs(2).Range.Font.Size = 11
+        otable2.Cell(1, 1).Range.Paragraphs(2).Range.Bold = False
+        otable2.Cell(1, 1).Range.Paragraphs(2).Range.Underline = False
+        otable2.Cell(1, 1).Range.Paragraphs(2).Range.Italic = False
+        otable2.Cell(1, 1).Range.Paragraphs(2).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
 
 
         'Objective
@@ -547,6 +558,7 @@ Public Class Form1
         otable3.Columns.Width = oWord.CentimetersToPoints(17.8)
         
         otable3.Cell(1, 1).Range.InsertParagraphAfter()
+        otable3.Cell(1, 1).Range.Paragraphs(1).Range.Bold = False
         otable3.Cell(1, 1).Range.Paragraphs(1).Range.Text = vbNewLine & "To evaluate the completeness of the Journal Entry data for " & myclientname & " for the period " & START_POA & "and " & end_poa & " . This memo will accompany the ‘eyje’ file that must be imported into the Global Analytics Tool and reviewed by the Financial Audit team"
         otable3.Cell(1, 1).Range.Paragraphs(1).Format.SpaceAfter = 0
         otable3.Cell(1, 1).Range.Paragraphs(1).Range.Font.Name = "Times New Roman"
@@ -569,11 +581,11 @@ Public Class Form1
         oPara4.Range.Font.Size = 11
         oPara4.Range.InsertParagraphAfter()
 
-        Dim otable4 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 1, 1)
-        otable4.Borders.Enable = True
+        'Dim otable4 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 1, 1)
+        'otable4.Borders.Enable = True
 
         rng = oDoc.Bookmarks.Item("\endofdoc").Range
-        otable4 = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 1, 1)
+        otable4 = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 3, 1)
         otable4.Borders.Enable = True
         otable4.Borders.OutsideLineWidth = Word.WdLineWidth.wdLineWidth150pt
         otable4.Borders.InsideColor = RGB(255, 255, 255)
@@ -651,7 +663,7 @@ Public Class Form1
         otable4.Cell(1, 1).Range.Paragraphs(3).Range.Text = " "
         'otable4.Cell(1, 1).Range.Paragraphs(3).Range.
 
-        otable4.Cell(1, 1).Range.Paragraphs(3).Range.Text = " The Financial Audit Team contact, ABC, investigated the rollforward results and instructed us to proceed further despite the above rollforward differences."
+        otable4.Cell(1, 1).Range.Paragraphs(3).Range.Text = " The Financial Audit Team contact, ABC, investigated the rollforward results and instructed us to proceed further despite the above rollforward differences." & vbNewLine
         otable4.Cell(1, 1).Range.Paragraphs(3).Format.SpaceAfter = 0
         otable4.Cell(1, 1).Range.Paragraphs(3).Range.Font.Name = "Times New Roman"
         otable4.Cell(1, 1).Range.Paragraphs(3).Range.Font.Size = 11
@@ -662,7 +674,7 @@ Public Class Form1
 
         otable4.Cell(1, 1).Range.InsertParagraphAfter()
         'otable4.Cell(1, 1).Range.Paragraphs(3).Range.
-        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Text = vbNewLine & vbNewLine & " INSERT ROLLFORWARD SPREADSHEET"
+        otable4.Cell(1, 1).Range.Paragraphs(4).Range.Text = " INSERT ROLLFORWARD SPREADSHEET" & vbNewLine
         otable4.Cell(1, 1).Range.Paragraphs(4).Format.SpaceAfter = 0
         otable4.Cell(1, 1).Range.Paragraphs(4).Range.Font.Name = "Times New Roman"
         otable4.Cell(1, 1).Range.Paragraphs(4).Range.Font.Size = 11
@@ -698,7 +710,7 @@ Public Class Form1
         otable4.Cell(1, 1).Range.Paragraphs(5).Range.Bold = False
         otable4.Cell(1, 1).Range.Paragraphs(5).Range.Underline = False
         otable4.Cell(1, 1).Range.Paragraphs(5).Range.Italic = False
-        'otable4.Cell(1, 1).Range.Paragraphs(5).Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter
+        otable4.Cell(1, 1).Range.Paragraphs(5).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
 
         'temp1 = Regex.Match(TRA20, "The total of EY_BegBal is:")
         Dim STemp(100) As Char
@@ -706,9 +718,27 @@ Public Class Form1
         Dim ind2 As Integer = 0
         Do While (TRA20.Chars(ind1) <> Chr(10))
             STemp(ind2) = TRA20.Chars(ind1)
+            'MsgBox(TRA20.Chars(ind1))
             ind1 = ind1 + 1
             ind2 = ind2 + 1
         Loop
+
+        Dim Atemp() As String = (STemp.ToString()).Split(" ")
+        temp1 = Atemp(Atemp.GetUpperBound(0))
+        MsgBox(STemp)
+
+        'STemp = ""
+        'Ending Balance
+        ind1 = TRA20.IndexOf("The total of EY_ENDBAL is:")
+        ind2 = 0
+        Do While (TRA20.Chars(ind1) <> Chr(10))
+            STemp(ind2) = TRA20.Chars(ind1)
+            'MsgBox(TRA20.Chars(ind1))
+            ind1 = ind1 + 1
+            ind2 = ind2 + 1
+        Loop
+        Dim Atemp1() As String = (STemp.ToString().Split(" "))
+        temp2 = Atemp1(Atemp1.GetUpperBound(0))
 
 
         'temp1 = TRA20.Substring(TRA20.IndexOf("The total of EY_BegBal is:") + 28, TRA20.IndexOf("The total of EY_EndBal is:") - TRA20.IndexOf("The total of EY_BegBal is:") - 28)
@@ -724,70 +754,918 @@ Public Class Form1
         otable4.Cell(1, 1).Range.Paragraphs(6).Range.Italic = False
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        'CALCULATE UNBALANCED JE NUMBERS
+
+        'temp1 = TRC.Substring(TRC.IndexOf("met the test: EY_Amount<>0"))
+        'END_INDEX1 = TRC.IndexOf("met the test: EY_Amount<>0")
+        'START_INDEX1 = 0
+        'For a = END_INDEX1 To 1 Step -1
+        '    start3 = TRC.Substring(a, 2)
+        '    If start3 = "of" Then
+        '        START_INDEX1 = a
+        '        Exit For
+        '    End If
+        'Next a
+        'LEN1 = END_INDEX1 - START_INDEX1
+        'temp1 = TRC.Substring(START_INDEX1 + 3, LEN1 - 3)
+        'unique_jenum = temp1
+        'END_INDEX1 = START_INDEX1 - 1
+        'START_INDEX1 = 0
+        'For a = END_INDEX1 - 1 To 1 Step -1
+        '    start3 = TRC.Substring(a, 1)
+        '    If start3 = " " Then
+        '        START_INDEX1 = a
+        '        Exit For
+        '    End If
+        'Next a
+        'LEN1 = END_INDEX1 - START_INDEX1
+
+        'bal_JE = TRC.Substring(START_INDEX1, LEN1)
+
+        'non_bal = Val(temp1) - Val(temp2)
+
+        'If bal_JE <> 0 Then unique_je_stmnt = "     •  " & String.Format("{0:0,0}", bal_JE) & " of " & String.Format("{0:0,0}", FormatNumber(CDbl(unique_jenum), 0)) & " unique JE's net to $0.00. However " & String.Format("{0:0,0}", FormatNumber(CDbl(non_bal), 0)) & " JE numbers that did not sum to zero have insignificant amount." Else Unique_je_stmnt = Chr(9) & "•   " & "All of " & String.Format("{0:0,0}", FormatNumber(CDbl(unique_jenum), 0)) & " unique journal entries summed to $0.00."
+
+        'temp1 = TRA20.Substring(TRA20.IndexOf("The total of EY_BegBal is:") + 28, TRA20.IndexOf("The total of EY_EndBal is:") - TRA20.IndexOf("The total of EY_BegBal is:") - 28)
+        'temp2 = TRA20.Substring(TRA20.IndexOf("The total of EY_EndBal is:") + 28, TRA20.IndexOf("@ TOTAL FIELDS COUNT") - TRA20.IndexOf("The total of EY_EndBal is:") - 28)
+
+
+        otable4.Cell(1, 1).Range.InsertParagraphAfter()
+        'otable4.Cell(1, 1).Range.Paragraphs(6).Range.Text = "     •  " & "The beginning and ending trial balances summed to $" & String.Format("{0:0,0}", FormatNumber(CDbl(temp1), 2)) & " and $" & String.Format("{0:0,0}", FormatNumber(CDbl(temp2), 2)) & " respectively. " & "Non-zero balances were due to rounding of transactions to two decimal places."
+        otable4.Cell(1, 1).Range.Paragraphs(6).Format.SpaceAfter = 0
+        otable4.Cell(1, 1).Range.Paragraphs(6).Range.Font.Name = "Times New Roman"
+        otable4.Cell(1, 1).Range.Paragraphs(6).Range.Font.Size = 11
+        otable4.Cell(1, 1).Range.Paragraphs(6).Range.Bold = False
+        otable4.Cell(1, 1).Range.Paragraphs(6).Range.Underline = False
+        otable4.Cell(1, 1).Range.Paragraphs(6).Range.Italic = False
+
+        otable4.Cell(1, 1).Range.InsertParagraphAfter()
+        otable4.Cell(1, 1).Range.Paragraphs(7).Range.Text = "     •  " & "XXXX of XXXX unique journal entries summed to $0.00 and XX unique journal entries did not sum to $0.00. X of these XX unbalanced accounts have immaterial amounts.Refer to the attached spreadsheet """ & myclientname & " " & START_POA & " thru " & end_poa & "Unbalanced Journal Entries.xlsx"" for details of the unbalanced journal entries." & vbNewLine
+        otable4.Cell(1, 1).Range.Paragraphs(7).Format.SpaceAfter = 0
+        otable4.Cell(1, 1).Range.Paragraphs(7).Range.Font.Name = "Times New Roman"
+        otable4.Cell(1, 1).Range.Paragraphs(7).Range.Font.Size = 11
+        otable4.Cell(1, 1).Range.Paragraphs(7).Range.Bold = False
+        otable4.Cell(1, 1).Range.Paragraphs(7).Range.Underline = False
+        otable4.Cell(1, 1).Range.Paragraphs(7).Range.Italic = False
+        otable4.Cell(1, 1).Range.Paragraphs(8).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
+
+
+        otable4.Cell(1, 1).Range.InsertParagraphAfter()
+        otable4.Cell(1, 1).Range.Paragraphs(8).Range.Text = "INSERT UNBALANCED SPREADSHEET"
+        otable4.Cell(1, 1).Range.Paragraphs(8).Format.SpaceAfter = 0
+        otable4.Cell(1, 1).Range.Paragraphs(8).Range.Font.Name = "Times New Roman"
+        otable4.Cell(1, 1).Range.Paragraphs(8).Range.Font.Size = 11
+        otable4.Cell(1, 1).Range.Paragraphs(8).Range.Bold = True
+        otable4.Cell(1, 1).Range.Paragraphs(8).Range.Underline = False
+        otable4.Cell(1, 1).Range.Paragraphs(8).Range.Italic = False
+        otable4.Cell(1, 1).Range.Paragraphs(8).Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter
+
+        otable4.Cell(1, 1).Range.InsertParagraphAfter()
+        otable4.Cell(1, 1).Range.Paragraphs(9).Range.Text = "     •	 There are XX of XXXXX line items with zero amounts" & vbNewLine & "     •	 There are XX line items with a blank Preparer ID"
+        otable4.Cell(1, 1).Range.Paragraphs(9).Format.SpaceAfter = 0
+        otable4.Cell(1, 1).Range.Paragraphs(9).Range.Font.Name = "Times New Roman"
+        otable4.Cell(1, 1).Range.Paragraphs(9).Range.Font.Size = 11
+        otable4.Cell(1, 1).Range.Paragraphs(9).Range.Bold = False
+        otable4.Cell(1, 1).Range.Paragraphs(9).Range.Underline = False
+        otable4.Cell(1, 1).Range.Paragraphs(9).Range.Italic = False
+        otable4.Cell(1, 1).Range.Paragraphs(9).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
+
+        'otable4.Cell(1, 1).Range.InsertParagraphAfter()
+        'otable4.Cell(1, 1).Range.Paragraphs(9).Range.Text = "     •	 There are XX line items with a blank Preparer ID"
+        'otable4.Cell(1, 1).Range.Paragraphs(9).Format.SpaceAfter = 0
+        'otable4.Cell(1, 1).Range.Paragraphs(9).Range.Font.Name = "Times New Roman"
+        'otable4.Cell(1, 1).Range.Paragraphs(9).Range.Font.Size = 11
+        'otable4.Cell(1, 1).Range.Paragraphs(9).Range.Bold = False
+        'otable4.Cell(1, 1).Range.Paragraphs(9).Range.Underline = False
+        'otable4.Cell(1, 1).Range.Paragraphs(9).Range.Italic = False
+
+
+        otable4.Cell(1, 1).Range.InsertParagraphAfter()
+        otable4.Cell(1, 1).Range.Paragraphs(10).Range.Text = "     •  There are XX line items with a blank JE Description"
+        otable4.Cell(1, 1).Range.Paragraphs(10).Format.SpaceAfter = 0
+        otable4.Cell(1, 1).Range.Paragraphs(10).Range.Font.Name = "Times New Roman"
+        otable4.Cell(1, 1).Range.Paragraphs(10).Range.Font.Size = 11
+        otable4.Cell(1, 1).Range.Paragraphs(10).Range.Bold = False
+        otable4.Cell(1, 1).Range.Paragraphs(10).Range.Underline = False
+        otable4.Cell(1, 1).Range.Paragraphs(10).Range.Italic = False
+        otable4.Cell(1, 1).Range.Paragraphs(10).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
+
+
+        otable4.Cell(1, 1).Range.InsertParagraphAfter()
+        otable4.Cell(1, 1).Range.Paragraphs(11).Range.Text = "     •  Entry Date is as early as MM/DD/YYYY and as late as MM/DD/YYYY."
+        otable4.Cell(1, 1).Range.Paragraphs(11).Format.SpaceAfter = 0
+        otable4.Cell(1, 1).Range.Paragraphs(11).Range.Font.Name = "Times New Roman"
+        otable4.Cell(1, 1).Range.Paragraphs(11).Range.Font.Size = 11
+        otable4.Cell(1, 1).Range.Paragraphs(11).Range.Bold = False
+        otable4.Cell(1, 1).Range.Paragraphs(11).Range.Underline = False
+        otable4.Cell(1, 1).Range.Paragraphs(11).Range.Italic = False
+        otable4.Cell(1, 1).Range.Paragraphs(11).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
+
+
+        otable4.Cell(1, 1).Range.InsertParagraphAfter()
+        otable4.Cell(1, 1).Range.Paragraphs(12).Range.Text = "     •  Effective Date is as early as " & Form6.eFrom.Value.ToString("M/d/yyyy") & "and as late as" & Form6.eFrom.Value.ToString("M/d/yyyy")
+        otable4.Cell(1, 1).Range.Paragraphs(12).Format.SpaceAfter = 0
+        otable4.Cell(1, 1).Range.Paragraphs(12).Range.Font.Name = "Times New Roman"
+        otable4.Cell(1, 1).Range.Paragraphs(12).Range.Font.Size = 11
+        otable4.Cell(1, 1).Range.Paragraphs(12).Range.Bold = False
+        otable4.Cell(1, 1).Range.Paragraphs(12).Range.Underline = False
+        otable4.Cell(1, 1).Range.Paragraphs(12).Range.Italic = False
+        otable4.Cell(1, 1).Range.Paragraphs(12).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
+
+
+        otable4.Cell(1, 1).Range.InsertParagraphAfter()
+        otable4.Cell(1, 1).Range.Paragraphs(13).Range.Text = "     •  Field_1 and Field_2 were not provided in the data"
+        otable4.Cell(1, 1).Range.Paragraphs(13).Format.SpaceAfter = 0
+        otable4.Cell(1, 1).Range.Paragraphs(13).Range.Font.Name = "Times New Roman"
+        otable4.Cell(1, 1).Range.Paragraphs(13).Range.Font.Size = 11
+        otable4.Cell(1, 1).Range.Paragraphs(13).Range.Bold = False
+        otable4.Cell(1, 1).Range.Paragraphs(13).Range.Underline = False
+        otable4.Cell(1, 1).Range.Paragraphs(13).Range.Italic = False
+        otable4.Cell(1, 1).Range.Paragraphs(13).Range.Font.ColorIndex = Word.WdColorIndex.wdRed
+        otable4.Cell(1, 1).Range.Paragraphs(13).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
+
+
+        
+        Dim ui_input1 = 1
+
+        If (ui_input1 = 1) Then
+            otable4.Cell(1, 1).Range.InsertParagraphAfter()
+            otable4.Cell(1, 1).Range.Paragraphs(14).Range.Text = "     •	 We reset opening balances of Income Statement accounts to $0.00 and transferred Net Income to the Retained Earnings account ""XXXXXX"". (In case of usage of Reset-Retained) "
+            otable4.Cell(1, 1).Range.Paragraphs(14).Format.SpaceAfter = 0
+            otable4.Cell(1, 1).Range.Paragraphs(14).Range.Font.Name = "Times New Roman"
+            otable4.Cell(1, 1).Range.Paragraphs(14).Range.Font.Size = 11
+            otable4.Cell(1, 1).Range.Paragraphs(14).Range.Bold = False
+            otable4.Cell(1, 1).Range.Paragraphs(14).Range.Underline = False
+            otable4.Cell(1, 1).Range.Paragraphs(14).Range.Italic = False
+            otable4.Cell(1, 1).Range.Paragraphs(14).Range.Font.ColorIndex = Word.WdColorIndex.wdBlack
+            otable4.Cell(1, 1).Range.Paragraphs(14).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
+
+        Else
+            otable4.Cell(1, 1).Range.InsertParagraphAfter()
+            otable4.Cell(1, 1).Range.Paragraphs(14).Range.Text = " "
+            otable4.Cell(1, 1).Range.Paragraphs(14).Format.SpaceAfter = 0
+            otable4.Cell(1, 1).Range.Paragraphs(14).Range.Font.Name = "Times New Roman"
+            otable4.Cell(1, 1).Range.Paragraphs(14).Range.Font.Size = 11
+            otable4.Cell(1, 1).Range.Paragraphs(14).Range.Bold = False
+            otable4.Cell(1, 1).Range.Paragraphs(14).Range.Underline = False
+            otable4.Cell(1, 1).Range.Paragraphs(14).Range.Italic = False
+            otable4.Cell(1, 1).Range.Paragraphs(14).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
+
+        End If
+
+
+
+        Dim ui_input2 As Boolean = True
+        Dim otable11 As Word.Table
+
+        If (ui_input2) Then
+            otable4.Cell(1, 1).Range.InsertParagraphAfter()
+            otable4.Cell(1, 1).Range.Paragraphs(15).Range.Text = "     •  We reconciled record counts and control totals provided by client for the Journal Entry data as follows:"
+            otable4.Cell(1, 1).Range.Paragraphs(15).Format.SpaceAfter = 0
+            otable4.Cell(1, 1).Range.Paragraphs(15).Range.Font.Name = "Times New Roman"
+            otable4.Cell(1, 1).Range.Paragraphs(15).Range.Font.Size = 11
+            otable4.Cell(1, 1).Range.Paragraphs(15).Range.Bold = False
+            otable4.Cell(1, 1).Range.Paragraphs(15).Range.Underline = False
+            otable4.Cell(1, 1).Range.Paragraphs(15).Range.Italic = False
+            otable4.Cell(1, 1).Range.Paragraphs(15).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
+
+
+            otable4.Cell(1, 1).Range.InsertParagraphAfter()
+
+
+            Dim newdoc1 As New Word.Document
+            newdoc1 = oWord.Documents.Add
+            otable11 = newdoc1.Tables.Add(newdoc1.Bookmarks.Item("\endofdoc").Range, 8, 3)
+            otable11.Cell(1, 1).Merge(otable11.Cell(1, 3))
+
+            otable11.Borders.Enable = True
+            otable11.AutoFitBehavior(Word.WdAutoFitBehavior.wdAutoFitContent)
+            otable11.Rows.Alignment = Word.WdRowAlignment.wdAlignRowCenter
+
+
+            otable11.Cell(1, 1).Range.Text = "Journal Entry Data Record Counts and Control Totals "
+            otable11.Cell(1, 1).Range.Font.Name = "Times New Roman"
+            otable11.Cell(1, 1).Range.Font.Size = 10
+            otable11.Cell(1, 1).Range.Bold = True
+            otable11.Cell(1, 1).Range.Underline = False
+            otable11.Cell(1, 1).Shading.BackgroundPatternColor = RGB(192, 192, 192)
+
+
+
+            otable11.Cell(2, 1).Range.Text = "File Name"
+            otable11.Cell(2, 1).Range.Font.Name = "Times New Roman"
+            otable11.Cell(2, 1).Range.Font.Size = 10
+            otable11.Cell(2, 1).Range.Bold = True
+            otable11.Cell(2, 1).Range.Underline = False
+
+            otable11.Cell(2, 2).Range.Text = "Record Count"
+            otable11.Cell(2, 2).Range.Font.Name = "Times New Roman"
+            otable11.Cell(2, 2).Range.Font.Size = 10
+            otable11.Cell(2, 2).Range.Bold = True
+            otable11.Cell(2, 2).Range.Underline = False
+            'otable11.Cell(2, 2).Shading.BackgroundPatternColor = RGB(192, 192, 192)
+
+            otable11.Cell(2, 3).Range.Text = "Total Amount"
+            otable11.Cell(2, 3).Range.Font.Name = "Times New Roman"
+            otable11.Cell(2, 3).Range.Font.Size = 10
+            otable11.Cell(2, 3).Range.Bold = True
+            otable11.Cell(2, 3).Range.Underline = False
+            'otable11.Cell(2, 3).Shading.BackgroundPatternColor = RGB(192, 192, 192)
+
+
+            otable11.Cell(3, 1).Range.Text = "Source_File_1"
+            otable11.Cell(3, 1).Range.Font.Name = "Times New Roman"
+            otable11.Cell(3, 1).Range.Font.Size = 10
+            otable11.Cell(3, 1).Range.Bold = False
+            otable11.Cell(3, 1).Range.Underline = False
+
+            otable11.Cell(3, 2).Range.Text = "XXXX"
+            otable11.Cell(3, 2).Range.Font.Name = "Times New Roman"
+            otable11.Cell(3, 2).Range.Font.Size = 10
+            otable11.Cell(3, 2).Range.Bold = False
+            otable11.Cell(3, 2).Range.Underline = False
+
+            otable11.Cell(3, 3).Range.Text = "$0.00"
+            otable11.Cell(3, 3).Range.Font.Name = "Times New Roman"
+            otable11.Cell(3, 3).Range.Font.Size = 10
+            otable11.Cell(3, 3).Range.Bold = False
+            otable11.Cell(3, 3).Range.Underline = False
+
+
+            otable11.Cell(4, 1).Range.Text = "Source_File_2"
+            otable11.Cell(4, 1).Range.Font.Name = "Times New Roman"
+            otable11.Cell(4, 1).Range.Font.Size = 10
+            otable11.Cell(4, 1).Range.Bold = False
+            otable11.Cell(4, 1).Range.Underline = False
+
+            otable11.Cell(4, 2).Range.Text = "XXXX"
+            otable11.Cell(4, 2).Range.Font.Name = "Times New Roman"
+            otable11.Cell(4, 2).Range.Font.Size = 10
+            otable11.Cell(4, 2).Range.Bold = False
+            otable11.Cell(4, 2).Range.Underline = False
+
+            otable11.Cell(4, 3).Range.Text = "$0.00"
+            otable11.Cell(4, 3).Range.Font.Name = "Times New Roman"
+            otable11.Cell(4, 3).Range.Font.Size = 10
+            otable11.Cell(4, 3).Range.Bold = False
+            otable11.Cell(4, 3).Range.Underline = False
+
+            otable11.Cell(5, 1).Range.Text = "Source_File_1"
+            otable11.Cell(5, 1).Range.Font.Name = "Times New Roman"
+            otable11.Cell(5, 1).Range.Font.Size = 10
+            otable11.Cell(5, 1).Range.Bold = False
+            otable11.Cell(5, 1).Range.Underline = False
+
+            otable11.Cell(5, 2).Range.Text = "XXXX"
+            otable11.Cell(5, 2).Range.Font.Name = "Times New Roman"
+            otable11.Cell(5, 2).Range.Font.Size = 10
+            otable11.Cell(5, 2).Range.Bold = False
+            otable11.Cell(5, 2).Range.Underline = False
+
+            otable11.Cell(5, 3).Range.Text = "$0.00"
+            otable11.Cell(5, 3).Range.Font.Name = "Times New Roman"
+            otable11.Cell(5, 3).Range.Font.Size = 10
+            otable11.Cell(5, 3).Range.Bold = False
+            otable11.Cell(5, 3).Range.Underline = False
+
+            otable11.Cell(6, 1).Range.Text = "Source_File_1"
+            otable11.Cell(6, 1).Range.Font.Name = "Times New Roman"
+            otable11.Cell(6, 1).Range.Font.Size = 10
+            otable11.Cell(6, 1).Range.Bold = False
+            otable11.Cell(6, 1).Range.Underline = False
+
+            otable11.Cell(6, 2).Range.Text = "XXXX"
+            otable11.Cell(6, 2).Range.Font.Name = "Times New Roman"
+            otable11.Cell(6, 2).Range.Font.Size = 10
+            otable11.Cell(6, 2).Range.Bold = False
+            otable11.Cell(6, 2).Range.Underline = False
+
+            otable11.Cell(6, 3).Range.Text = "$0.00"
+            otable11.Cell(6, 3).Range.Font.Name = "Times New Roman"
+            otable11.Cell(6, 3).Range.Font.Size = 10
+            otable11.Cell(6, 3).Range.Bold = False
+            otable11.Cell(6, 3).Range.Underline = False
+
+            otable11.Cell(7, 1).Range.Text = "Source_File_1"
+            otable11.Cell(7, 1).Range.Font.Name = "Times New Roman"
+            otable11.Cell(7, 1).Range.Font.Size = 10
+            otable11.Cell(7, 1).Range.Bold = False
+            otable11.Cell(7, 1).Range.Underline = False
+
+            otable11.Cell(7, 2).Range.Text = "XXXX"
+            otable11.Cell(7, 2).Range.Font.Name = "Times New Roman"
+            otable11.Cell(7, 2).Range.Font.Size = 10
+            otable11.Cell(7, 2).Range.Bold = False
+            otable11.Cell(7, 2).Range.Underline = False
+
+            otable11.Cell(7, 3).Range.Text = "$0.00"
+            otable11.Cell(7, 3).Range.Font.Name = "Times New Roman"
+            otable11.Cell(7, 3).Range.Font.Size = 10
+            otable11.Cell(7, 3).Range.Bold = False
+            otable11.Cell(7, 3).Range.Underline = False
+
+            otable11.Cell(8, 1).Range.Text = "Totals"
+            otable11.Cell(8, 1).Range.Font.Name = "Times New Roman"
+            otable11.Cell(8, 1).Range.Font.Size = 10
+            otable11.Cell(8, 1).Range.Bold = False
+            otable11.Cell(8, 1).Range.Underline = False
+
+            otable11.Cell(8, 2).Range.Text = ""
+            otable11.Cell(8, 2).Range.Font.Name = "Times New Roman"
+            otable11.Cell(8, 2).Range.Font.Size = 10
+            otable11.Cell(8, 2).Range.Bold = False
+            otable11.Cell(8, 2).Range.Underline = False
+
+
+            newdoc1.ActiveWindow.Selection.WholeStory()
+            newdoc1.ActiveWindow.Selection.Copy()
+            otable4.Cell(2, 1).Range.PasteAndFormat(Word.WdRecoveryType.wdFormatOriginalFormatting)
+            otable4.Cell(2, 1).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter
+            newdoc1.SaveAs2("c:\temp\test1.doc")
+
+        Else
+            otable4.Cell(2, 1).Range.InsertParagraphAfter()
+            otable4.Cell(2, 1).Range.Paragraphs(1).Range.Text = "     •	 We used" & Form6.eFrom.Value.ToString("M/d/yyyy") & "Through" & Form6.eTo.Value.ToString("M/d/yyyy") & "to designate current period journal entries in the EY Global Analytics Tool"
+            otable4.Cell(2, 1).Range.Paragraphs(1).Format.SpaceAfter = 0
+            otable4.Cell(2, 1).Range.Paragraphs(1).Range.Font.Name = "Times New Roman"
+            otable4.Cell(2, 1).Range.Paragraphs(1).Range.Font.Size = 11
+            otable4.Cell(2, 1).Range.Paragraphs(1).Range.Bold = False
+            otable4.Cell(2, 1).Range.Paragraphs(1).Range.Underline = False
+            otable4.Cell(2, 1).Range.Paragraphs(1).Range.Italic = False
+
+        End If
+
+        Dim ui_input3 As Boolean = True
+
+
+        If True Then
+            otable4.Cell(3, 1).Range.InsertParagraphAfter()
+            otable4.Cell(3, 1).Range.Paragraphs(1).Range.Text = "     •	 We identified unmatched accounts as ""Unmatched"" and mapped to their respective Account Type e.g. ""Unmatched Assets"" for the unmatched Assets accounts. (If Unmatched Accounts are present"
+            otable4.Cell(3, 1).Range.Paragraphs(1).Format.SpaceAfter = 0
+            otable4.Cell(3, 1).Range.Paragraphs(1).Range.Font.Name = "Times New Roman"
+            otable4.Cell(3, 1).Range.Paragraphs(1).Range.Font.Size = 11
+            otable4.Cell(3, 1).Range.Paragraphs(1).Range.Bold = False
+            otable4.Cell(3, 1).Range.Paragraphs(1).Range.Underline = False
+            otable4.Cell(3, 1).Range.Paragraphs(1).Range.Italic = False
+        Else
+            otable4.Cell(3, 1).Range.InsertParagraphAfter()
+            otable4.Cell(3, 1).Range.Paragraphs(1).Range.Text = " "
+            otable4.Cell(3, 1).Range.Paragraphs(1).Format.SpaceAfter = 0
+            otable4.Cell(3, 1).Range.Paragraphs(1).Range.Font.Name = "Times New Roman"
+            otable4.Cell(3, 1).Range.Paragraphs(1).Range.Font.Size = 11
+            otable4.Cell(3, 1).Range.Paragraphs(1).Range.Bold = False
+            otable4.Cell(3, 1).Range.Paragraphs(1).Range.Underline = False
+            otable4.Cell(3, 1).Range.Paragraphs(1).Range.Italic = False
+        End If
+
+        'CALCULATE UNMATCHED
+
+        temp1 = TRC.Substring(TRC.IndexOf("UNMATCHED_ROLL_TRANS"))
+        temp2 = temp1.substring(temp1.indexof(Chr(10)) + 1, temp1.indexof(" records produced") - temp1.indexof(Chr(10)) - 1)
+        START_INDEX = 0
+        For a = Len(temp2) - 1 To 1 Step -1
+            str3 = temp2.substring(a, 1)
+            If str3 = " " Then
+                START_INDEX = a
+                Exit For
+            End If
+        Next a
+        LEN1 = Len(temp2) - START_INDEX
+        temp = temp2.substring(START_INDEX, LEN1)
+
+        Dim xlsapp As Excel.Application
+        Dim xlswkbk As Excel.Workbook
+        xlsapp = New Excel.Application
+        xlsapp.Visible = False
+        excel_name = Form5.TextBox5.Text.Substring(0, Len(Form5.TextBox5.Text) - 4) & ".xlsx"
+        xlswkbk = xlsapp.Workbooks.Open(excel_name)
+
+        'lastrow = xlswkbk.Worksheets("Unmatched Transactions").UsedRange.Rows.Count
+        lastrow = xlswkbk.Worksheets("Unmatched Transactions").range("B1048576").END(Excel.XlDirection.xlUp).ROW
+        Unmatched_count = lastrow - 11
+
+        'CHECK IF ROLLFORWARD SHEET CONTAINS CORRECT UNMATCHED UPDATED SHEET
+
+        If Unmatched_count <> temp Then
+            MessageBox.Show("The Rollforward sheet attached does not contain correct UNMATCHED sheet", "Warning!!")
+        End If
+
+        unmatch_amt = xlswkbk.Worksheets("Unmatched Transactions").range("c" & lastrow).value
+
+        lastrow = xlswkbk.Worksheets("TB Rollforward").range("B1048576").END(Excel.XlDirection.xlUp).ROW
+
+        'Calculating unused GL accounts from Rollforward sheet
+
+        Counter = 0
+        For a = lastrow To 9 Step -1
+            If xlswkbk.Worksheets("TB Rollforward").range("C" & a).VALUE = "Only in TB" Then
+                If xlswkbk.Worksheets("TB Rollforward").range("F" & a).VALUE = 0 Then
+                    If xlswkbk.Worksheets("TB Rollforward").range("H" & a).VALUE = 0 Then
+                        Counter = Counter + 1
+                    End If
+                End If
+            End If
+        Next a
+
+        unused_act = Counter
+
+        xlsapp.Quit()
+
+
+        otable4.Cell(3, 1).Range.InsertParagraphAfter()
+        otable4.Cell(3, 1).Range.Paragraphs(2).Range.Text = "     •	 There are " & String.Format("{0:0,0}", FormatNumber(CDbl(temp), 0)) & " GL Accounts in the TB data without balances or JE activity. These accounts were excluded from further processing by the EY Global Analytics Tool."
+        otable4.Cell(3, 1).Range.Paragraphs(2).Format.SpaceAfter = 0
+        otable4.Cell(3, 1).Range.Paragraphs(2).Range.Font.Name = "Times New Roman"
+        otable4.Cell(3, 1).Range.Paragraphs(2).Range.Font.Size = 11
+        otable4.Cell(3, 1).Range.Paragraphs(2).Range.Bold = False
+        otable4.Cell(3, 1).Range.Paragraphs(2).Range.Underline = False
+        otable4.Cell(3, 1).Range.Paragraphs(2).Range.Italic = False
+        
+
+        'Conclusion
+        oPara5 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
+        oPara5.Range.Text = "Conclusion"
+        oPara5.Range.Font.Bold = False
+        oPara5.Format.SpaceAfter = 0
+        oPara5.Range.Font.Name = "Times New Roman"
+        oPara5.Range.Font.Bold = True
+        oPara5.Range.Font.Underline = True
+        oPara5.Range.Font.Italic = False
+        oPara5.Range.Font.Size = 11
+        oPara5.Range.InsertParagraphAfter()
+
+        Dim otable5 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 1, 1)
+        otable5.Borders.Enable = True
+        otable5.Borders.OutsideLineWidth = Word.WdLineWidth.wdLineWidth150pt
+
+        rng = oDoc.Bookmarks.Item("\endofdoc").Range
+        otable5 = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 3, 1)
+        otable5.Borders.Enable = True
+        otable5.Borders.OutsideLineWidth = Word.WdLineWidth.wdLineWidth150pt
+        otable5.Borders.InsideColor = RGB(255, 255, 255)
+        otable5.Columns.Width = oWord.CentimetersToPoints(17.8)
+
+        Dim ui_rollback = 0
+        If (ui_rollback <> 0) Then
+            otable5.Cell(1, 1).Range.InsertParagraphAfter()
+            otable5.Cell(1, 1).Range.Paragraphs(1).Range.Text = " "
+            otable5.Cell(1, 1).Range.Paragraphs(1).Format.SpaceAfter = 0
+            otable5.Cell(1, 1).Range.Paragraphs(1).Range.Font.Name = "Times New Roman"
+            otable5.Cell(1, 1).Range.Paragraphs(1).Range.Font.Size = 11
+            otable5.Cell(1, 1).Range.Paragraphs(1).Range.Bold = False
+            otable5.Cell(1, 1).Range.Paragraphs(1).Range.Underline = False
+            otable5.Cell(1, 1).Range.Paragraphs(1).Range.Italic = False
+
+            otable5.Cell(1, 1).Range.InsertParagraphAfter()
+            otable5.Cell(1, 1).Range.Paragraphs(2).Range.Text = "Per the procedures performed, we conclude that the journal entry data is valid and can be relied upon by the Financial Audit team, but we were unable to test 100% completeness of the data as XXXX account balances did not roll forward successfully, out of which XX accounts have significant roll forward differences. We recommend that the Financial Audit team independently review the reasonableness of any noted items in the Data Completeness, Validation and Observation sections and conclude on their reliance strategy for the journal entry data."
+            otable5.Cell(1, 1).Range.Paragraphs(2).Format.SpaceAfter = 0
+            otable5.Cell(1, 1).Range.Paragraphs(2).Range.Font.Name = "Times New Roman"
+            otable5.Cell(1, 1).Range.Paragraphs(2).Range.Font.Size = 11
+            otable5.Cell(1, 1).Range.Paragraphs(2).Range.Bold = False
+            otable5.Cell(1, 1).Range.Paragraphs(2).Range.Underline = False
+            otable5.Cell(1, 1).Range.Paragraphs(2).Range.Italic = False
+        Else
+
+            otable5.Cell(1, 1).Range.InsertParagraphAfter()
+            otable5.Cell(1, 1).Range.Paragraphs(1).Range.Text = " "
+            otable5.Cell(1, 1).Range.Paragraphs(1).Format.SpaceAfter = 0
+            otable5.Cell(1, 1).Range.Paragraphs(1).Range.Font.Name = "Times New Roman"
+            otable5.Cell(1, 1).Range.Paragraphs(1).Range.Font.Size = 11
+            otable5.Cell(1, 1).Range.Paragraphs(1).Range.Bold = False
+            otable5.Cell(1, 1).Range.Paragraphs(1).Range.Underline = False
+            otable5.Cell(1, 1).Range.Paragraphs(1).Range.Italic = False
+
+            otable5.Cell(1, 1).Range.InsertParagraphAfter()
+            otable5.Cell(1, 1).Range.Paragraphs(2).Range.Text = "As per the procedures performed, we conclude that the journal entry data is valid and can be relied upon by the financial audit team. We were able to test 100% completeness of the data as all account balances rolled forward successfully. We recommend that the financial audit team independently review the reasonableness of any noted items in the Data Completeness, Validation and Observation sections and conclude on their reliance strategy for the journal entry data"
+            otable5.Cell(1, 1).Range.Paragraphs(2).Format.SpaceAfter = 0
+            otable5.Cell(1, 1).Range.Paragraphs(2).Range.Font.Name = "Times New Roman"
+            otable5.Cell(1, 1).Range.Paragraphs(2).Range.Font.Size = 11
+            otable5.Cell(1, 1).Range.Paragraphs(2).Range.Bold = False
+            otable5.Cell(1, 1).Range.Paragraphs(2).Range.Underline = False
+            otable5.Cell(1, 1).Range.Paragraphs(2).Range.Italic = False
+        End If
+
+        'Data Audit Trail
+        oPara6 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
+        oPara6.Range.Text = "Data Audit Trail"
+        oPara6.Range.Font.Bold = False
+        oPara6.Format.SpaceAfter = 0
+        oPara6.Range.Font.Name = "Times New Roman"
+        oPara6.Range.Font.Bold = True
+        oPara6.Range.Font.Underline = False
+        oPara6.Range.Font.Italic = False
+        oPara6.Range.Font.Size = 11
+        oPara6.Range.InsertParagraphAfter()
+
+        Dim otable6 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 1, 1)
+        otable6.Borders.Enable = True
+        otable6.Borders.OutsideLineWidth = Word.WdLineWidth.wdLineWidth150pt
+
+        rng = oDoc.Bookmarks.Item("\endofdoc").Range
+        otable6 = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 1, 1)
+        otable6.Borders.Enable = True
+        otable6.Borders.OutsideLineWidth = Word.WdLineWidth.wdLineWidth150pt
+        otable6.Borders.InsideColor = RGB(255, 255, 255)
+        otable6.Columns.Width = oWord.CentimetersToPoints(17.8)
+
+        otable6.Cell(1, 1).Range.InsertParagraphAfter()
+        otable6.Cell(1, 1).Range.Paragraphs(1).Range.Text = "The following sections relate to all client data manipulation performed throughout the JE CAAT by the Enterprise Intelligence and Data Analytics team. The items below serve as the audit trail of our procedures and are to be referenced in future runs to leverage the efficiencies gained through recurring execution."
+        otable6.Cell(1, 1).Range.Paragraphs(1).Format.SpaceAfter = 0
+        otable6.Cell(1, 1).Range.Paragraphs(1).Range.Font.Name = "Times New Roman"
+        otable6.Cell(1, 1).Range.Paragraphs(1).Range.Font.Size = 11
+        otable6.Cell(1, 1).Range.Paragraphs(1).Range.Bold = False
+        otable6.Cell(1, 1).Range.Paragraphs(1).Range.Underline = False
+        otable6.Cell(1, 1).Range.Paragraphs(1).Range.Italic = False
+
+        'Insert another paragraph.
+        oPara7 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
+        oPara7.Range.Text = "Method of Analysis: "
+        oPara7.Range.Font.Bold = False
+        oPara7.Format.SpaceAfter = 0
+        oPara7.Range.Font.Name = "Times New Roman"
+        oPara7.Range.Font.Bold = True
+        oPara7.Range.Font.Underline = True
+        oPara7.Range.Font.Italic = False
+        oPara7.Range.Font.Size = 10
+        oPara7.Range.InsertParagraphAfter()
+
+        Dim otable7 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 1, 8)
+        otable7.Borders.Enable = True
+        otable7.Columns.Item(1).Width = oWord.CentimetersToPoints(0.87)
+        otable7.Columns.Item(3).Width = oWord.CentimetersToPoints(0.87)
+        otable7.Columns.Item(5).Width = oWord.CentimetersToPoints(0.87)
+        otable7.Columns.Item(7).Width = oWord.CentimetersToPoints(0.87)
+        otable7.Columns.Item(2).Width = oWord.CentimetersToPoints(4.61)
+        otable7.Columns.Item(4).Width = oWord.CentimetersToPoints(3.05)
+        otable7.Columns.Item(6).Width = oWord.CentimetersToPoints(3.05)
+        otable7.Columns.Item(8).Width = oWord.CentimetersToPoints(3.58)
+        otable7.Rows.Height = oWord.CentimetersToPoints(0.4)
+
+        otable7.Cell(1, 1).Range.Text = If(Form6.gl.Checked, ChrW(9746), ChrW(9744))
+        otable7.Cell(1, 1).Range.Font.Name = "Times New Roman"
+        otable7.Cell(1, 1).Range.Font.Size = 12
+        otable7.Cell(1, 1).Range.Bold = False
+        otable7.Cell(1, 1).Range.Underline = False
+        otable7.Cell(1, 1).Range.Italic = False
+        otable7.Cell(1, 1).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphJustify
+
+        otable7.Cell(1, 3).Range.Text = If(Form6.CheckBox2.Checked, ChrW(9746), ChrW(9744))
+        otable7.Cell(1, 3).Range.Font.Name = "Times New Roman"
+        otable7.Cell(1, 3).Range.Font.Size = 12
+        otable7.Cell(1, 3).Range.Bold = False
+        otable7.Cell(1, 3).Range.Underline = False
+        otable7.Cell(1, 3).Range.Italic = False
+        otable7.Cell(1, 3).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphJustify
+
+        otable7.Cell(1, 5).Range.Text = If(Form6.CheckBox3.Checked, ChrW(9746), ChrW(9744))
+        otable7.Cell(1, 5).Range.Font.Name = "Times New Roman"
+        otable7.Cell(1, 5).Range.Font.Size = 12
+        otable7.Cell(1, 5).Range.Bold = False
+        otable7.Cell(1, 5).Range.Underline = False
+        otable7.Cell(1, 5).Range.Italic = False
+        otable7.Cell(1, 5).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphJustify
+
+        otable7.Cell(1, 7).Range.Text = If(Form6.CheckBox4.Checked, ChrW(9746), ChrW(9744))
+        otable7.Cell(1, 7).Range.Font.Name = "Times New Roman"
+        otable7.Cell(1, 7).Range.Font.Size = 12
+        otable7.Cell(1, 7).Range.Bold = False
+        otable7.Cell(1, 7).Range.Underline = False
+        otable7.Cell(1, 7).Range.Italic = False
+        otable7.Cell(1, 7).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphJustify
+
+        otable7.Cell(1, 2).Range.Text = "EY/Global Analytics Module"
+        otable7.Cell(1, 2).Range.Font.Name = "Times New Roman"
+        otable7.Cell(1, 2).Range.Font.Size = 10
+        otable7.Cell(1, 2).Range.Bold = False
+        otable7.Cell(1, 2).Range.Underline = False
+        otable7.Cell(1, 2).Range.Italic = False
+        otable7.Cell(1, 2).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphJustify
+
+        otable7.Cell(1, 4).Range.Text = "ACL"
+        otable7.Cell(1, 4).Range.Font.Name = "Times New Roman"
+        otable7.Cell(1, 4).Range.Font.Size = 10
+        otable7.Cell(1, 4).Range.Bold = False
+        otable7.Cell(1, 4).Range.Underline = False
+        otable7.Cell(1, 4).Range.Italic = False
+        otable7.Cell(1, 4).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphJustify
+
+        otable7.Cell(1, 6).Range.Text = "MS Access"
+        otable7.Cell(1, 6).Range.Font.Name = "Times New Roman"
+        otable7.Cell(1, 6).Range.Font.Size = 10
+        otable7.Cell(1, 6).Range.Bold = False
+        otable7.Cell(1, 6).Range.Underline = False
+        otable7.Cell(1, 6).Range.Italic = False
+        otable7.Cell(1, 6).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphJustify
+
+        otable7.Cell(1, 8).Range.Text = "Other:" & If(Form6.CheckBox4.Checked, Form6.other.Text, " ")
+        otable7.Cell(1, 8).Range.Font.Name = "Times New Roman"
+        otable7.Cell(1, 8).Range.Font.Size = 10
+        otable7.Cell(1, 8).Range.Bold = False
+        otable7.Cell(1, 8).Range.Underline = False
+        otable7.Cell(1, 8).Range.Italic = False
+        otable7.Cell(1, 8).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphJustify
+
+        otable7.Rows.Height = oWord.CentimetersToPoints(0.4)
+
+        oPara7 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
+        oPara7.Range.Text = "NOTE:  Agreed upon per discussion with Financial Audit team."
+        oPara7.Range.Font.Bold = False
+        oPara7.Format.SpaceAfter = 6
+        oPara7.Range.Font.Name = "Times New Roman"
+        oPara7.Range.Font.Bold = False
+        oPara7.Range.Font.Underline = False
+        oPara7.Range.Font.Size = 10
+        oPara7.Range.Font.Italic = True
+        oPara7.Range.InsertParagraphAfter()
+        oPara7.Range.Words(1).Font.Bold = True
+
+
+
+        'BreakPoint
+        Dim otable8 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, count_JE + count_TB, 5)
+        otable8.Borders.Enable = True
+        otable8.Columns.Item(1).Width = oWord.CentimetersToPoints(6.44)
+        otable8.Columns.Item(2).Width = oWord.CentimetersToPoints(2)
+        otable8.Columns.Item(3).Width = oWord.CentimetersToPoints(2.75)
+        otable8.Columns.Item(4).Width = oWord.CentimetersToPoints(3.25)
+        otable8.Columns.Item(5).Width = oWord.CentimetersToPoints(3.32)
+        otable8.Rows.Item(1).Height = oWord.CentimetersToPoints(0.49)
+
+        otable8.Cell(1, 1).Range.Text = "Data File Name"
+        otable8.Cell(1, 1).Range.Font.Name = "Times New Roman"
+        otable8.Cell(1, 1).Range.Font.Size = 10
+        otable8.Cell(1, 1).Range.Bold = True
+        otable8.Cell(1, 1).Range.Underline = False
+        otable8.Cell(1, 1).Range.Italic = True
+        otable8.Cell(1, 1).Shading.BackgroundPatternColor = RGB(224, 224, 224)
+
+        otable8.Cell(1, 2).Range.Text = "Record Count"
+        otable8.Cell(1, 2).Range.Font.Name = "Times New Roman"
+        otable8.Cell(1, 2).Range.Font.Size = 10
+        otable8.Cell(1, 2).Range.Bold = True
+        otable8.Cell(1, 2).Range.Underline = False
+        otable8.Cell(1, 2).Range.Italic = True
+        otable8.Cell(1, 2).Shading.BackgroundPatternColor = RGB(224, 224, 224)
+
+        otable8.Cell(1, 3).Range.Text = "Control Total"
+        otable8.Cell(1, 3).Range.Font.Name = "Times New Roman"
+        otable8.Cell(1, 3).Range.Font.Size = 10
+        otable8.Cell(1, 3).Range.Bold = True
+        otable8.Cell(1, 3).Range.Underline = False
+        otable8.Cell(1, 3).Range.Italic = True
+        otable8.Cell(1, 3).Shading.BackgroundPatternColor = RGB(224, 224, 224)
+
+        otable8.Cell(1, 4).Range.Text = "Description"
+        otable8.Cell(1, 4).Range.Font.Name = "Times New Roman"
+        otable8.Cell(1, 4).Range.Font.Size = 10
+        otable8.Cell(1, 4).Range.Bold = True
+        otable8.Cell(1, 4).Range.Underline = False
+        otable8.Cell(1, 4).Range.Italic = True
+        otable8.Cell(1, 4).Shading.BackgroundPatternColor = RGB(224, 224, 224)
+
+        otable8.Cell(1, 5).Range.Text = "ACL Table Name" & " (*.fil)"
+        otable8.Cell(1, 5).Range.Font.Name = "Times New Roman"
+        otable8.Cell(1, 5).Range.Font.Size = 10
+        otable8.Cell(1, 5).Range.Bold = True
+        otable8.Cell(1, 5).Range.Underline = False
+        otable8.Cell(1, 5).Range.Italic = True
+        otable8.Cell(1, 5).Shading.BackgroundPatternColor = RGB(224, 224, 224)
+        Dim C As Integer
+
+        'EXTRACTING JE DATA FROM A LOG
+
+        Dim i As Integer = TRA10.IndexOf("Opening file name ")
+        Dim i_JE1 As Integer = TRA10.IndexOf("ACTIVATE")
+        Do While (i_JE1 <> -1)
+
+            'GETTING THE RAW ACL TABLE NAMES
+
+            TRA_TEMP1 = TRA10.Substring(i + 18)
+            je_file_name = TRA_TEMP1.SUBSTRING(0, UCase(TRA_TEMP1).INDEXOF(".FIL"))
+
+            'GETTING THE RECORD COUNT OF ACL TABLE
+            start1 = UCase(TRA_TEMP1).INDEXOF(" TO ") + 4
+            end1 = UCase(TRA_TEMP1).INDEXOF(UCase(" records produced")) + 17
+
+            TRA_TEMP2 = TRA_TEMP1.SUBSTRING(start1, end1 - start1)
+            If Regex.Matches(TRA_TEMP2, "met the test: ").Count = 0 Then
+                ENDINDEX = UCase(TRA_TEMP1).INDEXOF(UCase(" records produced"))
+            Else
+                ENDINDEX = UCase(TRA_TEMP1).INDEXOF(UCase(" met the test: "))
+            End If
+
+
+
+            If ENDINDEX <> -1 Then
+                STARTINDEX = 0
+                b = ENDINDEX - 1
+                Do While start3 <> " "
+                    start3 = UCase(TRA_TEMP1).substring(b, 1)
+                    If start3 = " " Then
+                        STARTINDEX = b
+                        start3 = ""
+                        Exit Do
+                    End If
+                    b = b - 1
+                Loop
+                C = C + 1
+
+                Dim extraction_je_count As String = TRA_TEMP1.Substring(STARTINDEX, endIndex - STARTINDEX).Trim
+                Dim str1 As String = ""
+                str1 = String.Format("{0:0,0}", FormatNumber(CDbl(extraction_je_count), 0))
+
+                otable8.Cell(2 + C - 1, 2).Range.Text = str1
+                otable8.Cell(2 + C - 1 - 1, 2).Range.Font.Name = "Times New Roman"
+                otable8.Cell(2 + C - 1, 2).Range.Font.Size = 10
+                otable8.Cell(2 + C - 1, 2).Range.Bold = False
+                otable8.Cell(2 + C - 1, 2).Range.Underline = False
+                otable8.Cell(2 + C - 1, 2).Range.Italic = False
+
+                otable8.Cell(2 + C - 1, 5).Range.Text = je_file_name
+                otable8.Cell(2 + C - 1, 5).Range.Font.Name = "Times New Roman"
+                otable8.Cell(2 + C - 1, 5).Range.Font.Size = 10
+                otable8.Cell(2 + C - 1, 5).Range.Bold = False
+                otable8.Cell(2 + C - 1, 5).Range.Underline = False
+                otable8.Cell(2 + C - 1, 5).Range.Italic = False
+
+                temp1 = TRA10.Substring(TRA10.IndexOf("The total of EY_AMOUNT is:"))
+                START_INDEX1 = TRA10.IndexOf("The total of EY_AMOUNT is:")
+                '28:
+                END_INDEX1 = 0
+                Do While temp1(END_INDEX1) <> Chr(10)
+                    END_INDEX1 = END_INDEX1 + 1
+                Loop
+                END_INDEX1 = END_INDEX1 - 1
+                'b = START_INDEX1 + 1
+                'Do While start3 <> "@"
+                '    start3 = TRA10.Substring(b, 1)
+                '    If start3 = "@" Then
+                '        END_INDEX1 = b
+                '        start3 = ""
+                '        Exit Do
+                '    End If
+                '    b = b + 1
+                'Loop
+                'LEN1 = END_INDEX1 - START_INDEX1
+                temp = TRA10.Substring(START_INDEX1 + 27, END_INDEX1 - 26)
+
+                'MsgBox(temp)
+                je_amount = "Amount: $" & FormatNumber(CDbl(temp), 2)
+
+
+                otable8.Cell(2 + C - 1, 3).Range.Text = "Amount: $" & FormatNumber(CDbl(temp), 2)
+                otable8.Cell(2 + C - 1, 3).Range.Font.Name = "Times New Roman"
+                otable8.Cell(2 + C - 1, 3).Range.Font.Size = 10
+                otable8.Cell(2 + C - 1, 3).Range.Bold = False
+                otable8.Cell(2 + C - 1, 3).Range.Underline = False
+                otable8.Cell(2 + C - 1, 3).Range.Italic = False
+
+                otable8.Cell(2 + C - 1, 4).Range.Text = "JE Activity "
+                otable8.Cell(2 + C - 1, 4).Range.Font.Name = "Times New Roman"
+                otable8.Cell(2 + C - 1, 4).Range.Font.Size = 10
+                otable8.Cell(2 + C - 1, 4).Range.Bold = False
+                otable8.Cell(2 + C - 1, 4).Range.Underline = False
+                otable8.Cell(2 + C - 1, 4).Range.Italic = False
+
+                i = TRA10.IndexOf("Opening file name ", i + 1)
+                i_JE1 = TRA10.IndexOf("ACTIVATE", i_JE1 + 1)
+            Else
+                Exit Do
+            End If
+        Loop
+
+        'If count_JE > 1 Then
+        '    With otable8
+        '        .Cell(2, 2).Merge(.Cell(2 + count_JE - 1, 2))
+        '        .Cell(2, 3).Merge(.Cell(2 + count_JE - 1, 3))
+        '        .Cell(2, 3).Range.Text = je_amount
+        '        .Cell(2, 4).Merge(.Cell(2 + count_JE - 1, 4))
+        '        .Cell(2, 5).Merge(.Cell(2 + count_JE - 1, 5))
+        '        .Cell(2, 4).Range.Text = "JE Activity for " & myPOA
+        '    End With
+        'End If
+
+        'EXTRACTING TB DATA FROM B LOG
+        Dim i_TB As Integer = TRA20.IndexOf("Opening file name")
+        Dim i_TB1 As Integer = TRA20.IndexOf("ACTIVATE")
+        Dim D As Integer = 0
+
+        Do While (i_TB1 <> -1)
+
+
+            'GETTING THE RAW ACL TABLE NAMES
+
+            TRB_TEMP1 = TRA20.Substring(i_TB + 18)
+            TB_file_name = TRB_TEMP1.SUBSTRING(0, UCase(TRB_TEMP1).INDEXOF(".FIL"))
+
+            'GETTING THE RECORD COUNT OF ACL TABLE
+            start1 = UCase(TRB_TEMP1).INDEXOF(" TO ") + 4
+            end1 = UCase(TRB_TEMP1).INDEXOF(UCase(" records produced")) + 17
+
+            TRB_TEMP2 = TRB_TEMP1.SUBSTRING(start1, end1 - start1)
+            If Regex.Matches(TRB_TEMP2, "met the test: ").Count = 0 Then
+                ENDINDEX = UCase(TRB_TEMP1).INDEXOF(UCase(" records produced"))
+            Else
+                ENDINDEX = UCase(TRB_TEMP1).INDEXOF(UCase(" met the test: "))
+            End If
+
+            If ENDINDEX <> -1 Then
+                STARTINDEX = 0
+                b = ENDINDEX - 1
+                Do While start3 <> " "
+                    start3 = UCase(TRB_TEMP1).substring(b, 1)
+                    If start3 = " " Then
+                        STARTINDEX = b
+                        start3 = ""
+                        Exit Do
+                    End If
+                    b = b - 1
+                Loop
+                Try
+                    C = C + 1
+
+                    Dim extraction_tb_count As String = TRB_TEMP1.Substring(STARTINDEX, endIndex - STARTINDEX).Trim
+
+                    'Dim TB_file_name As String = TRB_TEMP.Substring(startIndex1, endIndex1 - startIndex1).Trim
+                    Dim str1 = String.Format("{0:0,0}", FormatNumber(CDbl(extraction_tb_count), 0))
+                    otable8.Cell(2 + C + D - 1, 2).Range.Text = str1
+                    otable8.Cell(2 + C + D - 1, 2).Range.Font.Name = "Times New Roman"
+                    otable8.Cell(2 + C + D - 1, 2).Range.Font.Size = 10
+                    otable8.Cell(2 + C + D - 1, 2).Range.Bold = False
+                    otable8.Cell(2 + C + D - 1, 2).Range.Underline = False
+                    otable8.Cell(2 + C + D - 1, 2).Range.Italic = False
+
+                    otable8.Cell(2 + C + D - 1, 5).Range.Text = TB_file_name
+                    otable8.Cell(2 + C + D - 1, 5).Range.Font.Name = "Times New Roman"
+                    otable8.Cell(2 + C + D - 1, 5).Range.Font.Size = 10
+                    otable8.Cell(2 + C + D - 1, 5).Range.Bold = False
+                    otable8.Cell(2 + C + D - 1, 5).Range.Underline = False
+                    otable8.Cell(2 + C + D - 1, 5).Range.Italic = False
+
+                    TRD_TEMP = TRA20.Substring(TRA20.IndexOf("@  TOTAL FIELDS EY_BEGBAL EY_ENDBAL"))
+                    If UCase(TB_file_name).Contains("BEG") Then
+                        temp1 = "Beginning Balance: $"
+                        temp2 = TRD_TEMP.Substring(TRD_TEMP.IndexOf("The total of EY_BEGBAL is:  ") + 28, TRD_TEMP.IndexOf("The total of EY_ENDBAL is:  ") - 28 - TRD_TEMP.IndexOf("The total of EY_BEGBAL is:  "))
+                        temp = temp1 & String.Format("{0:0,0}", FormatNumber(CDbl(temp2), 2))
+                        name1 = "Beginning trial balance as on " & Chr(10) & START_POA
+                    ElseIf UCase(TB_file_name).Contains("END") Then
+                        temp1 = "Ending Balance: $"
+                        temp2 = TRD_TEMP.Substring(TRD_TEMP.IndexOf("The total of EY_ENDBAL is:  ") + 28, 5)
+                        MsgBox("end bal" & temp2)
+                        temp = temp & temp1 & String.Format("{0:0,0}", FormatNumber(CDbl(temp2), 2))
+                        name1 = "Ending trial balance as on " & Chr(10) & end_poa
+                    Else
+                        temp1 = "Beginning Balance: $"
+                        temp2 = TRD_TEMP.Substring(TRD_TEMP.IndexOf("The total of EY_BEGBAL is: ") + 28, TRD_TEMP.IndexOf("The total of EY_ENDBAL is:  ") - 28 - TRD_TEMP.IndexOf("The total of EY_BEGBAL is:  "))
+                        temp_1 = temp1 & String.Format("{0:0,0}", FormatNumber(CDbl(temp2), 2))
+                        temp3 = "Ending Balance: $"
+                        temp4 = TRD_TEMP.Substring(TRD_TEMP.IndexOf("The total of EY_ENDBAL is:  ") + 28, 5)
+
+                        temp_2 = temp3 & String.Format("{0:0,0}", FormatNumber(CDbl(temp4), 2))
+                        MsgBox("else " & temp_2)
+                        temp = temp1 & vbCrLf & temp2
+                        MsgBox(temp)
+                        name1 = "Beginning trial balance as on " & Chr(10) & START_POA & " and " & Chr(10) & "Ending trial balance as on " & Chr(10) & end_poa
+                    End If
+                Catch ex As Exception
+                    If (TypeOf Err.GetException() Is ArgumentOutOfRangeException) Then
+                        temp1 = "Beginning Balance: $"
+                        temp2 = TRA20.Substring(TRA20.IndexOf("The total of EY_BEGBAL is:") + 28, TRA20.IndexOf("The total of EY_ENDBAL is:") - TRA20.IndexOf("The total of EY_BEGBAL is:") - 28)
+                        'temp2 = TRB_TEMP.Substring(TRB_TEMP.IndexOf("The total of EY_BegBal is:  ") + 28, TRB_TEMP.IndexOf("The total of EY_EndBal is:  ") - 28 - TRB_TEMP.IndexOf("The total of EY_BegBal is:  "))
+                        temp_1 = temp1 & String.Format("{0:0,0}", FormatNumber(CDbl(temp2), 2))
+                        temp3 = "Ending Balance: $"
+                        TEMP4 = TRA20.Substring(TRA20.IndexOf("The total of EY_ENDBAL is:") + 28, TRA20.IndexOf(">>> COMMAND <3> ") - TRA20.IndexOf("The total of EY_ENDBAL is:") - 28)
+                        MsgBox(TEMP4)
+                        'temp4 = TRB_TEMP.Substring(TRB_TEMP.IndexOf("The total of EY_EndBal is:  ") + 28, 5)
+                        temp_2 = temp3 & String.Format("{0:0,0}", FormatNumber(CDbl(TEMP4), 2))
+                        temp = Replace(temp_1, Chr(10), " ") & vbCrLf & Replace(temp_2, Chr(10), " ")
+                        name1 = "Beginning trial balance as on " & Chr(10) & START_POA & " and " & Chr(10) & "Ending trial balance as on " & Chr(10) & end_poa
+                    End If
+                End Try
+
+                tb_amount = temp
+
+
+                otable8.Cell(2 + C + D - 1, 3).Range.Text = temp
+                otable8.Cell(2 + C + D - 1, 3).Range.Font.Name = "Times New Roman"
+                otable8.Cell(2 + C + D - 1, 3).Range.Font.Size = 10
+                otable8.Cell(2 + C + D - 1, 3).Range.Bold = False
+                otable8.Cell(2 + C + D - 1, 3).Range.Underline = False
+                otable8.Cell(2 + C + D - 1, 3).Range.Italic = False
+
+                otable8.Cell(2 + C + D - 1, 4).Range.Text = name1
+                otable8.Cell(2 + C + D - 1, 4).Range.Font.Name = "Times New Roman"
+                otable8.Cell(2 + C + D - 1, 4).Range.Font.Size = 10
+                otable8.Cell(2 + C + D - 1, 4).Range.Bold = False
+                otable8.Cell(2 + C + D - 1, 4).Range.Underline = False
+                otable8.Cell(2 + C + D - 1, 4).Range.Italic = False
+
+                i_TB = TRA20.IndexOf("Opening file name", i_TB + 1)
+                i_TB1 = TRA20.IndexOf("ACTIVATE", i_TB + 1)
+            Else
+                Exit Do
+            End If
+        Loop
 
 
 
@@ -1427,7 +2305,10 @@ Public Class Form1
 
 
         Dim otableAthi1 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 12 + udcount, 3)
+<<<<<<< HEAD
         otableAthi1.AllowAutoFit = True
+=======
+>>>>>>> b095b3d8838a0b9cd492f6791166f13da1878b81
         otableAthi1.Borders.Enable = True
 
         otableAthi1.Cell(1, 1).Merge(otableAthi1.Cell(1, 3))
@@ -1617,7 +2498,11 @@ Public Class Form1
         oParaAthi1.Range.InsertParagraphAfter()
 
         'Trial Balance Table
+<<<<<<< HEAD
         Dim otableAthi2 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 8, 3)
+=======
+        Dim otableAthi2 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 12 + udcount, 3)
+>>>>>>> b095b3d8838a0b9cd492f6791166f13da1878b81
         otableAthi2.Borders.Enable = True
 
         otableAthi2.Borders.Enable = True
@@ -1968,6 +2853,7 @@ Public Class Form1
         otableAthi3.Cell(3, 1).Range.Paragraphs(7).Range.Font.Italic = False
 
         dynind = dynind + 1
+
 
         otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
         otableAthi3.Cell(3, 1).Range.Paragraphs(8).Range.Text = dynind.ToString & ". Report Thresholds and Other Parameters"
