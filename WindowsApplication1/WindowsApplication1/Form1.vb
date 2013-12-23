@@ -725,7 +725,7 @@ Public Class Form1
 
         Dim Atemp() As String = (STemp.ToString()).Split(" ")
         temp1 = Atemp(Atemp.GetUpperBound(0))
-        MsgBox(STemp)
+        'MsgBox(STemp)
 
         'STemp = ""
         'Ending Balance
@@ -1611,7 +1611,7 @@ Public Class Form1
                     ElseIf UCase(TB_file_name).Contains("END") Then
                         temp1 = "Ending Balance: $"
                         temp2 = TRD_TEMP.Substring(TRD_TEMP.IndexOf("The total of EY_ENDBAL is:  ") + 28, 5)
-                        MsgBox("end bal" & temp2)
+                        'MsgBox("end bal" & temp2)
                         temp = temp & temp1 & String.Format("{0:0,0}", FormatNumber(CDbl(temp2), 2))
                         name1 = "Ending trial balance as on " & Chr(10) & end_poa
                     Else
@@ -1622,9 +1622,9 @@ Public Class Form1
                         temp4 = TRD_TEMP.Substring(TRD_TEMP.IndexOf("The total of EY_ENDBAL is:  ") + 28, 5)
 
                         temp_2 = temp3 & String.Format("{0:0,0}", FormatNumber(CDbl(temp4), 2))
-                        MsgBox("else " & temp_2)
+                        'MsgBox("else " & temp_2)
                         temp = temp1 & vbCrLf & temp2
-                        MsgBox(temp)
+                        'MsgBox(temp)
                         name1 = "Beginning trial balance as on " & Chr(10) & START_POA & " and " & Chr(10) & "Ending trial balance as on " & Chr(10) & end_poa
                     End If
                 Catch ex As Exception
@@ -1635,7 +1635,7 @@ Public Class Form1
                         temp_1 = temp1 & String.Format("{0:0,0}", FormatNumber(CDbl(temp2), 2))
                         temp3 = "Ending Balance: $"
                         TEMP4 = TRA20.Substring(TRA20.IndexOf("The total of EY_ENDBAL is:") + 28, TRA20.IndexOf(">>> COMMAND <3> ") - TRA20.IndexOf("The total of EY_ENDBAL is:") - 28)
-                        MsgBox(TEMP4)
+                        'MsgBox(TEMP4)
                         'temp4 = TRB_TEMP.Substring(TRB_TEMP.IndexOf("The total of EY_EndBal is:  ") + 28, 5)
                         temp_2 = temp3 & String.Format("{0:0,0}", FormatNumber(CDbl(TEMP4), 2))
                         temp = Replace(temp_1, Chr(10), " ") & vbCrLf & Replace(temp_2, Chr(10), " ")
@@ -2304,11 +2304,12 @@ Public Class Form1
         oParaAthi1.Range.Font.Italic = False
 
 
+
         Dim otableAthi1 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 12 + udcount, 3)
-
-        otableAthi1.AllowAutoFit = True
-
         otableAthi1.Borders.Enable = True
+        otableAthi1.AllowAutoFit = True
+        otableAthi1.Columns.Width = oWord.InchesToPoints(2.335)
+
 
         otableAthi1.Cell(1, 1).Merge(otableAthi1.Cell(1, 3))
         otableAthi1.Cell(1, 1).Range.Text = "JE Transaction Files"
@@ -2653,7 +2654,7 @@ Public Class Form1
         'Box Table
         Dim otableAthi3 As Word.Table
         rng = oDoc.Bookmarks.Item("\endofdoc").Range
-        otableAthi3 = oDoc.Tables.Add(Range:=rng, NumRows:=6, NumColumns:=1)
+        otableAthi3 = oDoc.Tables.Add(Range:=rng, NumRows:=3, NumColumns:=1)
         otableAthi3.Borders.Enable = True
         otableAthi3.AllowAutoFit = True
         otableAthi3.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleNone
@@ -2664,21 +2665,31 @@ Public Class Form1
         otableAthi3.Cell(1, 1).Range.Paragraphs(1).Range.Font.Bold = False
         otableAthi3.Cell(1, 1).Range.Paragraphs(1).Range.Font.Underline = False
         otableAthi3.Cell(1, 1).Range.Paragraphs(1).Range.Font.Italic = False
-
+        otableAthi3.Cell(1, 1).Range.Paragraphs(1).Range.ParagraphFormat.SpaceAfter = 2
 
         otableAthi3.Cell(1, 1).Range.InsertParagraphAfter()
-        otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.Text = "   • Journal Entry Number - EY_JENum - Field_1 (Mostly)" & vbNewLine & "   • Field_Name - EY_Field_Name - Field_X (Rarely)"
+        otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.Text = "   • Journal Entry Number - EY_JENum - Field_1 (Mostly)"
         otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.Font.Bold = False
         otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.Font.ColorIndex = Word.WdColorIndex.wdRed
         otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.Font.Underline = False
         otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.Font.Italic = False
-
+        otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.ParagraphFormat.SpaceAfter = 2
 
         otableAthi3.Cell(1, 1).Range.InsertParagraphAfter()
-        otableAthi3.Cell(1, 1).Range.Paragraphs(3).Range.Text = "2.	Account Type Definition"
-        otableAthi3.Cell(1, 1).Range.Paragraphs(3).Range.Font.Bold = True
+        otableAthi3.Cell(1, 1).Range.Paragraphs(3).Range.Text = "   • Field_Name - EY_Field_Name - Field_X (Rarely)"
+        otableAthi3.Cell(1, 1).Range.Paragraphs(3).Range.Font.Bold = False
         otableAthi3.Cell(1, 1).Range.Paragraphs(3).Range.Font.Underline = False
         otableAthi3.Cell(1, 1).Range.Paragraphs(3).Range.Font.Italic = False
+        otableAthi3.Cell(1, 1).Range.Paragraphs(3).Range.Font.ColorIndex = Word.WdColorIndex.wdRed
+        otableAthi3.Cell(1, 1).Range.Paragraphs(3).Range.ParagraphFormat.SpaceAfter = 2
+
+        otableAthi3.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi3.Cell(1, 1).Range.Paragraphs(4).Range.Text = "2.	Account Type Definition"
+        otableAthi3.Cell(1, 1).Range.Paragraphs(4).Range.Font.ColorIndex = Word.WdColorIndex.wdBlack
+        otableAthi3.Cell(1, 1).Range.Paragraphs(4).Range.Font.Bold = True
+        otableAthi3.Cell(1, 1).Range.Paragraphs(4).Range.Font.Underline = False
+        otableAthi3.Cell(1, 1).Range.Paragraphs(4).Range.Font.Italic = False
+        otableAthi3.Cell(1, 1).Range.Paragraphs(4).Range.ParagraphFormat.SpaceAfter = 2
 
         Dim AccountNumberChoice As Integer = 1
         Dim newdoc As New Word.Document
@@ -2785,18 +2796,21 @@ Public Class Form1
         otableAthi3.Cell(3, 1).Range.Paragraphs(1).Range.Font.Bold = True
         otableAthi3.Cell(3, 1).Range.Paragraphs(1).Range.Font.Underline = False
         otableAthi3.Cell(3, 1).Range.Paragraphs(1).Range.Font.Italic = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(1).Range.ParagraphFormat.SpaceAfter = 2
 
         otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
         otableAthi3.Cell(3, 1).Range.Paragraphs(2).Range.Text = dynind.ToString & ". System/Manual Identification"
         otableAthi3.Cell(3, 1).Range.Paragraphs(2).Range.Font.Bold = True
         otableAthi3.Cell(3, 1).Range.Paragraphs(2).Range.Font.Underline = False
         otableAthi3.Cell(3, 1).Range.Paragraphs(2).Range.Font.Italic = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(2).Range.ParagraphFormat.SpaceAfter = 2
 
         Dim sysman_ui As Integer = 1
         Dim optstr As String = " "
-
+        Dim optstri As String = ""
         If (sysman_ui = 1) Then
-            optstr = "   • Manual Entries: All entries where Source/Preparer ID/Field EQUALS ""Phrase""/""Condition""." & vbNewLine & "   • System Entries: All other entries."
+            optstr = "   • Manual Entries: All entries where Source/Preparer ID/Field EQUALS ""Phrase""/""Condition"""
+            optstri = "   • System Entries: All other entries."
         Else
             optstr = "   • All entries were marked as ""Manual""."
         End If
@@ -2806,61 +2820,246 @@ Public Class Form1
         otableAthi3.Cell(3, 1).Range.Paragraphs(3).Range.Font.Bold = False
         otableAthi3.Cell(3, 1).Range.Paragraphs(3).Range.Font.Underline = False
         otableAthi3.Cell(3, 1).Range.Paragraphs(3).Range.Font.Italic = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(3).Range.ParagraphFormat.SpaceAfter = 2
+
+
+        otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
+        otableAthi3.Cell(3, 1).Range.Paragraphs(4).Range.Text = optstri
+        otableAthi3.Cell(3, 1).Range.Paragraphs(4).Range.Font.Bold = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(4).Range.Font.Underline = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(4).Range.Font.Italic = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(4).Range.ParagraphFormat.SpaceAfter = 2
 
         dynind = dynind + 1
 
-        Dim point5_choice_ui As Integer = 1
+        Dim point5_choice_ui As Integer = 2
 
         otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
-        otableAthi3.Cell(3, 1).Range.Paragraphs(4).Range.Text = dynind.ToString & ". Inter-Company Accounts"
-        otableAthi3.Cell(3, 1).Range.Paragraphs(4).Range.Font.Bold = True
-        otableAthi3.Cell(3, 1).Range.Paragraphs(4).Range.Font.Underline = False
-        otableAthi3.Cell(3, 1).Range.Paragraphs(4).Range.Font.Italic = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(5).Range.Text = dynind.ToString & ". Inter-Company Accounts"
+        otableAthi3.Cell(3, 1).Range.Paragraphs(5).Range.Font.Bold = True
+        otableAthi3.Cell(3, 1).Range.Paragraphs(5).Range.Font.Underline = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(5).Range.Font.Italic = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(5).Range.ParagraphFormat.SpaceAfter = 2
 
         Dim optstr1 As String = " "
 
         If (point5_choice_ui = 1) Then
             optstr1 = "   • N/A"
         ElseIf (point5_choice_ui = 2) Then
-            optstr1 = "   • Journal Entry Description CONTAINS: " & vbNewLine & "      • Phrase 1 " & vbNewLine & "      • Phrase 2 "
+            optstr1 = "   • Journal Entry Description CONTAINS: "
         ElseIf (point5_choice_ui = 3) Then
             optstr1 = "   • GL Account Number EQUALS: "
         End If
 
         otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
-        otableAthi3.Cell(3, 1).Range.Paragraphs(5).Range.Text = optstr1
-        otableAthi3.Cell(3, 1).Range.Paragraphs(5).Range.Font.Bold = False
-        otableAthi3.Cell(3, 1).Range.Paragraphs(5).Range.Font.Underline = False
-        otableAthi3.Cell(3, 1).Range.Paragraphs(5).Range.Font.Italic = False
-
-        dynind = dynind + 1
-
-        otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
-        otableAthi3.Cell(3, 1).Range.Paragraphs(6).Range.Text = dynind.ToString & ". Related Party Accounts"
-        otableAthi3.Cell(3, 1).Range.Paragraphs(6).Range.Font.Bold = True
+        otableAthi3.Cell(3, 1).Range.Paragraphs(6).Range.Text = optstr1
+        otableAthi3.Cell(3, 1).Range.Paragraphs(6).Range.Font.Bold = False
         otableAthi3.Cell(3, 1).Range.Paragraphs(6).Range.Font.Underline = False
         otableAthi3.Cell(3, 1).Range.Paragraphs(6).Range.Font.Italic = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(6).Range.ParagraphFormat.SpaceAfter = 2
 
         dynind = dynind + 1
 
         otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
-        otableAthi3.Cell(3, 1).Range.Paragraphs(7).Range.Text = dynind.ToString & ". Professional Fee Accounts"
+        otableAthi3.Cell(3, 1).Range.Paragraphs(7).Range.Text = dynind.ToString & ". Related Party Accounts"
         otableAthi3.Cell(3, 1).Range.Paragraphs(7).Range.Font.Bold = True
         otableAthi3.Cell(3, 1).Range.Paragraphs(7).Range.Font.Underline = False
         otableAthi3.Cell(3, 1).Range.Paragraphs(7).Range.Font.Italic = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(7).Range.ParagraphFormat.SpaceAfter = 2
+
+        dynind = dynind + 1
+
+        otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
+        otableAthi3.Cell(3, 1).Range.Paragraphs(8).Range.Text = dynind.ToString & ". Professional Fee Accounts"
+        otableAthi3.Cell(3, 1).Range.Paragraphs(8).Range.Font.Bold = True
+        otableAthi3.Cell(3, 1).Range.Paragraphs(8).Range.Font.Underline = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(8).Range.Font.Italic = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(8).Range.ParagraphFormat.SpaceAfter = 2
 
         dynind = dynind + 1
 
 
         otableAthi3.Cell(3, 1).Range.InsertParagraphAfter()
-        otableAthi3.Cell(3, 1).Range.Paragraphs(8).Range.Text = dynind.ToString & ". Report Thresholds and Other Parameters"
-        otableAthi3.Cell(3, 1).Range.Paragraphs(8).Range.Font.Bold = True
-        otableAthi3.Cell(3, 1).Range.Paragraphs(8).Range.Font.Underline = False
-        otableAthi3.Cell(3, 1).Range.Paragraphs(8).Range.Font.Italic = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(9).Range.Text = dynind.ToString & ". Report Thresholds and Other Parameters"
+        otableAthi3.Cell(3, 1).Range.Paragraphs(9).Range.Font.Bold = True
+        otableAthi3.Cell(3, 1).Range.Paragraphs(9).Range.Font.Underline = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(9).Range.Font.Italic = False
+        otableAthi3.Cell(3, 1).Range.Paragraphs(9).Range.ParagraphFormat.SpaceAfter = 2
 
 
 
+        Dim oParaAthi3 As Word.Paragraph
 
+        oParaAthi3 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
+        oParaAthi3.Range.InsertParagraphAfter()
+        oParaAthi3.Range.Text = "Statement of Facts: "
+        oParaAthi3.Range.Font.Name = "Times New Roman"
+        oParaAthi3.Range.Font.Size = 10
+        oParaAthi3.Format.SpaceAfter = 0
+        oParaAthi3.Range.Font.Bold = True
+        oParaAthi3.Range.Font.Underline = True
+        oParaAthi3.Range.Font.Italic = False
+
+
+        Dim otableAthi5 As Word.Table
+        rng = oDoc.Bookmarks.Item("\endofdoc").Range
+        otableAthi5 = oDoc.Tables.Add(Range:=rng, NumRows:=1, NumColumns:=1)
+        otableAthi5.Borders.Enable = True
+        otableAthi5.AllowAutoFit = True
+        otableAthi5.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleNone
+        otableAthi5.Columns.Width = oWord.CentimetersToPoints(17.8)
+
+        otableAthi5.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi5.Cell(1, 1).Range.Paragraphs(1).Range.Text = "Data Preparation/ Modifications: "
+        otableAthi5.Cell(1, 1).Range.Paragraphs(1).Range.Font.Bold = True
+        otableAthi5.Cell(1, 1).Range.Paragraphs(1).Range.Font.Underline = True
+        otableAthi5.Cell(1, 1).Range.Paragraphs(1).Range.Font.Italic = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(1).Range.ParagraphFormat.SpaceAfter = 2
+
+        otableAthi5.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi5.Cell(1, 1).Range.Paragraphs(2).Range.Text = "   • We received X Journal Entry detail files in text/spreadsheet format and imported it/them into ACL without any manual formatting."
+        otableAthi5.Cell(1, 1).Range.Paragraphs(2).Range.Font.Bold = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(2).Range.Font.Underline = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(2).Range.Font.Italic = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(2).Range.ParagraphFormat.SpaceAfter = 2
+
+        otableAthi5.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi5.Cell(1, 1).Range.Paragraphs(3).Range.Text = "   • We received X Trial Balance data files in text/spreadsheet format and imported it/them into ACL without any manual formatting"
+        otableAthi5.Cell(1, 1).Range.Paragraphs(3).Range.Font.Bold = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(3).Range.Font.Underline = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(3).Range.Font.Italic = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(3).Range.ParagraphFormat.SpaceAfter = 2
+
+        otableAthi5.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi5.Cell(1, 1).Range.Paragraphs(4).Range.Text = "   • We reset opening balances of the Income Statement accounts to $0.00 and transferred Net Income to the Retained Earnings account ""XXXXX""."
+        otableAthi5.Cell(1, 1).Range.Paragraphs(4).Range.Font.Bold = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(4).Range.Font.Underline = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(4).Range.Font.Italic = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(4).Range.ParagraphFormat.SpaceAfter = 2
+
+        otableAthi5.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi5.Cell(1, 1).Range.Paragraphs(5).Range.Text = "   •We used prior year Journal Entry data field mapping."
+        otableAthi5.Cell(1, 1).Range.Paragraphs(5).Range.Font.Bold = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(5).Range.Font.Underline = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(5).Range.Font.Italic = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(5).Range.ParagraphFormat.SpaceAfter = 2
+
+        otableAthi5.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi5.Cell(1, 1).Range.Paragraphs(6).Range.Text = "   • We formatted period field from ""MMM-YY"" to ""NN"", for eg. ""JUN-12"" to ""01""."
+        otableAthi5.Cell(1, 1).Range.Paragraphs(6).Range.Font.Bold = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(6).Range.Font.Underline = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(6).Range.Font.Italic = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(6).Range.ParagraphFormat.SpaceAfter = 2
+
+        otableAthi5.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi5.Cell(1, 1).Range.Paragraphs(7).Range.Text = "   • We computed JE_Activity by subtracting Debit from Credit, i.e. (Credit-Debit)"
+        otableAthi5.Cell(1, 1).Range.Paragraphs(7).Range.Font.Bold = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(7).Range.Font.Underline = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(7).Range.Font.Italic = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(7).Range.ParagraphFormat.SpaceAfter = 2
+
+        otableAthi5.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi5.Cell(1, 1).Range.Paragraphs(8).Range.Text = "   • Amount is defined as -1*Amount if TYPE field is ""CREDITS""."
+        otableAthi5.Cell(1, 1).Range.Paragraphs(8).Range.Font.Bold = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(8).Range.Font.Underline = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(8).Range.Font.Italic = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(8).Range.ParagraphFormat.SpaceAfter = 2
+
+        otableAthi5.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi5.Cell(1, 1).Range.Paragraphs(9).Range.Text = "   • We used the field ""Field_Name"" for amount and the field ""Field_Name"" for Debit/ Credit indicator. If indicator is ""S"", then amount was taken as ""Debit"". If indicator is ""H"", amount was taken as ""Credit""."
+        otableAthi5.Cell(1, 1).Range.Paragraphs(9).Range.Font.Bold = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(9).Range.Font.Underline = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(9).Range.Font.Italic = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(9).Range.ParagraphFormat.SpaceAfter = 2
+
+        otableAthi5.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi5.Cell(1, 1).Range.Paragraphs(10).Range.Text = "   • The beginning and ending balance was taken in the field Balance when the corresponding value was equal to ""Beginning"" and ""Ending"" in the field ""Credit_Activities"" respectively."
+        otableAthi5.Cell(1, 1).Range.Paragraphs(10).Range.Font.Bold = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(10).Range.Font.Underline = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(10).Range.Font.Italic = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(10).Range.ParagraphFormat.SpaceAfter = 2
+
+        otableAthi5.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi5.Cell(1, 1).Range.Paragraphs(11).Range.Text = "   • Account number (EY_ACCT: Field_2 (Journal Entry) / Field_1- First 6/7 characters (Trial Balance)) is calculated as combination of Account Number and Business Unit"
+        otableAthi5.Cell(1, 1).Range.Paragraphs(11).Range.Font.Bold = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(11).Range.Font.Underline = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(11).Range.Font.Italic = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(11).Range.ParagraphFormat.SpaceAfter = 2
+
+        otableAthi5.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi5.Cell(1, 1).Range.Paragraphs(12).Range.Text = "   • The 2nd segment in the ""Account"" field has been taken as EY_Acct"
+        otableAthi5.Cell(1, 1).Range.Paragraphs(12).Range.Font.Bold = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(12).Range.Font.Underline = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(12).Range.Font.Italic = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(12).Range.ParagraphFormat.SpaceAfter = 2
+
+        otableAthi5.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi5.Cell(1, 1).Range.Paragraphs(13).Range.Text = "   • Account name is calculated on Posting_Date- 7 character onwards"
+        otableAthi5.Cell(1, 1).Range.Paragraphs(13).Range.Font.Bold = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(13).Range.Font.Underline = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(13).Range.Font.Italic = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(13).Range.ParagraphFormat.SpaceAfter = 2
+
+        otableAthi5.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi5.Cell(1, 1).Range.Paragraphs(14).Range.Text = "   • Business Unit field mapping was not available in the documents provided. Hence, we mapped entity name from the source files (EY_SRC_FILE: Data File Name) as Business Unit."
+        otableAthi5.Cell(1, 1).Range.Paragraphs(14).Range.Font.Bold = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(14).Range.Font.Underline = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(14).Range.Font.Italic = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(14).Range.ParagraphFormat.SpaceAfter = 2
+
+
+        otableAthi5.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi5.Cell(1, 1).Range.Paragraphs(15).Range.Text = "   • We identified and defined Account Type and Account class mapping based on Chart of Accounts file ""GL Account Classification.xls"""
+        otableAthi5.Cell(1, 1).Range.Paragraphs(15).Range.Font.Bold = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(15).Range.Font.Underline = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(15).Range.Font.Italic = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(15).Range.ParagraphFormat.SpaceAfter = 2
+
+
+        otableAthi5.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi5.Cell(1, 1).Range.Paragraphs(16).Range.Text = "   • We identified unmatched accounts as ""Unmatched"" and mapped to their respective Account Type e.g. ""Unmatched Assets"" for the unmatched Assets accounts."
+        otableAthi5.Cell(1, 1).Range.Paragraphs(16).Range.Font.Bold = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(16).Range.Font.Underline = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(16).Range.Font.Italic = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(16).Range.ParagraphFormat.SpaceAfter = 2
+
+
+        otableAthi5.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi5.Cell(1, 1).Range.Paragraphs(17).Range.Text = "   • We defined and mapped 3 User Defined fields i.e. ""EY_UDF1_"", ""EY_UDF2_"" and ""EY_UDF3_"" into the EY Global Analytics Tool."
+        otableAthi5.Cell(1, 1).Range.Paragraphs(17).Range.Font.Bold = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(17).Range.Font.Underline = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(17).Range.Font.Italic = False
+        otableAthi5.Cell(1, 1).Range.Paragraphs(17).Range.ParagraphFormat.SpaceAfter = 2
+
+
+        Dim oParaAthi5 As Word.Paragraph
+
+        oParaAthi5 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
+        oParaAthi5.Range.InsertParagraphAfter()
+        oParaAthi5.Range.Text = "Sign-off and Data Retention Letter: "
+        oParaAthi5.Range.Font.Name = "Times New Roman"
+        oParaAthi5.Range.Font.Size = 10
+        oParaAthi5.Format.SpaceAfter = 0
+        oParaAthi5.Range.Font.Bold = True
+        oParaAthi5.Range.Font.Underline = True
+        oParaAthi5.Range.Font.Italic = False
+
+
+        Dim otableAthi6 As Word.Table
+        rng = oDoc.Bookmarks.Item("\endofdoc").Range
+        otableAthi6 = oDoc.Tables.Add(Range:=rng, NumRows:=1, NumColumns:=1)
+        otableAthi6.Borders.Enable = True
+        otableAthi6.AllowAutoFit = True
+        otableAthi6.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleNone
+        otableAthi6.Columns.Width = oWord.CentimetersToPoints(17.8)
+
+
+        otableAthi6.Cell(1, 1).Range.InsertParagraphAfter()
+        otableAthi6.Cell(1, 1).Range.Paragraphs(1).Range.Text = "Attachment"
+        otableAthi6.Cell(1, 1).Range.Paragraphs(1).Range.Font.Bold = False
+        otableAthi6.Cell(1, 1).Range.Paragraphs(1).Range.Font.Underline = False
+        otableAthi6.Cell(1, 1).Range.Paragraphs(1).Range.Font.Italic = False
+        otableAthi6.Cell(1, 1).Range.Paragraphs(1).Range.ParagraphFormat.SpaceAfter = 2
 
     End Sub
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
