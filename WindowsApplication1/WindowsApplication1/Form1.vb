@@ -1691,11 +1691,10 @@ Public Class Form1
 
                         temp_2 = temp3 & String.Format("{0:0,0}", FormatNumber(CDbl(temp4), 2))
                         'MsgBox("else " & temp_2)
-<<<<<<< HEAD
                         temp = temp1 & vbCrLf & temp2
-=======
+
                         temp = temp_1 & vbCrLf & temp_2
->>>>>>> f35dc2a5493820f6a0f97ec60b000fc7f8888c72
+
                         'MsgBox(temp)
                         name1 = "Beginning trial balance as on " & Chr(10) & START_POA & " and " & Chr(10) & "Ending trial balance as on " & Chr(10) & end_poa
                     End If
