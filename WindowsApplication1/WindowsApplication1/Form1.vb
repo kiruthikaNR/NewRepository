@@ -2305,10 +2305,9 @@ Public Class Form1
 
 
         Dim otableAthi1 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 12 + udcount, 3)
-<<<<<<< HEAD
+
         otableAthi1.AllowAutoFit = True
-=======
->>>>>>> b095b3d8838a0b9cd492f6791166f13da1878b81
+
         otableAthi1.Borders.Enable = True
 
         otableAthi1.Cell(1, 1).Merge(otableAthi1.Cell(1, 3))
@@ -2498,11 +2497,9 @@ Public Class Form1
         oParaAthi1.Range.InsertParagraphAfter()
 
         'Trial Balance Table
-<<<<<<< HEAD
+
         Dim otableAthi2 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 8, 3)
-=======
-        Dim otableAthi2 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 12 + udcount, 3)
->>>>>>> b095b3d8838a0b9cd492f6791166f13da1878b81
+
         otableAthi2.Borders.Enable = True
 
         otableAthi2.Borders.Enable = True
