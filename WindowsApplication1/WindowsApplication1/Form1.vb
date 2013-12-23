@@ -1086,12 +1086,325 @@ Public Class Form1
 
 
 
+        oParaAthi4 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
+        oParaAthi4.Range.Text = "ACL Scripts:"
+        oParaAthi4.Range.Font.Bold = False
+        oParaAthi4.Format.SpaceAfter = 0
+        oParaAthi4.Range.Font.Name = "Times New Roman"
+        oParaAthi4.Range.Font.Bold = True
+        oParaAthi4.Range.Font.Underline = True
+        oParaAthi4.Range.Font.Italic = False
+        oParaAthi4.Range.Font.Size = 10
+        oParaAthi4.Range.InsertParagraphAfter()
 
 
+        Dim unbalancedflag As Integer = 1
+
+        Dim otableAthi4 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 10 - unbalancedflag, 5)
+        otableAthi4.Borders.Enable = True
+
+        otableAthi4.Columns.Item(1).Width = oWord.CentimetersToPoints(0.6)
+        otableAthi4.Columns.Item(2).Width = oWord.CentimetersToPoints(2.95)
+        otableAthi4.Columns.Item(3).Width = oWord.CentimetersToPoints(6.63)
+        otableAthi4.Columns.Item(4).Width = oWord.CentimetersToPoints(4.39)
+        otableAthi4.Columns.Item(5).Width = oWord.CentimetersToPoints(3.18)
+        otableAthi4.Rows.Item(7).Height = oWord.CentimetersToPoints(0.4)
+
+        With otableAthi4
+            .Cell(9 - unbalancedflag, 1).Merge(.Cell(9 - unbalancedflag, 5))
+            .Cell(10 - unbalancedflag, 1).Merge(.Cell(10 - unbalancedflag, 5))
+        End With
+
+        otableAthi4.Cell(1, 1).Range.Text = "#"
+        otableAthi4.Cell(1, 1).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(1, 1).Range.Font.Size = 10
+        otableAthi4.Cell(1, 1).Range.Bold = True
+        otableAthi4.Cell(1, 1).Range.Underline = False
+        otableAthi4.Cell(1, 1).Range.Italic = True
+        otableAthi4.Cell(1, 1).Shading.BackgroundPatternColor = RGB(12, 12, 12)
+
+        For a = 2 To 8 - unbalancedflag
+            otableAthi4.Cell(a, 1).Range.Text = a - 1
+            otableAthi4.Cell(a, 1).Range.Font.Name = "Times New Roman"
+            otableAthi4.Cell(a, 1).Range.Font.Size = 10
+            otableAthi4.Cell(a, 1).Range.Bold = False
+            otableAthi4.Cell(a, 1).Range.Underline = False
+            otableAthi4.Cell(a, 1).Range.Italic = False
+        Next
+
+        otableAthi4.Cell(1, 2).Range.Text = "Script"
+        otableAthi4.Cell(1, 2).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(1, 2).Range.Font.Size = 10
+        otableAthi4.Cell(1, 2).Range.Bold = True
+        otableAthi4.Cell(1, 2).Range.Underline = False
+        otableAthi4.Cell(1, 2).Range.Italic = True
+        otableAthi4.Cell(1, 2).Shading.BackgroundPatternColor = RGB(12, 12, 12)
+
+        otableAthi4.Cell(2, 2).Range.Text = "A10_JE_ PREP"
+        otableAthi4.Cell(2, 2).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(2, 2).Range.Font.Size = 10
+        otableAthi4.Cell(2, 2).Range.Bold = False
+        otableAthi4.Cell(2, 2).Range.Underline = False
+        otableAthi4.Cell(2, 2).Range.Italic = False
+
+        otableAthi4.Cell(3, 2).Range.Text = "A20_TB_ PREP"
+        otableAthi4.Cell(3, 2).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(3, 2).Range.Font.Size = 10
+        otableAthi4.Cell(3, 2).Range.Bold = False
+        otableAthi4.Cell(3, 2).Range.Underline = False
+        otableAthi4.Cell(3, 2).Range.Italic = False
+
+        otableAthi4.Cell(4, 2).Range.Text = "A30_MAIN"
+        otableAthi4.Cell(4, 2).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(4, 2).Range.Font.Size = 10
+        otableAthi4.Cell(4, 2).Range.Bold = False
+        otableAthi4.Cell(4, 2).Range.Underline = False
+        otableAthi4.Cell(4, 2).Range.Italic = False
+
+        otableAthi4.Cell(5, 2).Range.Text = "B10_VALIDATION"
+        otableAthi4.Cell(5, 2).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(5, 2).Range.Font.Size = 10
+        otableAthi4.Cell(5, 2).Range.Bold = False
+        otableAthi4.Cell(5, 2).Range.Underline = False
+        otableAthi4.Cell(5, 2).Range.Italic = False
+
+        otableAthi4.Cell(6, 2).Range.Text = "C10_ROLL"
+        otableAthi4.Cell(6, 2).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(6, 2).Range.Font.Size = 10
+        otableAthi4.Cell(6, 2).Range.Bold = False
+        otableAthi4.Cell(6, 2).Range.Underline = False
+        otableAthi4.Cell(6, 2).Range.Italic = False
+
+        otableAthi4.Cell(7, 2).Range.Text = "D10_GLOBAL_JE_MAPPING"
+        otableAthi4.Cell(7, 2).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(7, 2).Range.Font.Size = 10
+        otableAthi4.Cell(7, 2).Range.Bold = False
+        otableAthi4.Cell(7, 2).Range.Underline = False
+        otableAthi4.Cell(7, 2).Range.Italic = False
+
+        If (unbalancedflag = 0) Then
+            otableAthi4.Cell(8, 2).Range.Text = "E10_UNBALANCED_ENTRIES"
+            otableAthi4.Cell(8, 2).Range.Font.Name = "Times New Roman"
+            otableAthi4.Cell(8, 2).Range.Font.Size = 10
+            otableAthi4.Cell(8, 2).Range.Bold = False
+            otableAthi4.Cell(8, 2).Range.Underline = False
+            otableAthi4.Cell(8, 2).Range.Italic = False
+            otableAthi4.Cell(8, 2).Range.Font.ColorIndex = Word.WdColorIndex.wdRed
+        End If
+
+        otableAthi4.Cell(1, 3).Range.Text = "Purpose"
+        otableAthi4.Cell(1, 3).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(1, 3).Range.Font.Size = 10
+        otableAthi4.Cell(1, 3).Range.Bold = True
+        otableAthi4.Cell(1, 3).Range.Underline = False
+        otableAthi4.Cell(1, 3).Range.Italic = True
+        otableAthi4.Cell(1, 3).Shading.BackgroundPatternColor = RGB(12, 12, 12)
+
+        Dim rngtbl2 As Word.Range
+
+        otableAthi4.Cell(2, 3).Range.Text = "Formats source JE data files and consolidates into individual table (if necessary)." & vbNewLine & "NOTE: A manual import of the JE data files must be performed prior to running this script."
+        otableAthi4.Cell(2, 3).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(2, 3).Range.Font.Size = 10
+        otableAthi4.Cell(2, 3).Range.Bold = False
+        otableAthi4.Cell(2, 3).Range.Underline = False
+        otableAthi4.Cell(2, 3).Range.Italic = False
+        otableAthi4.Cell(2, 3).Range.Words(16).Font.Italic = True
+        otableAthi4.Cell(2, 3).Range.Words(16).Font.Bold = True
+        otableAthi4.Cell(2, 3).Range.Words(16).Font.Underline = True
+        rngtbl2 = oWord.ActiveDocument.Range(otableAthi4.Cell(2, 3).Range.Words(17).Start, otableAthi4.Cell(2, 3).Range.Words(33).End)
+        rngtbl2.Font.Italic = True
 
 
+        otableAthi4.Cell(3, 3).Range.Text = "Formats source TB data files and consolidates into individual table (if necessary)." & vbNewLine & "NOTE: A manual import of the TB data files must be performed prior to running this script."
+        otableAthi4.Cell(3, 3).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(3, 3).Range.Font.Size = 10
+        otableAthi4.Cell(3, 3).Range.Bold = False
+        otableAthi4.Cell(3, 3).Range.Underline = False
+        otableAthi4.Cell(3, 3).Range.Italic = False
+        otableAthi4.Cell(3, 3).Range.Words(16).Font.Italic = True
+        otableAthi4.Cell(3, 3).Range.Words(16).Font.Bold = True
+        otableAthi4.Cell(3, 3).Range.Words(16).Font.Underline = True
+        rngtbl2 = oWord.ActiveDocument.Range(otableAthi4.Cell(3, 3).Range.Words(17).Start, otableAthi4.Cell(3, 3).Range.Words(33).End)
+        rngtbl2.Font.Italic = True
 
 
+        otableAthi4.Cell(4, 3).Range.Text = "Sets up the fields that will be utilized for the processing of the transaction data file."
+        otableAthi4.Cell(4, 3).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(4, 3).Range.Font.Size = 10
+        otableAthi4.Cell(4, 3).Range.Bold = False
+        otableAthi4.Cell(4, 3).Range.Underline = False
+        otableAthi4.Cell(4, 3).Range.Italic = False
+
+        otableAthi4.Cell(5, 3).Range.Text = "Contains all the validation checks that must be performed on all EY GTH journal entry CAATs." & vbNewLine & "NOTE: Any exceptions that arise from the validation results should be highlighted to the Sub-Area ITRA SPOC and resolved and documented in the memo for future reference."
+        otableAthi4.Cell(5, 3).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(5, 3).Range.Font.Size = 10
+        otableAthi4.Cell(5, 3).Range.Bold = False
+        otableAthi4.Cell(5, 3).Range.Underline = False
+        otableAthi4.Cell(5, 3).Range.Italic = False
+        otableAthi4.Cell(5, 3).Range.Words(19).Font.Italic = True
+        otableAthi4.Cell(5, 3).Range.Words(19).Font.Bold = True
+        otableAthi4.Cell(5, 3).Range.Words(19).Font.Underline = True
+        rngtbl2 = oWord.ActiveDocument.Range(otableAthi4.Cell(5, 3).Range.Words(21).Start, otableAthi4.Cell(5, 3).Range.Words(48).End)
+        rngtbl2.Font.Italic = True
+
+
+        otableAthi4.Cell(6, 3).Range.Text = "This script performs the rollforward test using the transaction and the trial balance data files." & vbNewLine & "NOTE: All rollforward differences must be documented and resolved prior to proceeding with the CAAT."
+        otableAthi4.Cell(6, 3).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(6, 3).Range.Font.Size = 10
+        otableAthi4.Cell(6, 3).Range.Bold = False
+        otableAthi4.Cell(6, 3).Range.Underline = False
+        otableAthi4.Cell(6, 3).Range.Italic = False
+        otableAthi4.Cell(6, 3).Range.Words(18).Font.Italic = True
+        otableAthi4.Cell(6, 3).Range.Words(18).Font.Bold = True
+        otableAthi4.Cell(6, 3).Range.Words(18).Font.Underline = True
+        rngtbl2 = oWord.ActiveDocument.Range(otableAthi4.Cell(6, 3).Range.Words(20).Start, otableAthi4.Cell(6, 3).Range.Words(34).End)
+        rngtbl2.Font.Italic = True
+
+
+        otableAthi4.Cell(7, 3).Range.Text = "This script prepares and exports the transaction and trial balance files for upload into the global analytics tool."
+        otableAthi4.Cell(7, 3).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(7, 3).Range.Font.Size = 10
+        otableAthi4.Cell(7, 3).Range.Bold = False
+        otableAthi4.Cell(7, 3).Range.Underline = False
+        otableAthi4.Cell(7, 3).Range.Italic = False
+
+        If (unbalancedflag = 0) Then
+            otableAthi4.Cell(8, 3).Range.Text = "This script prepares and exports the unbalanced journal entries."
+            otableAthi4.Cell(8, 3).Range.Font.Name = "Times New Roman"
+            otableAthi4.Cell(8, 3).Range.Font.Size = 10
+            otableAthi4.Cell(8, 3).Range.Bold = False
+            otableAthi4.Cell(8, 3).Range.Underline = False
+            otableAthi4.Cell(8, 3).Range.Italic = False
+            otableAthi4.Cell(8, 3).Range.Font.ColorIndex = Word.WdColorIndex.wdRed
+        End If
+
+        'UPDATING 4TH COLUMN
+
+        otableAthi4.Cell(1, 4).Range.Text = "Input Files Created" & Chr(32) & " (*.FIL)"
+        otableAthi4.Cell(1, 4).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(1, 4).Range.Font.Size = 10
+        otableAthi4.Cell(1, 4).Range.Bold = True
+        otableAthi4.Cell(1, 4).Range.Underline = False
+        otableAthi4.Cell(1, 4).Range.Italic = True
+        otableAthi4.Cell(1, 4).Shading.BackgroundPatternColor = RGB(12, 12, 12)
+
+
+        Dim rngtbl As Word.Range
+
+        otableAthi4.Cell(2, 4).Range.Text = "-EY_JE" & vbNewLine & "-EY_JE_EXCLUDE" & vbNewLine & "-(Write name if any other file was created prior to preparing EY_JE)"
+        otableAthi4.Cell(2, 4).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(2, 4).Range.Font.Size = 10
+        otableAthi4.Cell(2, 4).Range.Bold = False
+        otableAthi4.Cell(2, 4).Range.Underline = False
+        otableAthi4.Cell(2, 4).Range.Italic = False
+        rngtbl = oWord.ActiveDocument.Range(otableAthi4.Cell(2, 4).Range.Words(12).Start, otableAthi4.Cell(2, 4).Range.Words(27).End)
+        rngtbl.Font.ColorIndex = Word.WdColorIndex.wdRed
+
+        otableAthi4.Cell(3, 4).Range.Text = "-EY_TB" & vbNewLine & "-EY_TEMP_TB" & vbNewLine & "-EY_TB_EXCLUDE"
+        otableAthi4.Cell(3, 4).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(3, 4).Range.Font.Size = 10
+        otableAthi4.Cell(3, 4).Range.Bold = False
+        otableAthi4.Cell(3, 4).Range.Underline = False
+        otableAthi4.Cell(3, 4).Range.Italic = False
+
+        otableAthi4.Cell(4, 4).Range.Text = "See attached log file."
+        otableAthi4.Cell(4, 4).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(4, 4).Range.Font.Size = 10
+        otableAthi4.Cell(4, 4).Range.Bold = False
+        otableAthi4.Cell(4, 4).Range.Underline = False
+        otableAthi4.Cell(4, 4).Range.Italic = False
+
+        otableAthi4.Cell(5, 4).Range.Text = "-EY_JE _GROUPING"
+        otableAthi4.Cell(5, 4).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(5, 4).Range.Font.Size = 10
+        otableAthi4.Cell(5, 4).Range.Bold = False
+        otableAthi4.Cell(5, 4).Range.Underline = False
+        otableAthi4.Cell(5, 4).Range.Italic = False
+
+        otableAthi4.Cell(6, 4).Range.Text = "-Trial Balance Rollforward" & vbNewLine & "-UNMATCHED_ROLL_TRANS" & vbNewLine & "-" & myclientname & " " & START_POA & " thru " & end_poa & " TB Rollforward.xlsx"
+        otableAthi4.Cell(6, 4).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(6, 4).Range.Font.Size = 10
+        otableAthi4.Cell(6, 4).Range.Bold = False
+        otableAthi4.Cell(6, 4).Range.Underline = False
+        otableAthi4.Cell(6, 4).Range.Italic = False
+
+        otableAthi4.Cell(7, 4).Range.Text = "-EY_JE.txt" & vbNewLine & "-EY_TB.txt"
+        otableAthi4.Cell(7, 4).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(7, 4).Range.Font.Size = 10
+        otableAthi4.Cell(7, 4).Range.Bold = False
+        otableAthi4.Cell(7, 4).Range.Underline = False
+        otableAthi4.Cell(7, 4).Range.Italic = False
+
+        If (unbalancedflag = 0) Then
+            otableAthi4.Cell(8, 4).Range.Text = "-" & myclientname & " " & START_POA & " " & end_poa & " Unbalanced Journal Entries"
+            otableAthi4.Cell(8, 4).Range.Font.Name = "Times New Roman"
+            otableAthi4.Cell(8, 4).Range.Font.Size = 10
+            otableAthi4.Cell(8, 4).Range.Bold = False
+            otableAthi4.Cell(8, 4).Range.Underline = False
+            otableAthi4.Cell(8, 4).Range.Italic = False
+        End If
+
+
+        'UPDATING 5TH COLUMN
+
+        otableAthi4.Cell(1, 5).Range.Text = "ACL Logs" & Chr(32) & " (*.LOG)"
+        otableAthi4.Cell(1, 5).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(1, 5).Range.Font.Size = 10
+        otableAthi4.Cell(1, 5).Range.Bold = True
+        otableAthi4.Cell(1, 5).Range.Underline = False
+        otableAthi4.Cell(1, 5).Range.Italic = True
+        otableAthi4.Cell(1, 5).Shading.BackgroundPatternColor = RGB(12, 12, 12)
+
+        'Dim filename As Object = Form5.TextBox1.Text
+
+
+        'otableAthi4.Cell(2, 5).Range.InsertFile(filename, Attachment:=True)
+        a_zip = Form5.TextBox1.Text & "\A10_JE_PREP.zip"
+        b_zip = Form5.TextBox1.Text & "\A20_TB_PREP.zip"
+        c_zip = Form5.TextBox1.Text & "\A30_MAIN.zip"
+        d_zip = Form5.TextBox1.Text & "\B10_VALIDATION.zip"
+        e_zip = Form5.TextBox1.Text & "\C10_ROLL.zip"
+        f_zip = Form5.TextBox1.Text & "\D10_GLOBAL_JE_MAPPING.zip"
+        g_zip = Form5.TextBox1.Text & "\E10_UNBALANCED_ENTRIES.zip"
+
+        otableAthi4.Cell(2, 5).Range.InlineShapes.AddOLEObject(ClassType:="Package", FileName:=a_zip, DisplayAsIcon:=True, IconFileName:="C:\WINDOWS\system32\packager.dll", IconIndex:=0, IconLabel:="A10_JE_PREP")
+        otableAthi4.Cell(3, 5).Range.InlineShapes.AddOLEObject(ClassType:="Package", FileName:=b_zip, DisplayAsIcon:=True, IconFileName:="C:\WINDOWS\system32\packager.dll", IconIndex:=0, IconLabel:="A20_JE_PREP")
+        otableAthi4.Cell(4, 5).Range.InlineShapes.AddOLEObject(ClassType:="Package", FileName:=c_zip, DisplayAsIcon:=True, IconFileName:="C:\WINDOWS\system32\packager.dll", IconIndex:=0, IconLabel:="A30_MAIN")
+        otableAthi4.Cell(5, 5).Range.InlineShapes.AddOLEObject(ClassType:="Package", FileName:=d_zip, DisplayAsIcon:=True, IconFileName:="C:\WINDOWS\system32\packager.dll", IconIndex:=0, IconLabel:="B10_VALIDATION")
+        otableAthi4.Cell(6, 5).Range.InlineShapes.AddOLEObject(ClassType:="Package", FileName:=e_zip, DisplayAsIcon:=True, IconFileName:="C:\WINDOWS\system32\packager.dll", IconIndex:=0, IconLabel:="C10_ROLL")
+        otableAthi4.Cell(7, 5).Range.InlineShapes.AddOLEObject(ClassType:="Package", FileName:=f_zip, DisplayAsIcon:=True, IconFileName:="C:\WINDOWS\system32\packager.dll", IconIndex:=0, IconLabel:="D10_GLOBAL_JE_MAPPING")
+
+        If (unbalancedflag = 0) Then
+            otableAthi4.Cell(8, 5).Range.InlineShapes.AddOLEObject(ClassType:="Package", FileName:=g_zip, DisplayAsIcon:=True, IconFileName:="C:\WINDOWS\system32\packager.dll", IconIndex:=0, IconLabel:="E10_UNBALANCED_ENTRIES")
+        End If
+
+        otableAthi4.Cell(2, 5).Range.Font.Underline = False
+        otableAthi4.Cell(3, 5).Range.Font.Underline = False
+        otableAthi4.Cell(4, 5).Range.Font.Underline = False
+        otableAthi4.Cell(5, 5).Range.Font.Underline = False
+        otableAthi4.Cell(6, 5).Range.Font.Underline = False
+        otableAthi4.Cell(7, 5).Range.Font.Underline = False
+
+        If (unbalancedflag = 0) Then
+            otableAthi4.Cell(8, 5).Range.Font.Underline = False
+        End If
+
+
+        otableAthi4.Cell(9 - unbalancedflag, 1).Range.Text = "ACL File:"
+        otableAthi4.Cell(9 - unbalancedflag, 1).Range.Font.Name = "Times New Roman"
+        otableAthi4.Cell(9 - unbalancedflag, 1).Range.Font.Size = 10
+        otableAthi4.Cell(9 - unbalancedflag, 1).Range.Bold = True
+        otableAthi4.Cell(9 - unbalancedflag, 1).Range.Underline = False
+        otableAthi4.Cell(9 - unbalancedflag, 1).Range.Italic = True
+        otableAthi4.Cell(9 - unbalancedflag, 1).Shading.BackgroundPatternColor = RGB(12, 12, 12)
+
+
+        ACL_NAME = Form5.TextBox6.Text.Substring(0, Len(Form5.TextBox6.Text) - 4) & ".zip"
+        ACL_LOG_NAME = "C:\Users\Public\Documents\SametimeFileTransfer\Logs\Pan_Handle2_Oil_GAS_10012012_th" & ".LOG"
+        otableAthi4.Cell(10 - unbalancedflag, 1).Range.InlineShapes.AddOLEObject(ClassType:="Package", FileName:=ACL_NAME, DisplayAsIcon:=True, IconFileName:="C:\WINDOWS\system32\packager.dll", IconIndex:=0, IconLabel:=myclientname & " " & myPOA & " ACL ")
+        otableAthi4.Cell(10 - unbalancedflag, 1).Range.InlineShapes.AddOLEObject(ClassType:="Package", FileName:=ACL_LOG_NAME, DisplayAsIcon:=True, IconFileName:="C:\WINDOWS\system32\packager.dll", IconIndex:=0, IconLabel:=myclientname & " " & myPOA & " LOG")
+        otableAthi4.Cell(10 - unbalancedflag, 1).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter
+        otableAthi4.Cell(10 - unbalancedflag, 1).Range.Underline = False
 
 
 
@@ -1113,9 +1426,11 @@ Public Class Form1
         oParaAthi1.Range.Font.Italic = False
 
 
-        Dim otableAthi1 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 15 + udcount, 3)
+        Dim otableAthi1 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 12 + udcount, 3)
+        otableAthi1.AllowAutoFit = True
         otableAthi1.Borders.Enable = True
 
+        otableAthi1.Cell(1, 1).Merge(otableAthi1.Cell(1, 3))
         otableAthi1.Cell(1, 1).Range.Text = "JE Transaction Files"
         otableAthi1.Cell(1, 1).Range.Font.Name = "Times New Roman"
         otableAthi1.Cell(1, 1).Range.Font.Size = 10
@@ -1123,10 +1438,10 @@ Public Class Form1
         otableAthi1.Cell(1, 1).Range.Underline = False
         otableAthi1.Cell(1, 1).Range.Italic = True
         otableAthi1.Cell(1, 1).Shading.BackgroundPatternColor = RGB(0, 0, 0)
-        otableAthi1.Cell(1, 1).Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter
+        otableAthi1.Cell(1, 1).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter
         otableAthi1.Cell(1, 1).Range.ParagraphFormat.SpaceAfter = 0
 
-        otableAthi1.Cell(1, 1).Merge(otableAthi1.Cell(1, 3))
+
 
         otableAthi1.Cell(2, 1).Range.Text = "EY/Global Analytics Field Name"
         otableAthi1.Cell(2, 1).Range.Font.Name = "Times New Roman"
@@ -1302,7 +1617,7 @@ Public Class Form1
         oParaAthi1.Range.InsertParagraphAfter()
 
         'Trial Balance Table
-        Dim otableAthi2 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 15 + udcount, 3)
+        Dim otableAthi2 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 8, 3)
         otableAthi2.Borders.Enable = True
 
         otableAthi2.Borders.Enable = True
@@ -1314,7 +1629,7 @@ Public Class Form1
         otableAthi2.Rows.Height = oWord.CentimetersToPoints(0.6)
 
 
-
+        otableAthi2.Cell(1, 1).Merge(otableAthi2.Cell(1, 3))
         otableAthi2.Cell(1, 1).Range.Text = "Trial Balance Files"
         otableAthi2.Cell(1, 1).Range.Font.Name = "Times New Roman"
         otableAthi2.Cell(1, 1).Range.Font.Size = 10
@@ -1326,7 +1641,7 @@ Public Class Form1
         otableAthi2.Cell(1, 1).Range.ParagraphFormat.SpaceAfter = 0
 
 
-        otableAthi2.Cell(1, 1).Merge(otableAthi2.Cell(1, 3))
+
 
         otableAthi2.Cell(2, 1).Range.Text = "EY/Global Analytics Field Name"
         otableAthi2.Cell(2, 1).Range.Font.Name = "Times New Roman"
@@ -1456,7 +1771,7 @@ Public Class Form1
         'Box Table
         Dim otableAthi3 As Word.Table
         rng = oDoc.Bookmarks.Item("\endofdoc").Range
-        otableAthi3 = oDoc.Tables.Add(Range:=rng, NumRows:=9, NumColumns:=1)
+        otableAthi3 = oDoc.Tables.Add(Range:=rng, NumRows:=6, NumColumns:=1)
         otableAthi3.Borders.Enable = True
         otableAthi3.AllowAutoFit = True
         otableAthi3.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleNone
@@ -1475,7 +1790,7 @@ Public Class Form1
         otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.Font.ColorIndex = Word.WdColorIndex.wdRed
         otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.Font.Underline = False
         otableAthi3.Cell(1, 1).Range.Paragraphs(2).Range.Font.Italic = False
-        otableAthi3.Cell(1, 1).Range.Paragraphs(2).Format.SpaceAfter = 2
+
 
         otableAthi3.Cell(1, 1).Range.InsertParagraphAfter()
         otableAthi3.Cell(1, 1).Range.Paragraphs(3).Range.Text = "2.	Account Type Definition"
@@ -1623,7 +1938,7 @@ Public Class Form1
         Dim optstr1 As String = " "
 
         If (point5_choice_ui = 1) Then
-            optstr1 = "N/A"
+            optstr1 = "   • N/A"
         ElseIf (point5_choice_ui = 2) Then
             optstr1 = "   • Journal Entry Description CONTAINS: " & vbNewLine & "      • Phrase 1 " & vbNewLine & "      • Phrase 2 "
         ElseIf (point5_choice_ui = 3) Then
@@ -1663,7 +1978,7 @@ Public Class Form1
 
 
 
-        
+
     End Sub
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
         Form5.Show()
