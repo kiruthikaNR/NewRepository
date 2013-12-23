@@ -70,7 +70,7 @@ Public Class Form1
             b = b + 1
         Loop
         LEN1 = END_INDEX1 - START_INDEX1
-        temp = TRC.Substring(START_INDEX1 - 1, LEN1)
+        temp = TRC.Substring(START_INDEX1 - 1, LEN1 + 1)
         Dim myclientname As String = temp
 
         temp1 = TRC.Substring(TRC.IndexOf("@ ASSIGN PERIOD_var="))
@@ -139,7 +139,7 @@ Public Class Form1
         oPara2.Range.Font.Bold = True
         oPara2.Range.Font.Underline = True
         oPara2.Format.SpaceAfter = 0
-        oPara2.Range.Font.Size = 10
+        oPara2.Range.Font.Size = 11
         oPara2.Range.InsertParagraphAfter()
 
         'date format
@@ -537,7 +537,7 @@ Public Class Form1
 
         'Objective
         oPara4 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
-        oPara4.Range.Text = "Objective"
+        oPara4.Range.Text = "Data Completeness, Validation and Observations"
         oPara4.Range.Font.Bold = False
         oPara4.Format.SpaceAfter = 0
         oPara4.Range.Font.Name = "Times New Roman"
@@ -741,11 +741,11 @@ Public Class Form1
         temp2 = Atemp1(Atemp1.GetUpperBound(0))
 
 
-        'temp1 = TRA20.Substring(TRA20.IndexOf("The total of EY_BegBal is:") + 28, TRA20.IndexOf("The total of EY_EndBal is:") - TRA20.IndexOf("The total of EY_BegBal is:") - 28)
-        'temp2 = TRA20.Substring(TRA20.IndexOf("The total of EY_EndBal is:") + 28, TRA20.IndexOf("@ TOTAL FIELDS COUNT") - TRA20.IndexOf("The total of EY_EndBal is:") - 28)
+        temp1 = TRA20.Substring(TRA20.IndexOf("The total of EY_BEGBAL is:") + 28, TRA20.IndexOf("The total of EY_ENDBAL is:") - TRA20.IndexOf("The total of EY_BEGBAL is:") - 28)
+        temp2 = TRA20.Substring(TRA20.IndexOf("The total of EY_ENDBAL is:") + 28, TRA20.IndexOf(">>> COMMAND <3>") - TRA20.IndexOf("The total of EY_ENDBAL is:") - 28)
 
         otable4.Cell(1, 1).Range.InsertParagraphAfter()
-        'otable4.Cell(1, 1).Range.Paragraphs(6).Range.Text = "     •  " & "The beginning and ending trial balances summed to $" & String.Format("{0:0,0}", FormatNumber(CDbl(temp1), 2)) & " and $" & String.Format("{0:0,0}", FormatNumber(CDbl(temp2), 2)) & " respectively. " & "Non-zero balances were due to rounding of transactions to two decimal places."
+        otable4.Cell(1, 1).Range.Paragraphs(6).Range.Text = "     •  " & "The beginning and ending trial balances summed to $" & String.Format("{0:0,0}", FormatNumber(CDbl(temp1), 2)) & " and $" & String.Format("{0:0,0}", FormatNumber(CDbl(temp2), 2)) & " respectively. " & "Non-zero balances were due to rounding of transactions to two decimal places."
         otable4.Cell(1, 1).Range.Paragraphs(6).Format.SpaceAfter = 0
         otable4.Cell(1, 1).Range.Paragraphs(6).Range.Font.Name = "Times New Roman"
         otable4.Cell(1, 1).Range.Paragraphs(6).Range.Font.Size = 11
@@ -1082,6 +1082,7 @@ Public Class Form1
             otable4.Cell(2, 1).Range.PasteAndFormat(Word.WdRecoveryType.wdFormatOriginalFormatting)
             otable4.Cell(2, 1).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter
             newdoc1.SaveAs2("c:\temp\test1.doc")
+            newdoc1.Close()
 
         Else
             otable4.Cell(2, 1).Range.InsertParagraphAfter()
@@ -1380,9 +1381,19 @@ Public Class Form1
         oPara7.Range.Words(1).Font.Bold = True
 
 
+        oPara8 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
+        oPara8.Range.Text = "Source Data Files:"
+        oPara8.Range.Font.Bold = False
+        oPara8.Format.SpaceAfter = 0
+        oPara8.Range.Font.Name = "Times New Roman"
+        oPara8.Range.Font.Bold = True
+        oPara8.Range.Font.Underline = True
+        oPara8.Range.Font.Italic = False
+        oPara8.Range.Font.Size = 10
+        oPara8.Range.InsertParagraphAfter()
 
         'BreakPoint
-        Dim otable8 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, count_JE + count_TB, 5)
+        Dim otable8 As Word.Table = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, count_JE + count_TB + 1, 5)
         otable8.Borders.Enable = True
         otable8.Columns.Item(1).Width = oWord.CentimetersToPoints(6.44)
         otable8.Columns.Item(2).Width = oWord.CentimetersToPoints(2)
@@ -1431,6 +1442,62 @@ Public Class Form1
         otable8.Cell(1, 5).Range.Italic = True
         otable8.Cell(1, 5).Shading.BackgroundPatternColor = RGB(224, 224, 224)
         Dim C As Integer
+
+        'Extracting the source files of JE
+        Dim tempf As String = TRA10
+        Dim strIndex As String
+        Dim endIndex As String = 28
+        Dim indexTemp As Integer = 0
+        For dummy As Integer = 0 To count_JE - 1
+            indexTemp = tempf.IndexOf("@ ASSIGN v_JE_SRC_NAME  =", indexTemp + 1)
+
+            'MsgBox(tempf.Substring(indexTemp, 33))
+            strIndex = 27
+            endIndex = indexTemp + 28
+
+            While (tempf.Chars(endIndex) <> Chr(10))
+                endIndex = endIndex + 1
+            End While
+
+            otable8.Cell(dummy + 2, 1).Range.Text = tempf.Substring(indexTemp + 27, endIndex - (indexTemp + 29))
+            otable8.Cell(dummy + 2, 1).Range.Font.Name = "Times New Roman"
+            otable8.Cell(dummy + 2, 1).Range.Font.Size = 10
+            otable8.Cell(dummy + 2, 1).Range.Bold = True
+            otable8.Cell(dummy + 2, 1).Range.Underline = False
+            otable8.Cell(dummy + 2, 1).Range.Italic = True
+            'otable8.Cell(dummy + 2, 1).Shading.BackgroundPatternColor = RGB(224, 224, 224)
+            'MsgBox(tempf.Substring(27, endIndex - 27) & indexTemp)
+
+
+        Next
+
+        'Extracting the source files of TB
+        tempf = TRA20
+        indexTemp = 0
+        For dummy As Integer = 0 To count_TB - 1
+            indexTemp = tempf.IndexOf("@ ASSIGN v_TB_SRC_NAME    =", indexTemp + 1)
+            MsgBox("indextemp " & indexTemp)
+            'MsgBox(tempf.Substring(indexTemp, 33))
+            strIndex = indexTemp
+            endIndex = indexTemp + 29
+
+            While (tempf.Chars(endIndex) <> Chr(10))
+                endIndex = endIndex + 1
+            End While
+
+            otable8.Cell(dummy + count_JE + 2, 1).Range.Text = tempf.Substring(indexTemp + 28, endIndex - (indexTemp + 29))
+            otable8.Cell(dummy + 2 + count_JE, 1).Range.Font.Name = "Times New Roman"
+            otable8.Cell(dummy + 2 + count_JE, 1).Range.Font.Size = 10
+            otable8.Cell(dummy + 2 + count_JE, 1).Range.Bold = False
+            otable8.Cell(dummy + 2 + count_JE, 1).Range.Underline = False
+            otable8.Cell(dummy + 2 + count_JE, 1).Range.Italic = False
+            'otable8.Cell(dummy + 2, 1).Shading.BackgroundPatternColor = RGB(224, 224, 224)
+            'MsgBox(tempf.Substring(27, endIndex - 27) & indexTemp)
+
+
+        Next
+
+
 
         'EXTRACTING JE DATA FROM A LOG
 
@@ -1588,20 +1655,21 @@ Public Class Form1
 
                     'Dim TB_file_name As String = TRB_TEMP.Substring(startIndex1, endIndex1 - startIndex1).Trim
                     Dim str1 = String.Format("{0:0,0}", FormatNumber(CDbl(extraction_tb_count), 0))
-                    otable8.Cell(2 + C + D - 1, 2).Range.Text = str1
-                    otable8.Cell(2 + C + D - 1, 2).Range.Font.Name = "Times New Roman"
-                    otable8.Cell(2 + C + D - 1, 2).Range.Font.Size = 10
-                    otable8.Cell(2 + C + D - 1, 2).Range.Bold = False
-                    otable8.Cell(2 + C + D - 1, 2).Range.Underline = False
-                    otable8.Cell(2 + C + D - 1, 2).Range.Italic = False
+                    otable8.Cell(2 + C + D, 2).Range.Text = str1
+                    otable8.Cell(2 + C + D, 2).Range.Font.Name = "Times New Roman"
+                    otable8.Cell(2 + C + D, 2).Range.Font.Size = 10
+                    otable8.Cell(2 + C + D, 2).Range.Bold = False
+                    otable8.Cell(2 + C + D, 2).Range.Underline = False
+                    otable8.Cell(2 + C + D, 2).Range.Italic = False
 
-                    otable8.Cell(2 + C + D - 1, 5).Range.Text = TB_file_name
-                    otable8.Cell(2 + C + D - 1, 5).Range.Font.Name = "Times New Roman"
-                    otable8.Cell(2 + C + D - 1, 5).Range.Font.Size = 10
-                    otable8.Cell(2 + C + D - 1, 5).Range.Bold = False
-                    otable8.Cell(2 + C + D - 1, 5).Range.Underline = False
-                    otable8.Cell(2 + C + D - 1, 5).Range.Italic = False
+                    otable8.Cell(2 + C + D, 5).Range.Text = TB_file_name
+                    otable8.Cell(2 + C + D, 5).Range.Font.Name = "Times New Roman"
+                    otable8.Cell(2 + C + D, 5).Range.Font.Size = 10
+                    otable8.Cell(2 + C + D, 5).Range.Bold = False
+                    otable8.Cell(2 + C + D, 5).Range.Underline = False
+                    otable8.Cell(2 + C + D, 5).Range.Italic = False
 
+                    MsgBox(TB_file_name)
                     TRD_TEMP = TRA20.Substring(TRA20.IndexOf("@  TOTAL FIELDS EY_BEGBAL EY_ENDBAL"))
                     If UCase(TB_file_name).Contains("BEG") Then
                         temp1 = "Beginning Balance: $"
@@ -1622,9 +1690,9 @@ Public Class Form1
                         temp4 = TRD_TEMP.Substring(TRD_TEMP.IndexOf("The total of EY_ENDBAL is:  ") + 28, 5)
 
                         temp_2 = temp3 & String.Format("{0:0,0}", FormatNumber(CDbl(temp4), 2))
-                        MsgBox("else " & temp_2)
-                        temp = temp1 & vbCrLf & temp2
-                        MsgBox(temp)
+                        'MsgBox("else " & temp_2)
+                        temp = temp_1 & vbCrLf & temp_2
+                        'MsgBox(temp)
                         name1 = "Beginning trial balance as on " & Chr(10) & START_POA & " and " & Chr(10) & "Ending trial balance as on " & Chr(10) & end_poa
                     End If
                 Catch ex As Exception
@@ -1666,6 +1734,27 @@ Public Class Form1
                 Exit Do
             End If
         Loop
+
+
+        If (ui_input1 = 1) Then
+            oPara6 = oDoc.Content.Paragraphs.Add
+            oPara6.Range.Text = "NOTE: Record Counts and Control Totals were not provided by the client for Journal Entry and Trial Balance data. The Record Counts and Control Totals for the Journal Entry and Trial Balance data above reflect the record counts and control totals after import into ACL.  The record count in the parenthesis is the original total count. After removing JE transactions for the accounts that were not in scope, the record count without the parenthesis is the final total count. Refer to the Exclusion section within Business Rules. "
+            oPara6.Range.Font.Name = "Times New Roman"
+            oPara6.Range.Font.Bold = False
+            oPara6.Range.Font.Underline = True
+            oPara6.Format.SpaceAfter = 0
+            oPara6.Range.Font.Size = 11
+            oPara6.Range.InsertParagraphAfter()
+        Else
+            oPara6 = oDoc.Content.Paragraphs.Add
+            oPara6.Range.Text = "NOTE :Record counts and control totals were provided by the client for Journal Entry data. We reconciled record counts and control totals for Journal Entry data and noted no exceptions. No record counts or control totals were provided by the client for Trial Balance data. The record counts and control totals for Journal Entry and Trial Balance data above reflect the record counts and control totals after import into ACL."
+            oPara6.Range.Font.Name = "Times New Roman"
+            oPara6.Range.Font.Bold = False
+            oPara6.Range.Font.Underline = True
+            oPara6.Format.SpaceAfter = 0
+            oPara6.Range.Font.Size = 11
+            oPara6.Range.InsertParagraphAfter()
+        End If
 
 
 
@@ -2278,7 +2367,7 @@ Public Class Form1
 
 
         ACL_NAME = Form5.TextBox6.Text.Substring(0, Len(Form5.TextBox6.Text) - 4) & ".zip"
-        ACL_LOG_NAME = "C:\Users\Public\Documents\SametimeFileTransfer\Logs\Pan_Handle2_Oil_GAS_10012012_th" & ".LOG"
+        ACL_LOG_NAME = "C:\Users\Kiruthika.Ramanujam\Desktop\SWMemo\Pan_Handle2_Oil_GAS_10012012_th" & ".LOG"
         otableAthi4.Cell(10 - unbalancedflag, 1).Range.InlineShapes.AddOLEObject(ClassType:="Package", FileName:=ACL_NAME, DisplayAsIcon:=True, IconFileName:="C:\WINDOWS\system32\packager.dll", IconIndex:=0, IconLabel:=myclientname & " " & myPOA & " ACL ")
         otableAthi4.Cell(10 - unbalancedflag, 1).Range.InlineShapes.AddOLEObject(ClassType:="Package", FileName:=ACL_LOG_NAME, DisplayAsIcon:=True, IconFileName:="C:\WINDOWS\system32\packager.dll", IconIndex:=0, IconLabel:=myclientname & " " & myPOA & " LOG")
         otableAthi4.Cell(10 - unbalancedflag, 1).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter
