@@ -47,13 +47,15 @@ Public Class Form1
         Dim STrA20 As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text & "\A20_TB_PREP.LOG")
         Dim STrA30 As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text & "\A30_MAIN.LOG")
         Dim STrC As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text & "\C10_ROLL.LOG")
+        Dim STrB10 As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text & "\B10_VALIDATION.LOG")
         'Dim STrA As IO.TextReader = System.IO.File.OpenText(Form5.TextBox1.Text.Substring(0, Len(Form5.TextBox1.Text) - 4) & ".LOG")
-        'Dim STrB As IO.TextReader = System.IO.File.OpenText(Form5.TextBox2.Text.Substring(0, Len(Form5.TextBox2.Text) - 4) & ".LOG")
+
         'Dim STrC As IO.TextReader = System.IO.File.OpenText(Form5.TextBox3.Text.Substring(0, Len(Form5.TextBox3.Text) - 4) & ".LOG")
         'Dim STrD As IO.TextReader = System.IO.File.OpenText(Form5.TextBox4.Text.Substring(0, Len(Form5.TextBox4.Text) - 4) & ".LOG")
         Dim TRA10 As String = STrA10.ReadToEnd
         Dim TRA20 As String = STrA20.ReadToEnd
         Dim TRA30 As String = STrA30.ReadToEnd
+        Dim TRB10 As String = STrB10.ReadToEnd
         Dim TRC As String = STrC.ReadToEnd
         'Dim MyFileLine1 As String = Split(TRD, vbCrLf)(12)
 
@@ -1759,10 +1761,36 @@ Public Class Form1
             oPara6.Range.InsertParagraphAfter()
         End If
 
+        Dim ind3 As Integer
+        Dim ind4 As Integer
+        Dim cutString As String
+        Dim splitString As String = ""
+        Dim extractedString As String = ""  'zero'
+        Dim extractedString2 As String = ""  'non zero'
+        Dim totalItems As String = ""
+
+        If TRB10.Contains("SUMMARIZE ON UNIQUE_JE_ENTRY ACCUMULATE CLIENT_JE_AMT OTHER") Then
+            ind3 = TRB10.IndexOf("SUMMARIZE ON UNIQUE_JE_ENTRY ACCUMULATE CLIENT_JE_AMT OTHER")
+            ind4 = TRB10.IndexOf("@  COUNT IF CLIENT_JE_AMT <> 0", ind3 + 1)
+            cutstring = TRB10.Substring(ind4)
+            splitString = cutString.Split(Chr(10))(1)
+            extractedString = splitString.Split(" ")(2)
+            totalItems = splitString.Split(" ")(4)
+        End If
 
 
+        If TRB10.Contains("SUMMARIZE ON UNIQUE_JE_ENTRY ACCUMULATE CLIENT_JE_AMT OTHER") Then
+            ind3 = TRB10.IndexOf("SUMMARIZE ON UNIQUE_JE_ENTRY ACCUMULATE CLIENT_JE_AMT OTHER")
+            ind4 = TRB10.IndexOf("@  COUNT IF CLIENT_JE_AMT = 0", ind3 + 1)
+            cutString = TRB10.Substring(ind4)
+            splitString = cutString.Split(Chr(10))(1)
+            extractedString2 = splitString.Split(" ")(2)
+        End If
 
 
+        MsgBox("Total Items:" & totalItems)
+        MsgBox("Zero:" & extractedString)
+        MsgBox("Non Zero:" & extractedString2)
 
 
 
