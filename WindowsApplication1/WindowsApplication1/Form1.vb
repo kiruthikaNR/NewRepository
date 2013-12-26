@@ -756,40 +756,31 @@ Public Class Form1
         otable4.Cell(1, 1).Range.Paragraphs(6).Range.Italic = False
 
 
-        'CALCULATE UNBALANCED JE NUMBERS
+        Dim ind3 As Integer
+        Dim ind4 As Integer
+        Dim cutString As String
+        Dim splitString As String = ""
+        Dim extractedString As String = ""  'nonzero'
+        Dim extractedString2 As String = ""  'zero'
+        Dim totalItems As String = ""
 
-        'temp1 = TRC.Substring(TRC.IndexOf("met the test: EY_Amount<>0"))
-        'END_INDEX1 = TRC.IndexOf("met the test: EY_Amount<>0")
-        'START_INDEX1 = 0
-        'For a = END_INDEX1 To 1 Step -1
-        '    start3 = TRC.Substring(a, 2)
-        '    If start3 = "of" Then
-        '        START_INDEX1 = a
-        '        Exit For
-        '    End If
-        'Next a
-        'LEN1 = END_INDEX1 - START_INDEX1
-        'temp1 = TRC.Substring(START_INDEX1 + 3, LEN1 - 3)
-        'unique_jenum = temp1
-        'END_INDEX1 = START_INDEX1 - 1
-        'START_INDEX1 = 0
-        'For a = END_INDEX1 - 1 To 1 Step -1
-        '    start3 = TRC.Substring(a, 1)
-        '    If start3 = " " Then
-        '        START_INDEX1 = a
-        '        Exit For
-        '    End If
-        'Next a
-        'LEN1 = END_INDEX1 - START_INDEX1
+        If TRB10.Contains("SUMMARIZE ON UNIQUE_JE_ENTRY ACCUMULATE CLIENT_JE_AMT OTHER") Then
+            ind3 = TRB10.IndexOf("SUMMARIZE ON UNIQUE_JE_ENTRY ACCUMULATE CLIENT_JE_AMT OTHER")
+            ind4 = TRB10.IndexOf("@  COUNT IF CLIENT_JE_AMT <> 0", ind3 + 1)
+            cutString = TRB10.Substring(ind4)
+            splitString = cutString.Split(Chr(10))(1)
+            extractedString = splitString.Split(" ")(2)
+            totalItems = splitString.Split(" ")(4)
+        End If
 
-        'bal_JE = TRC.Substring(START_INDEX1, LEN1)
 
-        'non_bal = Val(temp1) - Val(temp2)
-
-        'If bal_JE <> 0 Then unique_je_stmnt = "     •  " & String.Format("{0:0,0}", bal_JE) & " of " & String.Format("{0:0,0}", FormatNumber(CDbl(unique_jenum), 0)) & " unique JE's net to $0.00. However " & String.Format("{0:0,0}", FormatNumber(CDbl(non_bal), 0)) & " JE numbers that did not sum to zero have insignificant amount." Else Unique_je_stmnt = Chr(9) & "•   " & "All of " & String.Format("{0:0,0}", FormatNumber(CDbl(unique_jenum), 0)) & " unique journal entries summed to $0.00."
-
-        'temp1 = TRA20.Substring(TRA20.IndexOf("The total of EY_BegBal is:") + 28, TRA20.IndexOf("The total of EY_EndBal is:") - TRA20.IndexOf("The total of EY_BegBal is:") - 28)
-        'temp2 = TRA20.Substring(TRA20.IndexOf("The total of EY_EndBal is:") + 28, TRA20.IndexOf("@ TOTAL FIELDS COUNT") - TRA20.IndexOf("The total of EY_EndBal is:") - 28)
+        If TRB10.Contains("SUMMARIZE ON UNIQUE_JE_ENTRY ACCUMULATE CLIENT_JE_AMT OTHER") Then
+            ind3 = TRB10.IndexOf("SUMMARIZE ON UNIQUE_JE_ENTRY ACCUMULATE CLIENT_JE_AMT OTHER")
+            ind4 = TRB10.IndexOf("@  COUNT IF CLIENT_JE_AMT = 0", ind3 + 1)
+            cutString = TRB10.Substring(ind4)
+            splitString = cutString.Split(Chr(10))(1)
+            extractedString2 = splitString.Split(" ")(2)
+        End If
 
 
         otable4.Cell(1, 1).Range.InsertParagraphAfter()
@@ -802,7 +793,7 @@ Public Class Form1
         otable4.Cell(1, 1).Range.Paragraphs(6).Range.Italic = False
 
         otable4.Cell(1, 1).Range.InsertParagraphAfter()
-        otable4.Cell(1, 1).Range.Paragraphs(7).Range.Text = "     •  " & "XXXX of XXXX unique journal entries summed to $0.00 and XX unique journal entries did not sum to $0.00. X of these XX unbalanced accounts have immaterial amounts.Refer to the attached spreadsheet """ & myclientname & " " & START_POA & " thru " & end_poa & "Unbalanced Journal Entries.xlsx"" for details of the unbalanced journal entries." & vbNewLine
+        otable4.Cell(1, 1).Range.Paragraphs(7).Range.Text = "     •  " & extractedString2 & " of " & totalItems & " unique journal entries summed to $0.00 and " & extractedString & " unique journal entries did not sum to $0.00. X of these XX unbalanced accounts have immaterial amounts.Refer to the attached spreadsheet """ & myclientname & " " & START_POA & " thru " & end_poa & "Unbalanced Journal Entries.xlsx"" for details of the unbalanced journal entries." & vbNewLine
         otable4.Cell(1, 1).Range.Paragraphs(7).Format.SpaceAfter = 0
         otable4.Cell(1, 1).Range.Paragraphs(7).Range.Font.Name = "Times New Roman"
         otable4.Cell(1, 1).Range.Paragraphs(7).Range.Font.Size = 11
@@ -822,8 +813,25 @@ Public Class Form1
         otable4.Cell(1, 1).Range.Paragraphs(8).Range.Italic = False
         otable4.Cell(1, 1).Range.Paragraphs(8).Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter
 
+
+        cutString = TRB10.Substring(TRB10.IndexOf("@  STATISTICS ON CLIENT_JE_AMT"))
+        cutString = cutString.Split(Chr(11))(4)
+        extractedString = (cutString.Split(" ")).GetUpperBound(0)
+
+        cutString = TRB10.Substring(TRB10.IndexOf("@  STATISTICS ON CLIENT_JE_AMT"))
+        cutString = cutString.Split(Chr(12))(6)
+        cutString = cutString.Substring(12, 15)
+        cutString = cutString.Trim(" ")
+        'extractedString2 = (cutString.Split(" ")).GetUpperBound(0)
+
+        Dim blankPrep As String
+        cutString = TRB10.Substring(TRB10.IndexOf("@  COUNT IF ALLTRIM(EY_PREPARER_ID) = ' '"))
+        cutString = cutString.Split(Chr(10))(1)
+        blankPrep = cutString.Split(" ")(3)
+
+
         otable4.Cell(1, 1).Range.InsertParagraphAfter()
-        otable4.Cell(1, 1).Range.Paragraphs(9).Range.Text = "     •	 There are XX of XXXXX line items with zero amounts" & vbNewLine & "     •	 There are XX line items with a blank Preparer ID"
+        otable4.Cell(1, 1).Range.Paragraphs(9).Range.Text = "     •	 There are " & extractedString & " of " & extractedString2 & " line items with zero amounts" & vbNewLine & "     •	 There are " & blankPrep & " line items with a blank Preparer ID"
         otable4.Cell(1, 1).Range.Paragraphs(9).Format.SpaceAfter = 0
         otable4.Cell(1, 1).Range.Paragraphs(9).Range.Font.Name = "Times New Roman"
         otable4.Cell(1, 1).Range.Paragraphs(9).Range.Font.Size = 11
@@ -842,8 +850,14 @@ Public Class Form1
         'otable4.Cell(1, 1).Range.Paragraphs(9).Range.Italic = False
 
 
+        cutString = TRB10.Substring(TRB10.IndexOf("@  COUNT IF ALLTRIM(EY_DESC) = ' '"))
+        cutString = cutString.Split(Chr(10))(1)
+        blankPrep = cutString.Split(" ")(2)
+
+
+
         otable4.Cell(1, 1).Range.InsertParagraphAfter()
-        otable4.Cell(1, 1).Range.Paragraphs(10).Range.Text = "     •  There are XX line items with a blank JE Description"
+        otable4.Cell(1, 1).Range.Paragraphs(10).Range.Text = "     •  There are " & blankPrep & " line items with a blank JE Description"
         otable4.Cell(1, 1).Range.Paragraphs(10).Format.SpaceAfter = 0
         otable4.Cell(1, 1).Range.Paragraphs(10).Range.Font.Name = "Times New Roman"
         otable4.Cell(1, 1).Range.Paragraphs(10).Range.Font.Size = 11
@@ -852,9 +866,20 @@ Public Class Form1
         otable4.Cell(1, 1).Range.Paragraphs(10).Range.Italic = False
         otable4.Cell(1, 1).Range.Paragraphs(10).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
 
+        Dim cutstring1 As String
+        Dim edate As String
+        cutString = TRB10.Substring(TRB10.IndexOf("@  STATISTICS ON EY_ENT_DATE IF EY_ENT_DATE <>"))
+        cutString = cutString.Split(Chr(10))(11)
+        cutstring1 = TRB10.Substring(TRB10.IndexOf("@  STATISTICS ON EY_ENT_DATE IF EY_ENT_DATE <>"))
+        cutstring1 = cutstring1.Split(Chr(10))(12)
+
+        blankPrep = cutString.Split(" ")(5)
+        edate = cutstring1.Split(" ")(7)
+        MsgBox(blankPrep)
+        MsgBox(edate)
 
         otable4.Cell(1, 1).Range.InsertParagraphAfter()
-        otable4.Cell(1, 1).Range.Paragraphs(11).Range.Text = "     •  Entry Date is as early as MM/DD/YYYY and as late as MM/DD/YYYY."
+        otable4.Cell(1, 1).Range.Paragraphs(11).Range.Text = "     •  Entry Date is as early as " & blankPrep & " and as late as " & edate
         otable4.Cell(1, 1).Range.Paragraphs(11).Format.SpaceAfter = 0
         otable4.Cell(1, 1).Range.Paragraphs(11).Range.Font.Name = "Times New Roman"
         otable4.Cell(1, 1).Range.Paragraphs(11).Range.Font.Size = 11
@@ -862,6 +887,15 @@ Public Class Form1
         otable4.Cell(1, 1).Range.Paragraphs(11).Range.Underline = False
         otable4.Cell(1, 1).Range.Paragraphs(11).Range.Italic = False
         otable4.Cell(1, 1).Range.Paragraphs(11).Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
+
+
+        'cutString = TRB10.Substring(TRB10.IndexOf("@  STATISTICS ON EY_EFF_DATE   IF EY_EFF_DATE <>"))
+        'cutString = cutString.Split(Chr(10))(10)
+        'cutstring1 = TRB10.Substring(TRB10.IndexOf("@  STATISTICS ON EY_EFF_DATE   IF EY_EFF_DATE <>"))
+        'cutstring1 = cutString.Split(Chr(10))(11)
+
+        'blankPrep = cutString.Split(" ")(2)
+        'edate = cutstring1.Split(" ")(2)
 
 
         otable4.Cell(1, 1).Range.InsertParagraphAfter()
@@ -1761,36 +1795,7 @@ Public Class Form1
             oPara6.Range.InsertParagraphAfter()
         End If
 
-        Dim ind3 As Integer
-        Dim ind4 As Integer
-        Dim cutString As String
-        Dim splitString As String = ""
-        Dim extractedString As String = ""  'zero'
-        Dim extractedString2 As String = ""  'non zero'
-        Dim totalItems As String = ""
-
-        If TRB10.Contains("SUMMARIZE ON UNIQUE_JE_ENTRY ACCUMULATE CLIENT_JE_AMT OTHER") Then
-            ind3 = TRB10.IndexOf("SUMMARIZE ON UNIQUE_JE_ENTRY ACCUMULATE CLIENT_JE_AMT OTHER")
-            ind4 = TRB10.IndexOf("@  COUNT IF CLIENT_JE_AMT <> 0", ind3 + 1)
-            cutstring = TRB10.Substring(ind4)
-            splitString = cutString.Split(Chr(10))(1)
-            extractedString = splitString.Split(" ")(2)
-            totalItems = splitString.Split(" ")(4)
-        End If
-
-
-        If TRB10.Contains("SUMMARIZE ON UNIQUE_JE_ENTRY ACCUMULATE CLIENT_JE_AMT OTHER") Then
-            ind3 = TRB10.IndexOf("SUMMARIZE ON UNIQUE_JE_ENTRY ACCUMULATE CLIENT_JE_AMT OTHER")
-            ind4 = TRB10.IndexOf("@  COUNT IF CLIENT_JE_AMT = 0", ind3 + 1)
-            cutString = TRB10.Substring(ind4)
-            splitString = cutString.Split(Chr(10))(1)
-            extractedString2 = splitString.Split(" ")(2)
-        End If
-
-
-        MsgBox("Total Items:" & totalItems)
-        MsgBox("Zero:" & extractedString)
-        MsgBox("Non Zero:" & extractedString2)
+       
 
 
 
